@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import type { SfcNodes } from '../client';
+import type { SFCNodes } from '../client';
 
 export abstract class APIResource {
-  protected _client: SfcNodes;
+  protected _client: SFCNodes;
 
-  constructor(client: SfcNodes) {
+  constructor(client: SFCNodes) {
     this._client = client;
   }
 }
