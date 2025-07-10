@@ -29,9 +29,7 @@ const client = new SfcNodes({
   bearerToken: process.env['SFC_BEARER_TOKEN'], // This is the default and can be omitted
 });
 
-const vms = await client.vms.list();
-
-console.log(vms.data);
+const nodes = await client.nodes.list();
 ```
 
 ### Request & Response types
@@ -46,7 +44,7 @@ const client = new SfcNodes({
   bearerToken: process.env['SFC_BEARER_TOKEN'], // This is the default and can be omitted
 });
 
-const vms: SfcNodes.VmListResponse = await client.vms.list();
+const nodes: SfcNodes.NodeListResponse = await client.nodes.list();
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -59,7 +57,7 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const vms = await client.vms.list().catch(async (err) => {
+const nodes = await client.nodes.list().catch(async (err) => {
   if (err instanceof SfcNodes.APIError) {
     console.log(err.status); // 400
     console.log(err.name); // BadRequestError
@@ -99,7 +97,7 @@ const client = new SfcNodes({
 });
 
 // Or, configure per-request:
-await client.vms.list({
+await client.nodes.list({
   maxRetries: 5,
 });
 ```
@@ -116,7 +114,7 @@ const client = new SfcNodes({
 });
 
 // Override per-request:
-await client.vms.list({
+await client.nodes.list({
   timeout: 5 * 1000,
 });
 ```
@@ -139,13 +137,13 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new SfcNodes();
 
-const response = await client.vms.list().asResponse();
+const response = await client.nodes.list().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: vms, response: raw } = await client.vms.list().withResponse();
+const { data: nodes, response: raw } = await client.nodes.list().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(vms.data);
+console.log(nodes);
 ```
 
 ### Logging
@@ -225,7 +223,7 @@ parameter. This library doesn't validate at runtime that the request matches the
 send will be sent as-is.
 
 ```ts
-client.vms.list({
+client.nodes.list({
   // ...
   // @ts-expect-error baz is not yet public
   baz: 'undocumented option',
