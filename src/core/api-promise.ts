@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { type SfcNodes } from '../client';
+import { type SFCNodes } from '../client';
 
 import { type PromiseOrValue } from '../internal/types';
 import { APIResponseProps, defaultParseResponse } from '../internal/parse';
@@ -11,13 +11,13 @@ import { APIResponseProps, defaultParseResponse } from '../internal/parse';
  */
 export class APIPromise<T> extends Promise<T> {
   private parsedPromise: Promise<T> | undefined;
-  #client: SfcNodes;
+  #client: SFCNodes;
 
   constructor(
-    client: SfcNodes,
+    client: SFCNodes,
     private responsePromise: Promise<APIResponseProps>,
     private parseResponse: (
-      client: SfcNodes,
+      client: SFCNodes,
       props: APIResponseProps,
     ) => PromiseOrValue<T> = defaultParseResponse,
   ) {

@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { SfcNodes } from 'sfc-nodes';
+import { SFCNodes } from 'sfc-nodes';
 
-const { stringifyQuery } = SfcNodes.prototype as any;
+const { stringifyQuery } = SFCNodes.prototype as any;
 
 describe(stringifyQuery, () => {
   for (const [input, expected] of [

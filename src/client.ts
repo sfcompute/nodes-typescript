@@ -126,9 +126,9 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Sfc Nodes API.
+ * API Client for interfacing with the SFC Nodes API.
  */
-export class SfcNodes {
+export class SFCNodes {
   bearerToken: string | null;
 
   baseURL: string;
@@ -144,7 +144,7 @@ export class SfcNodes {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Sfc Nodes API.
+   * API Client for interfacing with the SFC Nodes API.
    *
    * @param {string | null | undefined} [opts.bearerToken=process.env['SFC_BEARER_TOKEN'] ?? null]
    * @param {string} [opts.baseURL=process.env['SFC_NODES_BASE_URL'] ?? https://api.sfcompute.com] - Override the default base URL for the API.
@@ -167,7 +167,7 @@ export class SfcNodes {
     };
 
     this.baseURL = options.baseURL!;
-    this.timeout = options.timeout ?? SfcNodes.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? SFCNodes.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
@@ -249,7 +249,7 @@ export class SfcNodes {
         if (value === null) {
           return `${encodeURIComponent(key)}=`;
         }
-        throw new Errors.SfcNodesError(
+        throw new Errors.SFCNodesError(
           `Cannot stringify type ${typeof value}; Expected string, number, boolean, or null. If you need to pass nested query parameters, you can manually encode them, e.g. { query: { 'foo[key1]': value1, 'foo[key2]': value2 } }, and please open a GitHub issue requesting better support for your use case.`,
         );
       })
@@ -721,10 +721,10 @@ export class SfcNodes {
     }
   }
 
-  static SfcNodes = this;
+  static SFCNodes = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static SfcNodesError = Errors.SfcNodesError;
+  static SFCNodesError = Errors.SFCNodesError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -743,9 +743,9 @@ export class SfcNodes {
   vms: API.Vms = new API.Vms(this);
   nodes: API.Nodes = new API.Nodes(this);
 }
-SfcNodes.Vms = Vms;
-SfcNodes.Nodes = Nodes;
-export declare namespace SfcNodes {
+SFCNodes.Vms = Vms;
+SFCNodes.Nodes = Nodes;
+export declare namespace SFCNodes {
   export type RequestOptions = Opts.RequestOptions;
 
   export {

@@ -1,8 +1,8 @@
 {
   "name": "sfc-nodes",
   "version": "0.0.1-alpha.0",
-  "description": "The official TypeScript library for the Sfc Nodes API",
-  "author": "Sfc Nodes <hello@sfcompute.com>",
+  "description": "The official TypeScript library for the SFC Nodes API",
+  "author": "SFC Nodes <hello@sfcompute.com>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
