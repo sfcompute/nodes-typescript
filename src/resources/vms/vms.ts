@@ -9,35 +9,28 @@ import { RequestOptions } from '../../internal/request-options';
 export class Vms extends APIResource {
   script: ScriptAPI.Script = new ScriptAPI.Script(this._client);
 
-  listInstances(options?: RequestOptions): APIPromise<VmListInstancesResponse> {
+  list(options?: RequestOptions): APIPromise<VmListResponse> {
     return this._client.get('/v0/vms/instances', options);
+  }
+
+  logs(query: VmLogsParams, options?: RequestOptions): APIPromise<VmLogsResponse> {
+    return this._client.get('/v0/vms/logs2', { query, ...options });
   }
 
   replace(body: VmReplaceParams, options?: RequestOptions): APIPromise<VmReplaceResponse> {
     return this._client.post('/v0/vms/replace', { body, ...options });
   }
 
-  retrieveLogs(
-    query: VmRetrieveLogsParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<VmRetrieveLogsResponse> {
-    return this._client.get('/v0/vms/logs', { query, ...options });
-  }
-
-  retrieveLogs2(query: VmRetrieveLogs2Params, options?: RequestOptions): APIPromise<VmRetrieveLogs2Response> {
-    return this._client.get('/v0/vms/logs2', { query, ...options });
-  }
-
-  retrieveSSH(query: VmRetrieveSSHParams, options?: RequestOptions): APIPromise<VmRetrieveSSHResponse> {
+  ssh(query: VmSSHParams, options?: RequestOptions): APIPromise<VmSSHResponse> {
     return this._client.get('/v0/vms/ssh', { query, ...options });
   }
 }
 
-export interface VmListInstancesResponse {
-  data: Array<VmListInstancesResponse.Data>;
+export interface VmListResponse {
+  data: Array<VmListResponse.Data>;
 }
 
-export namespace VmListInstancesResponse {
+export namespace VmListResponse {
   export interface Data {
     id: string;
 
@@ -51,63 +44,11 @@ export namespace VmListInstancesResponse {
   }
 }
 
-export interface VmReplaceResponse {
-  replaced: string;
-
-  replaced_by: string;
+export interface VmLogsResponse {
+  data: Array<VmLogsResponse.Data>;
 }
 
-export type VmRetrieveLogsResponse =
-  | VmRetrieveLogsResponse.UnionMember0
-  | VmRetrieveLogsResponse.UnionMember1;
-
-export namespace VmRetrieveLogsResponse {
-  export interface UnionMember0 {
-    data: Array<UnionMember0.Data>;
-
-    object: 'list';
-  }
-
-  export namespace UnionMember0 {
-    export interface Data {
-      instance_id: string;
-
-      message: string;
-
-      /**
-       * ISO timestamp of the log line
-       */
-      timestamp: string;
-    }
-  }
-
-  export interface UnionMember1 {
-    data: Array<UnionMember1.Data>;
-
-    has_more: boolean;
-
-    object: 'list';
-  }
-
-  export namespace UnionMember1 {
-    export interface Data {
-      instance_id: string;
-
-      message: string;
-
-      /**
-       * ISO timestamp of the log line
-       */
-      timestamp: string;
-    }
-  }
-}
-
-export interface VmRetrieveLogs2Response {
-  data: Array<VmRetrieveLogs2Response.Data>;
-}
-
-export namespace VmRetrieveLogs2Response {
+export namespace VmLogsResponse {
   export interface Data {
     data: Array<number>;
 
@@ -126,15 +67,21 @@ export namespace VmRetrieveLogs2Response {
   }
 }
 
-export interface VmRetrieveSSHResponse {
+export interface VmReplaceResponse {
+  replaced: string;
+
+  replaced_by: string;
+}
+
+export interface VmSSHResponse {
   ssh_hostname: string;
 
   ssh_port: number;
 
-  ssh_host_keys?: Array<VmRetrieveSSHResponse.SSHHostKey> | null;
+  ssh_host_keys?: Array<VmSSHResponse.SSHHostKey> | null;
 }
 
-export namespace VmRetrieveSSHResponse {
+export namespace VmSSHResponse {
   export interface SSHHostKey {
     base64_encoded_key: string;
 
@@ -142,30 +89,7 @@ export namespace VmRetrieveSSHResponse {
   }
 }
 
-export interface VmReplaceParams {
-  vm_id: string;
-}
-
-export interface VmRetrieveLogsParams {
-  /**
-   * ISO timestamp to get logs older than this time
-   */
-  before?: string;
-
-  instance_id?: string;
-
-  /**
-   * Maximum number of logs to return
-   */
-  limit?: number;
-
-  /**
-   * ISO timestamp to get logs newer than this time
-   */
-  since?: string;
-}
-
-export interface VmRetrieveLogs2Params {
+export interface VmLogsParams {
   instance_id: string;
 
   order_by: 'seqnum_asc' | 'seqnum_desc';
@@ -181,7 +105,11 @@ export interface VmRetrieveLogs2Params {
   since_seqnum?: number;
 }
 
-export interface VmRetrieveSSHParams {
+export interface VmReplaceParams {
+  vm_id: string;
+}
+
+export interface VmSSHParams {
   vm_id: string;
 }
 
@@ -189,15 +117,13 @@ Vms.Script = Script;
 
 export declare namespace Vms {
   export {
-    type VmListInstancesResponse as VmListInstancesResponse,
+    type VmListResponse as VmListResponse,
+    type VmLogsResponse as VmLogsResponse,
     type VmReplaceResponse as VmReplaceResponse,
-    type VmRetrieveLogsResponse as VmRetrieveLogsResponse,
-    type VmRetrieveLogs2Response as VmRetrieveLogs2Response,
-    type VmRetrieveSSHResponse as VmRetrieveSSHResponse,
+    type VmSSHResponse as VmSSHResponse,
+    type VmLogsParams as VmLogsParams,
     type VmReplaceParams as VmReplaceParams,
-    type VmRetrieveLogsParams as VmRetrieveLogsParams,
-    type VmRetrieveLogs2Params as VmRetrieveLogs2Params,
-    type VmRetrieveSSHParams as VmRetrieveSSHParams,
+    type VmSSHParams as VmSSHParams,
   };
 
   export {

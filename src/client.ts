@@ -11,40 +11,11 @@ import type { APIResponseProps } from './internal/parse';
 import { getPlatformHeaders } from './internal/detect-platform';
 import * as Shims from './internal/shims';
 import * as Opts from './internal/request-options';
-import * as qs from './internal/qs';
 import { VERSION } from './version';
 import * as Errors from './core/error';
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
-import { HealthzCheckResponse, _Healthz } from './resources/-healthz';
-import { Account, AccountRetrieveMeResponse } from './resources/account';
-import { Balance, BalanceRetrieveResponse } from './resources/balance';
-import { ClusterListResponse, Clusters } from './resources/clusters';
-import {
-  ActiveContract,
-  ContractListParams,
-  ContractListResponse,
-  ContractRetrieveResponse,
-  Contracts,
-  PendingContract,
-} from './resources/contracts';
-import {
-  ClusterInfo,
-  CredentialCreateParams,
-  CredentialCreateResponse,
-  CredentialDeleteParams,
-  CredentialDeleteResponse,
-  CredentialRetrieveResponse,
-  Credentials,
-} from './resources/credentials';
-import {
-  CreditMigrateParams,
-  CreditMigrateResponse,
-  CreditRetrieveResponse,
-  Credits,
-} from './resources/credits';
-import { Me, MeRetrieveResponse } from './resources/me';
 import {
   Node,
   NodeCreateParams,
@@ -57,55 +28,13 @@ import {
   UpdateNode,
 } from './resources/nodes';
 import {
-  OrderCancelAllResponse,
-  OrderCancelResponse,
-  OrderCreateParams,
-  OrderCreateResponse,
-  OrderGetClustersResponse,
-  OrderListParams,
-  OrderListResponse,
-  OrderResponse,
-  Orders,
-} from './resources/orders';
-import { PriceListParams, PriceListResponse, Prices } from './resources/prices';
-import {
-  AnywhereColocationStrategy,
-  ColocateColocationStrategy,
-  ColocatePinnedColocationStrategy,
-  PinnedColocationStrategy,
-  Procurement,
-  ProcurementCreateParams,
-  ProcurementListResponse,
-  ProcurementUpdateParams,
-  Procurements,
-} from './resources/procurements';
-import { Quote, QuoteRetrieveParams, QuoteRetrieveResponse } from './resources/quote';
-import { RefundListResponse, Refunds } from './resources/refunds';
-import {
-  SanFranciscoComputeDocumentationToken,
-  TokenCreateParams,
-  TokenDeleteResponse,
-  TokenListParams,
-  TokenListResponse,
-  Tokens,
-} from './resources/tokens';
-import {
-  AccountKind,
-  TransactionListParams,
-  TransactionListResponse,
-  Transactions,
-} from './resources/transactions';
-import { Inference, InferenceCheckHealthResponse } from './resources/inference/inference';
-import {
-  VmListInstancesResponse,
+  VmListResponse,
+  VmLogsParams,
+  VmLogsResponse,
   VmReplaceParams,
   VmReplaceResponse,
-  VmRetrieveLogs2Params,
-  VmRetrieveLogs2Response,
-  VmRetrieveLogsParams,
-  VmRetrieveLogsResponse,
-  VmRetrieveSSHParams,
-  VmRetrieveSSHResponse,
+  VmSSHParams,
+  VmSSHResponse,
   Vms,
 } from './resources/vms/vms';
 import { type Fetch } from './internal/builtin-types';
@@ -123,7 +52,7 @@ import { isEmptyObj } from './internal/utils/values';
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['SFC_NODES_BEARER_TOKEN'].
+   * Defaults to process.env['SFC_BEARER_TOKEN'].
    */
   bearerToken?: string | null | undefined;
 
@@ -217,7 +146,7 @@ export class SfcNodes {
   /**
    * API Client for interfacing with the Sfc Nodes API.
    *
-   * @param {string | null | undefined} [opts.bearerToken=process.env['SFC_NODES_BEARER_TOKEN'] ?? null]
+   * @param {string | null | undefined} [opts.bearerToken=process.env['SFC_BEARER_TOKEN'] ?? null]
    * @param {string} [opts.baseURL=process.env['SFC_NODES_BASE_URL'] ?? https://api.sfcompute.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
@@ -228,7 +157,7 @@ export class SfcNodes {
    */
   constructor({
     baseURL = readEnv('SFC_NODES_BASE_URL'),
-    bearerToken = readEnv('SFC_NODES_BEARER_TOKEN') ?? null,
+    bearerToken = readEnv('SFC_BEARER_TOKEN') ?? null,
     ...opts
   }: ClientOptions = {}) {
     const options: ClientOptions = {
@@ -307,8 +236,24 @@ export class SfcNodes {
     return buildHeaders([{ Authorization: `Bearer ${this.bearerToken}` }]);
   }
 
+  /**
+   * Basic re-implementation of `qs.stringify` for primitive types.
+   */
   protected stringifyQuery(query: Record<string, unknown>): string {
-    return qs.stringify(query, { arrayFormat: 'comma' });
+    return Object.entries(query)
+      .filter(([_, value]) => typeof value !== 'undefined')
+      .map(([key, value]) => {
+        if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+          return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
+        }
+        if (value === null) {
+          return `${encodeURIComponent(key)}=`;
+        }
+        throw new Errors.SfcNodesError(
+          `Cannot stringify type ${typeof value}; Expected string, number, boolean, or null. If you need to pass nested query parameters, you can manually encode them, e.g. { query: { 'foo[key1]': value1, 'foo[key2]': value2 } }, and please open a GitHub issue requesting better support for your use case.`,
+        );
+      })
+      .join('&');
   }
 
   private getUserAgent(): string {
@@ -795,139 +740,24 @@ export class SfcNodes {
 
   static toFile = Uploads.toFile;
 
-  refunds: API.Refunds = new API.Refunds(this);
-  balance: API.Balance = new API.Balance(this);
-  clusters: API.Clusters = new API.Clusters(this);
-  contracts: API.Contracts = new API.Contracts(this);
-  me: API.Me = new API.Me(this);
-  prices: API.Prices = new API.Prices(this);
-  procurements: API.Procurements = new API.Procurements(this);
-  tokens: API.Tokens = new API.Tokens(this);
-  transactions: API.Transactions = new API.Transactions(this);
   vms: API.Vms = new API.Vms(this);
-  quote: API.Quote = new API.Quote(this);
-  orders: API.Orders = new API.Orders(this);
-  credentials: API.Credentials = new API.Credentials(this);
-  _healthz: API._Healthz = new API._Healthz(this);
   nodes: API.Nodes = new API.Nodes(this);
-  account: API.Account = new API.Account(this);
-  credits: API.Credits = new API.Credits(this);
-  inference: API.Inference = new API.Inference(this);
 }
-SfcNodes.Refunds = Refunds;
-SfcNodes.Balance = Balance;
-SfcNodes.Clusters = Clusters;
-SfcNodes.Contracts = Contracts;
-SfcNodes.Me = Me;
-SfcNodes.Prices = Prices;
-SfcNodes.Procurements = Procurements;
-SfcNodes.Tokens = Tokens;
-SfcNodes.Transactions = Transactions;
 SfcNodes.Vms = Vms;
-SfcNodes.Quote = Quote;
-SfcNodes.Orders = Orders;
-SfcNodes.Credentials = Credentials;
-SfcNodes._Healthz = _Healthz;
 SfcNodes.Nodes = Nodes;
-SfcNodes.Account = Account;
-SfcNodes.Credits = Credits;
-SfcNodes.Inference = Inference;
 export declare namespace SfcNodes {
   export type RequestOptions = Opts.RequestOptions;
 
-  export { Refunds as Refunds, type RefundListResponse as RefundListResponse };
-
-  export { Balance as Balance, type BalanceRetrieveResponse as BalanceRetrieveResponse };
-
-  export { Clusters as Clusters, type ClusterListResponse as ClusterListResponse };
-
-  export {
-    Contracts as Contracts,
-    type ActiveContract as ActiveContract,
-    type PendingContract as PendingContract,
-    type ContractRetrieveResponse as ContractRetrieveResponse,
-    type ContractListResponse as ContractListResponse,
-    type ContractListParams as ContractListParams,
-  };
-
-  export { Me as Me, type MeRetrieveResponse as MeRetrieveResponse };
-
-  export {
-    Prices as Prices,
-    type PriceListResponse as PriceListResponse,
-    type PriceListParams as PriceListParams,
-  };
-
-  export {
-    Procurements as Procurements,
-    type AnywhereColocationStrategy as AnywhereColocationStrategy,
-    type ColocateColocationStrategy as ColocateColocationStrategy,
-    type ColocatePinnedColocationStrategy as ColocatePinnedColocationStrategy,
-    type PinnedColocationStrategy as PinnedColocationStrategy,
-    type Procurement as Procurement,
-    type ProcurementListResponse as ProcurementListResponse,
-    type ProcurementCreateParams as ProcurementCreateParams,
-    type ProcurementUpdateParams as ProcurementUpdateParams,
-  };
-
-  export {
-    Tokens as Tokens,
-    type SanFranciscoComputeDocumentationToken as SanFranciscoComputeDocumentationToken,
-    type TokenListResponse as TokenListResponse,
-    type TokenDeleteResponse as TokenDeleteResponse,
-    type TokenCreateParams as TokenCreateParams,
-    type TokenListParams as TokenListParams,
-  };
-
-  export {
-    Transactions as Transactions,
-    type AccountKind as AccountKind,
-    type TransactionListResponse as TransactionListResponse,
-    type TransactionListParams as TransactionListParams,
-  };
-
   export {
     Vms as Vms,
-    type VmListInstancesResponse as VmListInstancesResponse,
+    type VmListResponse as VmListResponse,
+    type VmLogsResponse as VmLogsResponse,
     type VmReplaceResponse as VmReplaceResponse,
-    type VmRetrieveLogsResponse as VmRetrieveLogsResponse,
-    type VmRetrieveLogs2Response as VmRetrieveLogs2Response,
-    type VmRetrieveSSHResponse as VmRetrieveSSHResponse,
+    type VmSSHResponse as VmSSHResponse,
+    type VmLogsParams as VmLogsParams,
     type VmReplaceParams as VmReplaceParams,
-    type VmRetrieveLogsParams as VmRetrieveLogsParams,
-    type VmRetrieveLogs2Params as VmRetrieveLogs2Params,
-    type VmRetrieveSSHParams as VmRetrieveSSHParams,
+    type VmSSHParams as VmSSHParams,
   };
-
-  export {
-    Quote as Quote,
-    type QuoteRetrieveResponse as QuoteRetrieveResponse,
-    type QuoteRetrieveParams as QuoteRetrieveParams,
-  };
-
-  export {
-    Orders as Orders,
-    type OrderResponse as OrderResponse,
-    type OrderCreateResponse as OrderCreateResponse,
-    type OrderListResponse as OrderListResponse,
-    type OrderCancelResponse as OrderCancelResponse,
-    type OrderCancelAllResponse as OrderCancelAllResponse,
-    type OrderGetClustersResponse as OrderGetClustersResponse,
-    type OrderCreateParams as OrderCreateParams,
-    type OrderListParams as OrderListParams,
-  };
-
-  export {
-    Credentials as Credentials,
-    type ClusterInfo as ClusterInfo,
-    type CredentialCreateResponse as CredentialCreateResponse,
-    type CredentialRetrieveResponse as CredentialRetrieveResponse,
-    type CredentialDeleteResponse as CredentialDeleteResponse,
-    type CredentialCreateParams as CredentialCreateParams,
-    type CredentialDeleteParams as CredentialDeleteParams,
-  };
-
-  export { _Healthz as _Healthz, type HealthzCheckResponse as HealthzCheckResponse };
 
   export {
     Nodes as Nodes,
@@ -940,15 +770,4 @@ export declare namespace SfcNodes {
     type NodeExtendParams as NodeExtendParams,
     type NodeReleaseParams as NodeReleaseParams,
   };
-
-  export { Account as Account, type AccountRetrieveMeResponse as AccountRetrieveMeResponse };
-
-  export {
-    Credits as Credits,
-    type CreditRetrieveResponse as CreditRetrieveResponse,
-    type CreditMigrateResponse as CreditMigrateResponse,
-    type CreditMigrateParams as CreditMigrateParams,
-  };
-
-  export { Inference as Inference, type InferenceCheckHealthResponse as InferenceCheckHealthResponse };
 }

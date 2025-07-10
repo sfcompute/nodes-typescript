@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Sfc Nodes REST API from server-side TypeScript or JavaScript.
 
-The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.sfcompute.com](https://docs.sfcompute.com/api-reference#tag/nodes). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -25,11 +25,13 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import SfcNodes from 'sfc-nodes';
 
-const client = new SfcNodes();
+const client = new SfcNodes({
+  bearerToken: process.env['SFC_BEARER_TOKEN'], // This is the default and can be omitted
+});
 
-const refunds = await client.refunds.list();
+const vms = await client.vms.list();
 
-console.log(refunds.object);
+console.log(vms.data);
 ```
 
 ### Request & Response types
@@ -40,9 +42,11 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import SfcNodes from 'sfc-nodes';
 
-const client = new SfcNodes();
+const client = new SfcNodes({
+  bearerToken: process.env['SFC_BEARER_TOKEN'], // This is the default and can be omitted
+});
 
-const refunds: SfcNodes.RefundListResponse = await client.refunds.list();
+const vms: SfcNodes.VmListResponse = await client.vms.list();
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -55,7 +59,7 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const refunds = await client.refunds.list().catch(async (err) => {
+const vms = await client.vms.list().catch(async (err) => {
   if (err instanceof SfcNodes.APIError) {
     console.log(err.status); // 400
     console.log(err.name); // BadRequestError
@@ -95,7 +99,7 @@ const client = new SfcNodes({
 });
 
 // Or, configure per-request:
-await client.refunds.list({
+await client.vms.list({
   maxRetries: 5,
 });
 ```
@@ -112,7 +116,7 @@ const client = new SfcNodes({
 });
 
 // Override per-request:
-await client.refunds.list({
+await client.vms.list({
   timeout: 5 * 1000,
 });
 ```
@@ -135,13 +139,13 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new SfcNodes();
 
-const response = await client.refunds.list().asResponse();
+const response = await client.vms.list().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: refunds, response: raw } = await client.refunds.list().withResponse();
+const { data: vms, response: raw } = await client.vms.list().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(refunds.object);
+console.log(vms.data);
 ```
 
 ### Logging
@@ -221,7 +225,7 @@ parameter. This library doesn't validate at runtime that the request matches the
 send will be sent as-is.
 
 ```ts
-client.refunds.list({
+client.vms.list({
   // ...
   // @ts-expect-error baz is not yet public
   baz: 'undocumented option',

@@ -9,13 +9,11 @@ export {
 } from './script';
 export {
   Vms,
-  type VmListInstancesResponse,
+  type VmListResponse,
+  type VmLogsResponse,
   type VmReplaceResponse,
-  type VmRetrieveLogsResponse,
-  type VmRetrieveLogs2Response,
-  type VmRetrieveSSHResponse,
+  type VmSSHResponse,
+  type VmLogsParams,
   type VmReplaceParams,
-  type VmRetrieveLogsParams,
-  type VmRetrieveLogs2Params,
-  type VmRetrieveSSHParams,
+  type VmSSHParams,
 } from './vms';
