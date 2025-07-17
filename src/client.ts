@@ -27,16 +27,7 @@ import {
   Nodes,
   UpdateNode,
 } from './resources/nodes';
-import {
-  VmListResponse,
-  VmLogsParams,
-  VmLogsResponse,
-  VmReplaceParams,
-  VmReplaceResponse,
-  VmSSHParams,
-  VmSSHResponse,
-  Vms,
-} from './resources/vms/vms';
+import { VmLogsParams, VmLogsResponse, VmSSHParams, VmSSHResponse, Vms } from './resources/vms/vms';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
@@ -52,9 +43,9 @@ import { isEmptyObj } from './internal/utils/values';
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['SFC_BEARER_TOKEN'].
+   * Defaults to process.env['SFC_API_KEY'].
    */
-  bearerToken?: string | null | undefined;
+  apiKey?: string | null | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -129,7 +120,7 @@ export interface ClientOptions {
  * API Client for interfacing with the SFC Nodes API.
  */
 export class SFCNodes {
-  bearerToken: string | null;
+  apiKey: string | null;
 
   baseURL: string;
   maxRetries: number;
@@ -146,7 +137,7 @@ export class SFCNodes {
   /**
    * API Client for interfacing with the SFC Nodes API.
    *
-   * @param {string | null | undefined} [opts.bearerToken=process.env['SFC_BEARER_TOKEN'] ?? null]
+   * @param {string | null | undefined} [opts.apiKey=process.env['SFC_API_KEY'] ?? null]
    * @param {string} [opts.baseURL=process.env['SFC_NODES_BASE_URL'] ?? https://api.sfcompute.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
@@ -157,11 +148,11 @@ export class SFCNodes {
    */
   constructor({
     baseURL = readEnv('SFC_NODES_BASE_URL'),
-    bearerToken = readEnv('SFC_BEARER_TOKEN') ?? null,
+    apiKey = readEnv('SFC_API_KEY') ?? null,
     ...opts
   }: ClientOptions = {}) {
     const options: ClientOptions = {
-      bearerToken,
+      apiKey,
       ...opts,
       baseURL: baseURL || `https://api.sfcompute.com`,
     };
@@ -183,7 +174,7 @@ export class SFCNodes {
 
     this._options = options;
 
-    this.bearerToken = bearerToken;
+    this.apiKey = apiKey;
   }
 
   /**
@@ -199,7 +190,7 @@ export class SFCNodes {
       logLevel: this.logLevel,
       fetch: this.fetch,
       fetchOptions: this.fetchOptions,
-      bearerToken: this.bearerToken,
+      apiKey: this.apiKey,
       ...options,
     });
     return client;
@@ -217,7 +208,7 @@ export class SFCNodes {
   }
 
   protected validateHeaders({ values, nulls }: NullableHeaders) {
-    if (this.bearerToken && values.get('authorization')) {
+    if (this.apiKey && values.get('authorization')) {
       return;
     }
     if (nulls.has('authorization')) {
@@ -225,15 +216,15 @@ export class SFCNodes {
     }
 
     throw new Error(
-      'Could not resolve authentication method. Expected the bearerToken to be set. Or for the "Authorization" headers to be explicitly omitted',
+      'Could not resolve authentication method. Expected the apiKey to be set. Or for the "Authorization" headers to be explicitly omitted',
     );
   }
 
   protected async authHeaders(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
-    if (this.bearerToken == null) {
+    if (this.apiKey == null) {
       return undefined;
     }
-    return buildHeaders([{ Authorization: `Bearer ${this.bearerToken}` }]);
+    return buildHeaders([{ Authorization: `Bearer ${this.apiKey}` }]);
   }
 
   /**
@@ -750,12 +741,9 @@ export declare namespace SFCNodes {
 
   export {
     Vms as Vms,
-    type VmListResponse as VmListResponse,
     type VmLogsResponse as VmLogsResponse,
-    type VmReplaceResponse as VmReplaceResponse,
     type VmSSHResponse as VmSSHResponse,
     type VmLogsParams as VmLogsParams,
-    type VmReplaceParams as VmReplaceParams,
     type VmSSHParams as VmSSHParams,
   };
 

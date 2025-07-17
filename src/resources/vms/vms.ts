@@ -9,38 +9,12 @@ import { RequestOptions } from '../../internal/request-options';
 export class Vms extends APIResource {
   script: ScriptAPI.Script = new ScriptAPI.Script(this._client);
 
-  list(options?: RequestOptions): APIPromise<VmListResponse> {
-    return this._client.get('/v0/vms/instances', options);
-  }
-
   logs(query: VmLogsParams, options?: RequestOptions): APIPromise<VmLogsResponse> {
     return this._client.get('/v0/vms/logs2', { query, ...options });
   }
 
-  replace(body: VmReplaceParams, options?: RequestOptions): APIPromise<VmReplaceResponse> {
-    return this._client.post('/v0/vms/replace', { body, ...options });
-  }
-
   ssh(query: VmSSHParams, options?: RequestOptions): APIPromise<VmSSHResponse> {
     return this._client.get('/v0/vms/ssh', { query, ...options });
-  }
-}
-
-export interface VmListResponse {
-  data: Array<VmListResponse.Data>;
-}
-
-export namespace VmListResponse {
-  export interface Data {
-    id: string;
-
-    cluster_id: string;
-
-    current_status: string;
-
-    instance_group_id: string;
-
-    last_updated_at: string;
   }
 }
 
@@ -65,12 +39,6 @@ export namespace VmLogsResponse {
 
     seqnum: number;
   }
-}
-
-export interface VmReplaceResponse {
-  replaced: string;
-
-  replaced_by: string;
 }
 
 export interface VmSSHResponse {
@@ -105,10 +73,6 @@ export interface VmLogsParams {
   since_seqnum?: number;
 }
 
-export interface VmReplaceParams {
-  vm_id: string;
-}
-
 export interface VmSSHParams {
   vm_id: string;
 }
@@ -117,12 +81,9 @@ Vms.Script = Script;
 
 export declare namespace Vms {
   export {
-    type VmListResponse as VmListResponse,
     type VmLogsResponse as VmLogsResponse,
-    type VmReplaceResponse as VmReplaceResponse,
     type VmSSHResponse as VmSSHResponse,
     type VmLogsParams as VmLogsParams,
-    type VmReplaceParams as VmReplaceParams,
     type VmSSHParams as VmSSHParams,
   };
 

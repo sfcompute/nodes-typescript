@@ -11,13 +11,4 @@ export {
   type NodeExtendParams,
   type NodeReleaseParams,
 } from './nodes';
-export {
-  Vms,
-  type VmListResponse,
-  type VmLogsResponse,
-  type VmReplaceResponse,
-  type VmSSHResponse,
-  type VmLogsParams,
-  type VmReplaceParams,
-  type VmSSHParams,
-} from './vms/vms';
+export { Vms, type VmLogsResponse, type VmSSHResponse, type VmLogsParams, type VmSSHParams } from './vms/vms';
