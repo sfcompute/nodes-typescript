@@ -7,13 +7,4 @@ export {
   type ScriptRetrieveResponse,
   type ScriptCreateParams,
 } from './script';
-export {
-  Vms,
-  type VmListResponse,
-  type VmLogsResponse,
-  type VmReplaceResponse,
-  type VmSSHResponse,
-  type VmLogsParams,
-  type VmReplaceParams,
-  type VmSSHParams,
-} from './vms';
+export { Vms, type VmLogsResponse, type VmSSHResponse, type VmLogsParams, type VmSSHParams } from './vms';
