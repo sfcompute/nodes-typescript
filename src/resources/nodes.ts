@@ -72,13 +72,9 @@ export interface Node {
 
   name: string;
 
-  node: string;
-
   node_type: NodeType;
 
   owner: string;
-
-  start_at: number;
 
   status: 'Pending' | 'Running' | 'Terminated' | 'Failed' | 'Unknown';
 
@@ -92,17 +88,17 @@ export interface Node {
 
   procurement_status?: 'Uninitialized' | 'Active' | 'Ended' | 'AwaitingCapacity' | null;
 
+  start_at?: number | null;
+
   updated_at?: number | null;
 
   /**
    * Possible zones to choose from when creating a node.
-   *
-   * TODO (ENG-1976): Support dynamic zones through an endpoint.
    */
-  zone?: 'HayesValley' | null;
+  zone?: 'hayesvalley' | null;
 }
 
-export type NodeType = 'OnDemand' | 'Reserved';
+export type NodeType = 'on_demand' | 'reserved';
 
 export interface UpdateNode {
   node: Node;
