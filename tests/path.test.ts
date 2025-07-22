@@ -1,4 +1,4 @@
-import { createPathTagFunction, encodeURIPath } from 'sfc-nodes/internal/utils/path';
+import { createPathTagFunction, encodeURIPath } from '@sfc/nodes-sdk-alpha/internal/utils/path';
 import { inspect } from 'node:util';
 import { runInNewContext } from 'node:vm';
 
