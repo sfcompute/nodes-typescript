@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2025-07-22)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **api:** api update ([de2fa56](https://github.com/sfcompute/nodes-typescript/commit/de2fa56c558d50bf6daee91440ac16ae1c52de2f))
+
 ## 0.1.0-alpha.3 (2025-07-22)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
