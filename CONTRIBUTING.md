@@ -55,12 +55,12 @@ $ cd nodes-typescript
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link @sfc/nodes-sdk-alpha
+$ yarn link @sfcompute/nodes-sdk-alpha
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global @sfc/nodes-sdk-alpha
+$ pnpm link -—global @sfcompute/nodes-sdk-alpha
 ```
 
 ## Running tests

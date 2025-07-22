@@ -1,6 +1,6 @@
 {
-  "name": "@sfc/nodes-sdk-alpha",
-  "version": "0.1.0-alpha.2",
+  "name": "@sfcompute/nodes-sdk-alpha",
+  "version": "0.1.0-alpha.3",
   "description": "The official TypeScript library for the SFC Nodes API",
   "author": "SFC Nodes <hello@sfcompute.com>",
   "types": "dist/index.d.ts",
@@ -47,8 +47,8 @@
     "typescript-eslint": "8.31.1"
   },
   "imports": {
-    "@sfc/nodes-sdk-alpha": ".",
-    "@sfc/nodes-sdk-alpha/*": "./src/*"
+    "@sfcompute/nodes-sdk-alpha": ".",
+    "@sfcompute/nodes-sdk-alpha/*": "./src/*"
   },
   "exports": {
     ".": {

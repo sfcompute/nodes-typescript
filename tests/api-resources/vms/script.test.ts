@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import SFCNodes from '@sfc/nodes-sdk-alpha';
+import SFCNodes from '@sfcompute/nodes-sdk-alpha';
 
 const client = new SFCNodes({
   apiKey: 'My API Key',
