@@ -1,5 +1,5 @@
-import { multipartFormRequestOptions, createForm } from '@sfc/nodes-sdk-alpha/internal/uploads';
-import { toFile } from '@sfc/nodes-sdk-alpha/core/uploads';
+import { multipartFormRequestOptions, createForm } from '@sfcompute/nodes-sdk-alpha/internal/uploads';
+import { toFile } from '@sfcompute/nodes-sdk-alpha/core/uploads';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {

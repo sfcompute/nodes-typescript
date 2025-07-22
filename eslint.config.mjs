@@ -25,7 +25,7 @@ export default tseslint.config(
         {
           patterns: [
             {
-              regex: '^@sfc/nodes-sdk-alpha(/.*)?',
+              regex: '^@sfcompute/nodes-sdk-alpha(/.*)?',
               message: 'Use a relative import, not a package import.',
             },
           ],
