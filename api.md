@@ -2,16 +2,12 @@
 
 Types:
 
-- <code><a href="./src/resources/vms/vms.ts">VmListResponse</a></code>
 - <code><a href="./src/resources/vms/vms.ts">VmLogsResponse</a></code>
-- <code><a href="./src/resources/vms/vms.ts">VmReplaceResponse</a></code>
 - <code><a href="./src/resources/vms/vms.ts">VmSSHResponse</a></code>
 
 Methods:
 
-- <code title="get /v0/vms/instances">client.vms.<a href="./src/resources/vms/vms.ts">list</a>() -> VmListResponse</code>
 - <code title="get /v0/vms/logs2">client.vms.<a href="./src/resources/vms/vms.ts">logs</a>({ ...params }) -> VmLogsResponse</code>
-- <code title="post /v0/vms/replace">client.vms.<a href="./src/resources/vms/vms.ts">replace</a>({ ...params }) -> VmReplaceResponse</code>
 - <code title="get /v0/vms/ssh">client.vms.<a href="./src/resources/vms/vms.ts">ssh</a>({ ...params }) -> VmSSHResponse</code>
 
 ## Script
