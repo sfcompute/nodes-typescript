@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIPromise } from 'sfc-nodes/core/api-promise';
+import { APIPromise } from '@sfc/nodes-sdk-alpha/core/api-promise';
 
 import util from 'node:util';
-import SFCNodes from 'sfc-nodes';
-import { APIUserAbortError } from 'sfc-nodes';
+import SFCNodes from '@sfc/nodes-sdk-alpha';
+import { APIUserAbortError } from '@sfc/nodes-sdk-alpha';
 const defaultFetch = fetch;
 
 describe('instantiate client', () => {

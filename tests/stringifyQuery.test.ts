@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { SFCNodes } from 'sfc-nodes';
+import { SFCNodes } from '@sfc/nodes-sdk-alpha';
 
 const { stringifyQuery } = SFCNodes.prototype as any;
 
