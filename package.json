@@ -1,6 +1,6 @@
 {
   "name": "@sfc/nodes-sdk-alpha",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "The official TypeScript library for the SFC Nodes API",
   "author": "SFC Nodes <hello@sfcompute.com>",
   "types": "dist/index.d.ts",
