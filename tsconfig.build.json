@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "sfc-nodes/*": ["dist/src/*"],
-      "sfc-nodes": ["dist/src/index.ts"]
+      "@sfc/nodes-sdk-alpha/*": ["dist/src/*"],
+      "@sfc/nodes-sdk-alpha": ["dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
