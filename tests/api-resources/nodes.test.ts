@@ -27,7 +27,7 @@ describe('resource nodes', () => {
       max_price_per_hour: 1000,
       end_at: 1640995200,
       names: ['string'],
-      node_type: 'OnDemand',
+      node_type: 'on_demand',
       start_at: 1640995200,
       zone: 'zone',
     });
