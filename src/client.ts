@@ -17,15 +17,22 @@ import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
 import {
+  AcceleratorType,
+  CreateNodesRequest,
+  ErrorContent,
+  ErrorDetail,
+  ErrorObject,
+  ErrorType,
+  ExtendNodeRequest,
+  ListResponseNode,
   Node,
   NodeCreateParams,
-  NodeCreateResponse,
   NodeExtendParams,
-  NodeListResponse,
-  NodeReleaseParams,
   NodeType,
   Nodes,
-  UpdateNode,
+  ProcurementStatus,
+  Status,
+  Zone,
 } from './resources/nodes';
 import { VmLogsParams, VmLogsResponse, VmSSHParams, VmSSHResponse, Vms } from './resources/vms/vms';
 import { type Fetch } from './internal/builtin-types';
@@ -749,13 +756,20 @@ export declare namespace SFCNodes {
 
   export {
     Nodes as Nodes,
+    type AcceleratorType as AcceleratorType,
+    type CreateNodesRequest as CreateNodesRequest,
+    type ErrorContent as ErrorContent,
+    type ErrorDetail as ErrorDetail,
+    type ErrorObject as ErrorObject,
+    type ErrorType as ErrorType,
+    type ExtendNodeRequest as ExtendNodeRequest,
+    type ListResponseNode as ListResponseNode,
     type Node as Node,
     type NodeType as NodeType,
-    type UpdateNode as UpdateNode,
-    type NodeCreateResponse as NodeCreateResponse,
-    type NodeListResponse as NodeListResponse,
+    type ProcurementStatus as ProcurementStatus,
+    type Status as Status,
+    type Zone as Zone,
     type NodeCreateParams as NodeCreateParams,
     type NodeExtendParams as NodeExtendParams,
-    type NodeReleaseParams as NodeReleaseParams,
   };
 }

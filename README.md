@@ -26,7 +26,9 @@ const client = new SFCNodes({
   apiKey: process.env['SFC_API_KEY'], // This is the default and can be omitted
 });
 
-const nodes = await client.nodes.list();
+const listResponseNode = await client.nodes.list();
+
+console.log(listResponseNode.data);
 ```
 
 ### Request & Response types
@@ -41,7 +43,7 @@ const client = new SFCNodes({
   apiKey: process.env['SFC_API_KEY'], // This is the default and can be omitted
 });
 
-const nodes: SFCNodes.NodeListResponse = await client.nodes.list();
+const listResponseNode: SFCNodes.ListResponseNode = await client.nodes.list();
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -54,7 +56,7 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const nodes = await client.nodes.list().catch(async (err) => {
+const listResponseNode = await client.nodes.list().catch(async (err) => {
   if (err instanceof SFCNodes.APIError) {
     console.log(err.status); // 400
     console.log(err.name); // BadRequestError
@@ -138,9 +140,9 @@ const response = await client.nodes.list().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: nodes, response: raw } = await client.nodes.list().withResponse();
+const { data: listResponseNode, response: raw } = await client.nodes.list().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(nodes);
+console.log(listResponseNode.data);
 ```
 
 ### Logging
