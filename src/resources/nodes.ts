@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
-import * as NodesAPI from './nodes';
 
 export class Nodes extends APIResource {}
 
@@ -10,25 +9,16 @@ export type AcceleratorType = 'H100' | 'H200';
 export interface CreateNodesRequest {
   desired_count: number;
 
-  /**
-   * Max price per hour for a node in cents
-   */
-  max_price_per_node_hour: number;
+  max_price_per_hour: number;
 
   /**
-   * Zone to create the nodes in. See Zone enum for valid values.
+   * End time as Unix timestamp in seconds
    */
-  zone: string;
+  end_at?: number;
 
   /**
-   * End time as Unix timestamp in seconds. If provided, end time must be aligned to
-   * the hour. If not provided, the node will be created as an on-demand node.
-   */
-  end_at?: number | null;
-
-  /**
-   * Custom node names. Names cannot follow the vm\_{alpha_numeric_chars} as this is
-   * reserved for system-generated IDs. Names cannot be numeric strings.
+   * Custom node names. Names cannot follow the vm*id pattern vm*{16_hex_chars} as
+   * this is reserved for system-generated IDs.
    */
   names?: Array<string>;
 
@@ -38,14 +28,8 @@ export interface CreateNodesRequest {
    * Start time as Unix timestamp in seconds
    */
   start_at?: number;
-}
 
-export interface ErrorContent {
-  message: string;
-
-  type: ErrorType;
-
-  details?: Array<ErrorDetail>;
+  zone?: string;
 }
 
 export interface ErrorDetail {
@@ -65,95 +49,16 @@ export interface ErrorDetail {
   field?: string | null;
 }
 
-export interface ErrorObject {
-  error: ErrorContent;
-}
-
-export type ErrorType =
-  | 'api_error'
-  | 'invalid_request_error'
-  | 'authentication_error'
-  | 'idempotency_error'
-  | 'conflict'
-  | 'not_found'
-  | 'request_timed_out'
-  | 'forbidden'
-  | 'not_implemented'
-  | 'upgrade_required'
-  | 'payment_required';
-
 export interface ExtendNodeRequest {
   /**
-   * Duration in seconds to extend the node Must be at least 1 hour (3600 seconds)
-   * and a multiple of 1 hour.
+   * Duration in seconds to extend the node by
    */
   duration_seconds: number;
 
   /**
    * Max price per hour for the extension in cents
    */
-  max_price_per_node_hour: number;
-}
-
-export interface ListResponseNode {
-  data: Array<ListResponseNode.Data>;
-
-  object: string;
-}
-
-export namespace ListResponseNode {
-  export interface Data {
-    id: string;
-
-    gpu_type: NodesAPI.AcceleratorType;
-
-    name: string;
-
-    node_type: NodesAPI.NodeType;
-
-    object: string;
-
-    owner: string;
-
-    /**
-     * Node Status
-     */
-    status: NodesAPI.Status;
-
-    /**
-     * Creation time as Unix timestamp in seconds
-     */
-    created_at?: number | null;
-
-    /**
-     * End time as Unix timestamp in seconds
-     */
-    end_at?: number | null;
-
-    /**
-     * Max price per hour you're willing to pay for a node in cents
-     */
-    max_price_per_node_hour?: number | null;
-
-    procurement_id?: string | null;
-
-    procurement_status?: NodesAPI.ProcurementStatus | null;
-
-    /**
-     * Start time as Unix timestamp in seconds
-     */
-    start_at?: number | null;
-
-    /**
-     * Last updated time as Unix timestamp in seconds
-     */
-    updated_at?: number | null;
-
-    /**
-     * Choose from these zones when creating a node
-     */
-    zone?: NodesAPI.Zone | null;
-  }
+  max_price_per_hour: number;
 }
 
 export interface Node {
@@ -165,61 +70,38 @@ export interface Node {
 
   node_type: NodeType;
 
-  object: string;
-
   owner: string;
 
-  /**
-   * Node Status
-   */
   status: Status;
 
-  /**
-   * Creation time as Unix timestamp in seconds
-   */
   created_at?: number | null;
 
-  /**
-   * End time as Unix timestamp in seconds
-   */
   end_at?: number | null;
 
-  /**
-   * Max price per hour you're willing to pay for a node in cents
-   */
-  max_price_per_node_hour?: number | null;
+  max_price_per_hour?: number | null;
 
   procurement_id?: string | null;
 
   procurement_status?: ProcurementStatus | null;
 
-  /**
-   * Start time as Unix timestamp in seconds
-   */
   start_at?: number | null;
 
-  /**
-   * Last updated time as Unix timestamp in seconds
-   */
   updated_at?: number | null;
 
   /**
-   * Choose from these zones when creating a node
+   * Possible zones to choose from when creating a node.
    */
   zone?: Zone | null;
 }
 
 export type NodeType = 'on_demand' | 'reserved';
 
-export type ProcurementStatus = 'uninitialized' | 'active' | 'ended' | 'awaiting_capacity';
+export type ProcurementStatus = 'Uninitialized' | 'Active' | 'Ended' | 'AwaitingCapacity';
+
+export type Status = 'Pending' | 'Running' | 'Terminated' | 'Failed' | 'Unknown';
 
 /**
- * Node Status
- */
-export type Status = 'pending' | 'running' | 'terminated' | 'failed' | 'unknown';
-
-/**
- * Choose from these zones when creating a node
+ * Possible zones to choose from when creating a node.
  */
 export type Zone = 'hayesvalley';
 
@@ -227,12 +109,8 @@ export declare namespace Nodes {
   export {
     type AcceleratorType as AcceleratorType,
     type CreateNodesRequest as CreateNodesRequest,
-    type ErrorContent as ErrorContent,
     type ErrorDetail as ErrorDetail,
-    type ErrorObject as ErrorObject,
-    type ErrorType as ErrorType,
     type ExtendNodeRequest as ExtendNodeRequest,
-    type ListResponseNode as ListResponseNode,
     type Node as Node,
     type NodeType as NodeType,
     type ProcurementStatus as ProcurementStatus,
