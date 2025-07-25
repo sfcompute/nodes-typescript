@@ -29,7 +29,6 @@ Types:
 
 - <code><a href="./src/resources/nodes.ts">Node</a></code>
 - <code><a href="./src/resources/nodes.ts">NodeType</a></code>
-- <code><a href="./src/resources/nodes.ts">UpdateNode</a></code>
 - <code><a href="./src/resources/nodes.ts">NodeCreateResponse</a></code>
 - <code><a href="./src/resources/nodes.ts">NodeListResponse</a></code>
 
@@ -37,5 +36,5 @@ Methods:
 
 - <code title="post /v1/nodes">client.nodes.<a href="./src/resources/nodes.ts">create</a>({ ...params }) -> NodeCreateResponse</code>
 - <code title="get /v1/nodes">client.nodes.<a href="./src/resources/nodes.ts">list</a>() -> NodeListResponse</code>
-- <code title="patch /v1/nodes/{id}/extend">client.nodes.<a href="./src/resources/nodes.ts">extend</a>(id, { ...params }) -> UpdateNode</code>
-- <code title="patch /v1/nodes/{id}/release">client.nodes.<a href="./src/resources/nodes.ts">release</a>(id, { ...params }) -> UpdateNode</code>
+- <code title="patch /v1/nodes/{id}/extend">client.nodes.<a href="./src/resources/nodes.ts">extend</a>(id, { ...params }) -> Node</code>
+- <code title="patch /v1/nodes/{id}/release">client.nodes.<a href="./src/resources/nodes.ts">release</a>(id) -> Node</code>

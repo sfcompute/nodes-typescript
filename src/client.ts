@@ -22,10 +22,8 @@ import {
   NodeCreateResponse,
   NodeExtendParams,
   NodeListResponse,
-  NodeReleaseParams,
   NodeType,
   Nodes,
-  UpdateNode,
 } from './resources/nodes';
 import { VmLogsParams, VmLogsResponse, VmSSHParams, VmSSHResponse, Vms } from './resources/vms/vms';
 import { type Fetch } from './internal/builtin-types';
@@ -751,11 +749,9 @@ export declare namespace SFCNodes {
     Nodes as Nodes,
     type Node as Node,
     type NodeType as NodeType,
-    type UpdateNode as UpdateNode,
     type NodeCreateResponse as NodeCreateResponse,
     type NodeListResponse as NodeListResponse,
     type NodeCreateParams as NodeCreateParams,
     type NodeExtendParams as NodeExtendParams,
-    type NodeReleaseParams as NodeReleaseParams,
   };
 }
