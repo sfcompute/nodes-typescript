@@ -26,6 +26,8 @@ import {
   ExtendNodeRequest,
   ListResponseNode,
   Node,
+  NodeCreateParams,
+  NodeExtendParams,
   NodeType,
   Nodes,
   ProcurementStatus,
@@ -767,5 +769,7 @@ export declare namespace SFCNodes {
     type ProcurementStatus as ProcurementStatus,
     type Status as Status,
     type Zone as Zone,
+    type NodeCreateParams as NodeCreateParams,
+    type NodeExtendParams as NodeExtendParams,
   };
 }
