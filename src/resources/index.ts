@@ -15,5 +15,7 @@ export {
   type ProcurementStatus,
   type Status,
   type Zone,
+  type NodeCreateParams,
+  type NodeExtendParams,
 } from './nodes';
 export { Vms, type VmLogsResponse, type VmSSHResponse, type VmLogsParams, type VmSSHParams } from './vms/vms';

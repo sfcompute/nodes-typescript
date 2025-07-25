@@ -40,3 +40,10 @@ Types:
 - <code><a href="./src/resources/nodes.ts">ProcurementStatus</a></code>
 - <code><a href="./src/resources/nodes.ts">Status</a></code>
 - <code><a href="./src/resources/nodes.ts">Zone</a></code>
+
+Methods:
+
+- <code title="post /v1/nodes">client.nodes.<a href="./src/resources/nodes.ts">create</a>({ ...params }) -> ListResponseNode</code>
+- <code title="get /v1/nodes">client.nodes.<a href="./src/resources/nodes.ts">list</a>() -> ListResponseNode</code>
+- <code title="patch /v1/nodes/{id}/extend">client.nodes.<a href="./src/resources/nodes.ts">extend</a>(id, { ...params }) -> Node</code>
+- <code title="patch /v1/nodes/{id}/release">client.nodes.<a href="./src/resources/nodes.ts">release</a>(id) -> Node</code>

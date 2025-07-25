@@ -2,8 +2,67 @@
 
 import { APIResource } from '../core/resource';
 import * as NodesAPI from './nodes';
+import { APIPromise } from '../core/api-promise';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
-export class Nodes extends APIResource {}
+export class Nodes extends APIResource {
+  /**
+   * Create VM nodes
+   *
+   * @example
+   * ```ts
+   * const listResponseNode = await client.nodes.create({
+   *   desired_count: 1,
+   *   max_price_per_node_hour: 1000,
+   *   zone: 'hayesvalley',
+   * });
+   * ```
+   */
+  create(body: NodeCreateParams, options?: RequestOptions): APIPromise<ListResponseNode> {
+    return this._client.post('/v1/nodes', { body, ...options });
+  }
+
+  /**
+   * List all VM nodes for the authenticated account
+   *
+   * @example
+   * ```ts
+   * const listResponseNode = await client.nodes.list();
+   * ```
+   */
+  list(options?: RequestOptions): APIPromise<ListResponseNode> {
+    return this._client.get('/v1/nodes', options);
+  }
+
+  /**
+   * Purchase additional time to extend the end time of a reserved VM node
+   *
+   * @example
+   * ```ts
+   * const node = await client.nodes.extend('id', {
+   *   duration_seconds: 7200,
+   *   max_price_per_node_hour: 1000,
+   * });
+   * ```
+   */
+  extend(id: string, body: NodeExtendParams, options?: RequestOptions): APIPromise<Node> {
+    return this._client.patch(path`/v1/nodes/${id}/extend`, { body, ...options });
+  }
+
+  /**
+   * Release an on-demand VM node from its procurement, reducing the procurement's
+   * desired quantity by 1
+   *
+   * @example
+   * ```ts
+   * const node = await client.nodes.release('id');
+   * ```
+   */
+  release(id: string, options?: RequestOptions): APIPromise<Node> {
+    return this._client.patch(path`/v1/nodes/${id}/release`, options);
+  }
+}
 
 export type AcceleratorType = 'H100' | 'H200';
 
@@ -223,6 +282,52 @@ export type Status = 'pending' | 'running' | 'terminated' | 'failed' | 'unknown'
  */
 export type Zone = 'hayesvalley';
 
+export interface NodeCreateParams {
+  desired_count: number;
+
+  /**
+   * Max price per hour for a node in cents
+   */
+  max_price_per_node_hour: number;
+
+  /**
+   * Zone to create the nodes in. See Zone enum for valid values.
+   */
+  zone: string;
+
+  /**
+   * End time as Unix timestamp in seconds. If provided, end time must be aligned to
+   * the hour. If not provided, the node will be created as an on-demand node.
+   */
+  end_at?: number | null;
+
+  /**
+   * Custom node names. Names cannot follow the vm\_{alpha_numeric_chars} as this is
+   * reserved for system-generated IDs. Names cannot be numeric strings.
+   */
+  names?: Array<string>;
+
+  node_type?: NodeType | null;
+
+  /**
+   * Start time as Unix timestamp in seconds
+   */
+  start_at?: number;
+}
+
+export interface NodeExtendParams {
+  /**
+   * Duration in seconds to extend the node Must be at least 1 hour (3600 seconds)
+   * and a multiple of 1 hour.
+   */
+  duration_seconds: number;
+
+  /**
+   * Max price per hour for the extension in cents
+   */
+  max_price_per_node_hour: number;
+}
+
 export declare namespace Nodes {
   export {
     type AcceleratorType as AcceleratorType,
@@ -238,5 +343,7 @@ export declare namespace Nodes {
     type ProcurementStatus as ProcurementStatus,
     type Status as Status,
     type Zone as Zone,
+    type NodeCreateParams as NodeCreateParams,
+    type NodeExtendParams as NodeExtendParams,
   };
 }
