@@ -26,9 +26,9 @@ const client = new SFCNodes({
   apiKey: process.env['SFC_API_KEY'], // This is the default and can be omitted
 });
 
-const nodes = await client.nodes.list();
+const response = await client.vms.logs({ instance_id: 'instance_id', order_by: 'seqnum_asc' });
 
-console.log(nodes.data);
+console.log(response.data);
 ```
 
 ### Request & Response types
@@ -43,7 +43,8 @@ const client = new SFCNodes({
   apiKey: process.env['SFC_API_KEY'], // This is the default and can be omitted
 });
 
-const nodes: SFCNodes.NodeListResponse = await client.nodes.list();
+const params: SFCNodes.VmLogsParams = { instance_id: 'instance_id', order_by: 'seqnum_asc' };
+const response: SFCNodes.VmLogsResponse = await client.vms.logs(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -56,15 +57,17 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const nodes = await client.nodes.list().catch(async (err) => {
-  if (err instanceof SFCNodes.APIError) {
-    console.log(err.status); // 400
-    console.log(err.name); // BadRequestError
-    console.log(err.headers); // {server: 'nginx', ...}
-  } else {
-    throw err;
-  }
-});
+const response = await client.vms
+  .logs({ instance_id: 'instance_id', order_by: 'seqnum_asc' })
+  .catch(async (err) => {
+    if (err instanceof SFCNodes.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 ```
 
 Error codes are as follows:
@@ -96,7 +99,7 @@ const client = new SFCNodes({
 });
 
 // Or, configure per-request:
-await client.nodes.list({
+await client.vms.logs({ instance_id: 'instance_id', order_by: 'seqnum_asc' }, {
   maxRetries: 5,
 });
 ```
@@ -113,7 +116,7 @@ const client = new SFCNodes({
 });
 
 // Override per-request:
-await client.nodes.list({
+await client.vms.logs({ instance_id: 'instance_id', order_by: 'seqnum_asc' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -136,13 +139,15 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new SFCNodes();
 
-const response = await client.nodes.list().asResponse();
+const response = await client.vms.logs({ instance_id: 'instance_id', order_by: 'seqnum_asc' }).asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: nodes, response: raw } = await client.nodes.list().withResponse();
+const { data: response, response: raw } = await client.vms
+  .logs({ instance_id: 'instance_id', order_by: 'seqnum_asc' })
+  .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(nodes.data);
+console.log(response.data);
 ```
 
 ### Logging
@@ -222,7 +227,7 @@ parameter. This library doesn't validate at runtime that the request matches the
 send will be sent as-is.
 
 ```ts
-client.nodes.list({
+client.vms.logs({
   // ...
   // @ts-expect-error baz is not yet public
   baz: 'undocumented option',

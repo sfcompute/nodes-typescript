@@ -2,11 +2,18 @@
 
 export {
   Nodes,
+  type AcceleratorType,
+  type CreateNodesRequest,
+  type ErrorContent,
+  type ErrorDetail,
+  type ErrorObject,
+  type ErrorType,
+  type ExtendNodeRequest,
+  type ListResponseNode,
   type Node,
   type NodeType,
-  type NodeCreateResponse,
-  type NodeListResponse,
-  type NodeCreateParams,
-  type NodeExtendParams,
+  type ProcurementStatus,
+  type Status,
+  type Zone,
 } from './nodes';
 export { Vms, type VmLogsResponse, type VmSSHResponse, type VmLogsParams, type VmSSHParams } from './vms/vms';
