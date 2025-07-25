@@ -10,7 +10,11 @@ const client = new SFCNodes({
 describe('resource nodes', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: only required params', async () => {
-    const responsePromise = client.nodes.create({ desired_count: 1, max_price_per_hour: 1000 });
+    const responsePromise = client.nodes.create({
+      desired_count: 1,
+      max_price_per_node_hour: 1000,
+      zone: 'hayesvalley',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -24,12 +28,12 @@ describe('resource nodes', () => {
   test.skip('create: required and optional params', async () => {
     const response = await client.nodes.create({
       desired_count: 1,
-      max_price_per_hour: 1000,
-      end_at: 1640995200,
-      names: ['string'],
+      max_price_per_node_hour: 1000,
+      zone: 'hayesvalley',
+      end_at: 0,
+      names: ['cuda-crunch'],
       node_type: 'on_demand',
       start_at: 1640995200,
-      zone: 'zone',
     });
   });
 
@@ -47,7 +51,10 @@ describe('resource nodes', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('extend: only required params', async () => {
-    const responsePromise = client.nodes.extend('id', { duration_seconds: 7200, max_price_per_hour: 1000 });
+    const responsePromise = client.nodes.extend('id', {
+      duration_seconds: 7200,
+      max_price_per_node_hour: 1000,
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -59,12 +66,15 @@ describe('resource nodes', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('extend: required and optional params', async () => {
-    const response = await client.nodes.extend('id', { duration_seconds: 7200, max_price_per_hour: 1000 });
+    const response = await client.nodes.extend('id', {
+      duration_seconds: 7200,
+      max_price_per_node_hour: 1000,
+    });
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('release: only required params', async () => {
-    const responsePromise = client.nodes.release('id', { body: {} });
+  test.skip('release', async () => {
+    const responsePromise = client.nodes.release('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -72,10 +82,5 @@ describe('resource nodes', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('release: required and optional params', async () => {
-    const response = await client.nodes.release('id', { body: {} });
   });
 });

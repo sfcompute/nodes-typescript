@@ -27,6 +27,8 @@ const client = new SFCNodes({
 });
 
 const nodes = await client.nodes.list();
+
+console.log(nodes.data);
 ```
 
 ### Request & Response types
@@ -140,7 +142,7 @@ console.log(response.statusText); // access the underlying Response object
 
 const { data: nodes, response: raw } = await client.nodes.list().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(nodes);
+console.log(nodes.data);
 ```
 
 ### Logging
