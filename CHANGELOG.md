@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2025-07-30)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Chores
+
+* **internal:** remove redundant imports config ([da8315e](https://github.com/sfcompute/nodes-typescript/commit/da8315ea1d34cfbb9e726db92a478deea92d273a))
+
 ## 0.1.0-alpha.5 (2025-07-25)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
