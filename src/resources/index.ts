@@ -12,7 +12,6 @@ export {
   type ListResponseNode,
   type Node,
   type NodeType,
-  type ProcurementStatus,
   type Status,
   type Zone,
   type NodeCreateParams,

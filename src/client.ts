@@ -30,7 +30,6 @@ import {
   NodeExtendParams,
   NodeType,
   Nodes,
-  ProcurementStatus,
   Status,
   Zone,
 } from './resources/nodes';
@@ -766,7 +765,6 @@ export declare namespace SFCNodes {
     type ListResponseNode as ListResponseNode,
     type Node as Node,
     type NodeType as NodeType,
-    type ProcurementStatus as ProcurementStatus,
     type Status as Status,
     type Zone as Zone,
     type NodeCreateParams as NodeCreateParams,
