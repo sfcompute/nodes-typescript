@@ -32,7 +32,7 @@ describe('resource nodes', () => {
       zone: 'hayesvalley',
       end_at: 0,
       names: ['cuda-crunch'],
-      node_type: 'spot',
+      node_type: 'on_demand',
       start_at: 1640995200,
     });
   });
