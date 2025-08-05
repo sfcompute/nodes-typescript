@@ -37,7 +37,6 @@ Types:
 - <code><a href="./src/resources/nodes.ts">ListResponseNode</a></code>
 - <code><a href="./src/resources/nodes.ts">Node</a></code>
 - <code><a href="./src/resources/nodes.ts">NodeType</a></code>
-- <code><a href="./src/resources/nodes.ts">ProcurementStatus</a></code>
 - <code><a href="./src/resources/nodes.ts">Status</a></code>
 - <code><a href="./src/resources/nodes.ts">Zone</a></code>
 
