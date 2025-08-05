@@ -91,9 +91,6 @@ export interface CreateNodesRequest {
    */
   names?: Array<string>;
 
-  /**
-   * Database enum matching the node_type enum in the database
-   */
   node_type?: NodeType | null;
 
   /**
@@ -171,9 +168,6 @@ export namespace ListResponseNode {
 
     name: string;
 
-    /**
-     * Database enum matching the node_type enum in the database
-     */
     node_type: NodesAPI.NodeType;
 
     object: string;
@@ -191,11 +185,6 @@ export namespace ListResponseNode {
     created_at?: number | null;
 
     /**
-     * Deletion time as Unix timestamp in seconds
-     */
-    deleted_at?: number | null;
-
-    /**
      * End time as Unix timestamp in seconds
      */
     end_at?: number | null;
@@ -207,6 +196,8 @@ export namespace ListResponseNode {
 
     procurement_id?: string | null;
 
+    procurement_status?: NodesAPI.ProcurementStatus | null;
+
     /**
      * Start time as Unix timestamp in seconds
      */
@@ -217,38 +208,10 @@ export namespace ListResponseNode {
      */
     updated_at?: number | null;
 
-    vms?: Data.Vms | null;
-
     /**
      * Choose from these zones when creating a node
      */
     zone?: NodesAPI.Zone | null;
-  }
-
-  export namespace Data {
-    export interface Vms {
-      data: Array<Vms.Data>;
-
-      object: string;
-    }
-
-    export namespace Vms {
-      export interface Data {
-        id: string;
-
-        created_at: number;
-
-        end_at: number | null;
-
-        object: string;
-
-        start_at: number | null;
-
-        status: 'Pending' | 'Running' | 'Destroyed' | 'NodeFailure' | 'Unspecified';
-
-        updated_at: number;
-      }
-    }
   }
 }
 
@@ -259,9 +222,6 @@ export interface Node {
 
   name: string;
 
-  /**
-   * Database enum matching the node_type enum in the database
-   */
   node_type: NodeType;
 
   object: string;
@@ -279,11 +239,6 @@ export interface Node {
   created_at?: number | null;
 
   /**
-   * Deletion time as Unix timestamp in seconds
-   */
-  deleted_at?: number | null;
-
-  /**
    * End time as Unix timestamp in seconds
    */
   end_at?: number | null;
@@ -295,6 +250,8 @@ export interface Node {
 
   procurement_id?: string | null;
 
+  procurement_status?: ProcurementStatus | null;
+
   /**
    * Start time as Unix timestamp in seconds
    */
@@ -305,57 +262,20 @@ export interface Node {
    */
   updated_at?: number | null;
 
-  vms?: Node.Vms | null;
-
   /**
    * Choose from these zones when creating a node
    */
   zone?: Zone | null;
 }
 
-export namespace Node {
-  export interface Vms {
-    data: Array<Vms.Data>;
+export type NodeType = 'on_demand' | 'reserved';
 
-    object: string;
-  }
-
-  export namespace Vms {
-    export interface Data {
-      id: string;
-
-      created_at: number;
-
-      end_at: number | null;
-
-      object: string;
-
-      start_at: number | null;
-
-      status: 'Pending' | 'Running' | 'Destroyed' | 'NodeFailure' | 'Unspecified';
-
-      updated_at: number;
-    }
-  }
-}
-
-/**
- * Database enum matching the node_type enum in the database
- */
-export type NodeType = 'spot' | 'reserved';
+export type ProcurementStatus = 'uninitialized' | 'active' | 'ended' | 'awaiting_capacity';
 
 /**
  * Node Status
  */
-export type Status =
-  | 'pending'
-  | 'awaitingcapacity'
-  | 'running'
-  | 'released'
-  | 'terminated'
-  | 'deleted'
-  | 'failed'
-  | 'unknown';
+export type Status = 'pending' | 'running' | 'terminated' | 'failed' | 'unknown';
 
 /**
  * Choose from these zones when creating a node
@@ -387,9 +307,6 @@ export interface NodeCreateParams {
    */
   names?: Array<string>;
 
-  /**
-   * Database enum matching the node_type enum in the database
-   */
   node_type?: NodeType | null;
 
   /**
@@ -423,6 +340,7 @@ export declare namespace Nodes {
     type ListResponseNode as ListResponseNode,
     type Node as Node,
     type NodeType as NodeType,
+    type ProcurementStatus as ProcurementStatus,
     type Status as Status,
     type Zone as Zone,
     type NodeCreateParams as NodeCreateParams,
