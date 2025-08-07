@@ -3,7 +3,7 @@
 import SFCNodes from '@sfcompute/nodes-sdk-alpha';
 
 const client = new SFCNodes({
-  apiKey: 'My API Key',
+  bearerToken: 'My Bearer Token',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
