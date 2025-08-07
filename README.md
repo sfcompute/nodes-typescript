@@ -23,7 +23,7 @@ The full API of this library can be found in [api.md](api.md).
 import SFCNodes from '@sfcompute/nodes-sdk-alpha';
 
 const client = new SFCNodes({
-  apiKey: process.env['SFC_API_KEY'], // This is the default and can be omitted
+  bearerToken: process.env['SFC_NODES_BEARER_TOKEN'], // This is the default and can be omitted
 });
 
 const listResponseNode = await client.nodes.list();
@@ -40,7 +40,7 @@ This library includes TypeScript definitions for all request params and response
 import SFCNodes from '@sfcompute/nodes-sdk-alpha';
 
 const client = new SFCNodes({
-  apiKey: process.env['SFC_API_KEY'], // This is the default and can be omitted
+  bearerToken: process.env['SFC_NODES_BEARER_TOKEN'], // This is the default and can be omitted
 });
 
 const listResponseNode: SFCNodes.ListResponseNode = await client.nodes.list();
