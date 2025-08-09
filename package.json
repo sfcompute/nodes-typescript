@@ -1,6 +1,6 @@
 {
   "name": "@sfcompute/nodes-sdk-alpha",
-  "version": "0.1.0-alpha.7",
+  "version": "0.1.0-alpha.8",
   "description": "The official TypeScript library for the SFC Nodes API",
   "author": "SFC Nodes <hello@sfcompute.com>",
   "types": "dist/index.d.ts",
@@ -13,6 +13,9 @@
     "**/*"
   ],
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "./scripts/test",
     "build": "./scripts/build",
