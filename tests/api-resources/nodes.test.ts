@@ -8,7 +8,7 @@ const client = new SFCNodes({
 });
 
 describe('resource nodes', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.nodes.create({
       desired_count: 1,
@@ -24,7 +24,7 @@ describe('resource nodes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.nodes.create({
       desired_count: 1,
@@ -37,7 +37,7 @@ describe('resource nodes', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.nodes.list();
     const rawResponse = await responsePromise.asResponse();
@@ -49,7 +49,7 @@ describe('resource nodes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('extend: only required params', async () => {
     const responsePromise = client.nodes.extend('id', {
       duration_seconds: 7200,
@@ -64,7 +64,7 @@ describe('resource nodes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('extend: required and optional params', async () => {
     const response = await client.nodes.extend('id', {
       duration_seconds: 7200,
@@ -72,7 +72,7 @@ describe('resource nodes', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('release', async () => {
     const responsePromise = client.nodes.release('id');
     const rawResponse = await responsePromise.asResponse();
