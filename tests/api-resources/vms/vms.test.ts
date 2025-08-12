@@ -8,7 +8,7 @@ const client = new SFCNodes({
 });
 
 describe('resource vms', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('logs: only required params', async () => {
     const responsePromise = client.vms.logs({ instance_id: 'instance_id', order_by: 'seqnum_asc' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource vms', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('logs: required and optional params', async () => {
     const response = await client.vms.logs({
       instance_id: 'instance_id',
@@ -33,7 +33,7 @@ describe('resource vms', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('ssh: only required params', async () => {
     const responsePromise = client.vms.ssh({ vm_id: 'vm_id' });
     const rawResponse = await responsePromise.asResponse();
@@ -45,7 +45,7 @@ describe('resource vms', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('ssh: required and optional params', async () => {
     const response = await client.vms.ssh({ vm_id: 'vm_id' });
   });
