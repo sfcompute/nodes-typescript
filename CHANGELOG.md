@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.8 (2025-08-13)
+
+Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
+
+### Features
+
+* **api:** revert custom ErrorConfig ([186cb52](https://github.com/sfcompute/nodes-typescript/commit/186cb5225a5de532914c1fd24f8e34688294ad51))
+
+
+### Chores
+
+* **internal:** codegen related update ([4a8ba72](https://github.com/sfcompute/nodes-typescript/commit/4a8ba72e22d870c79ea30dcc90de37cf20fe1dd5))
+* **internal:** move publish config ([42810dd](https://github.com/sfcompute/nodes-typescript/commit/42810ddb26d3d78aeddf9d0b9419a8166c33ad61))
+* **internal:** update comment in script ([51e1934](https://github.com/sfcompute/nodes-typescript/commit/51e193432b8af198a91381c4d55350aa271b91ff))
+* update @stainless-api/prism-cli to v5.15.0 ([2c66260](https://github.com/sfcompute/nodes-typescript/commit/2c6626033c3ec5ab5109ea290b0bfec58a6afbf5))
+
 ## 0.1.0-alpha.7 (2025-08-05)
 
 Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
