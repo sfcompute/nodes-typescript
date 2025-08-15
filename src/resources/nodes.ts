@@ -54,6 +54,18 @@ export class Nodes extends APIResource {
   }
 
   /**
+   * Retrieve details of a specific node by its ID or name
+   *
+   * @example
+   * ```ts
+   * const node = await client.nodes.get('id');
+   * ```
+   */
+  get(id: string, options?: RequestOptions): APIPromise<Node> {
+    return this._client.get(path`/v1/nodes/${id}`, options);
+  }
+
+  /**
    * Release an on-demand VM node from its procurement, reducing the procurement's
    * desired quantity by 1
    *

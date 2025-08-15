@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.10 (2025-08-15)
+
+Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
+
+### Features
+
+* **api:** add `get` method ([27dd3b1](https://github.com/sfcompute/nodes-typescript/commit/27dd3b11b8a93470561e0acb60627f71de431e6d))
+
+
+### Bug Fixes
+
+* query param arrays are repeated ([2a27799](https://github.com/sfcompute/nodes-typescript/commit/2a27799e11dc0eee643314241dfd5dad9af5eaf2))
+
 ## 0.1.0-alpha.9 (2025-08-15)
 
 Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
