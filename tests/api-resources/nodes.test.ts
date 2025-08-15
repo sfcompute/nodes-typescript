@@ -32,7 +32,7 @@ describe('resource nodes', () => {
       zone: 'hayesvalley',
       end_at: 0,
       names: ['cuda-crunch'],
-      node_type: 'spot',
+      node_type: 'autoreserved',
       start_at: 1640995200,
     });
   });
@@ -47,6 +47,14 @@ describe('resource nodes', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // Prism tests are disabled
+  test.skip('list: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.nodes.list({ id: ['string'], name: ['string'] }, { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(SFCNodes.NotFoundError);
   });
 
   // Prism tests are disabled
