@@ -32,7 +32,7 @@ describe('resource nodes', () => {
       zone: 'hayesvalley',
       end_at: 0,
       names: ['cuda-crunch'],
-      node_type: 'autoreserved',
+      node_type: 'spot',
       start_at: 1640995200,
     });
   });
@@ -47,14 +47,6 @@ describe('resource nodes', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // Prism tests are disabled
-  test.skip('list: request options and params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.nodes.list({ id: ['string'], name: ['string'] }, { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(SFCNodes.NotFoundError);
   });
 
   // Prism tests are disabled
@@ -78,18 +70,6 @@ describe('resource nodes', () => {
       duration_seconds: 7200,
       max_price_per_node_hour: 1000,
     });
-  });
-
-  // Prism tests are disabled
-  test.skip('get', async () => {
-    const responsePromise = client.nodes.get('id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   // Prism tests are disabled
