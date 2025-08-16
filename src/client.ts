@@ -740,8 +740,10 @@ export class SFCNodes {
   vms: API.Vms = new API.Vms(this);
   nodes: API.Nodes = new API.Nodes(this);
 }
+
 SFCNodes.Vms = Vms;
 SFCNodes.Nodes = Nodes;
+
 export declare namespace SFCNodes {
   export type RequestOptions = Opts.RequestOptions;
 
