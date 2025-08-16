@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.11 (2025-08-16)
+
+Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
+
+### Features
+
+* **api:** api update ([6b4c5db](https://github.com/sfcompute/nodes-typescript/commit/6b4c5db1d8fd89e5c649a839864bd7e149096228))
+
+
+### Chores
+
+* **deps:** update dependency @types/node to v20.17.58 ([2b0c1bd](https://github.com/sfcompute/nodes-typescript/commit/2b0c1bd7a30c8d14c22b51aa5a3aa638d4799c47))
+* **internal:** formatting change ([c69202c](https://github.com/sfcompute/nodes-typescript/commit/c69202c4e0a96c44f3ca0c2615ad6ca2f2a42b50))
+
 ## 0.1.0-alpha.10 (2025-08-15)
 
 Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
