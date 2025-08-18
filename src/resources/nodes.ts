@@ -31,8 +31,11 @@ export class Nodes extends APIResource {
    * const listResponseNode = await client.nodes.list();
    * ```
    */
-  list(options?: RequestOptions): APIPromise<ListResponseNode> {
-    return this._client.get('/v1/nodes', options);
+  list(
+    query: NodeListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<ListResponseNode> {
+    return this._client.get('/v1/nodes', { query, ...options });
   }
 
   /**
@@ -48,6 +51,18 @@ export class Nodes extends APIResource {
    */
   extend(id: string, body: NodeExtendParams, options?: RequestOptions): APIPromise<Node> {
     return this._client.patch(path`/v1/nodes/${id}/extend`, { body, ...options });
+  }
+
+  /**
+   * Retrieve details of a specific node by its ID or name
+   *
+   * @example
+   * ```ts
+   * const node = await client.nodes.get('id');
+   * ```
+   */
+  get(id: string, options?: RequestOptions): APIPromise<Node> {
+    return this._client.get(path`/v1/nodes/${id}`, options);
   }
 
   /**
@@ -91,9 +106,6 @@ export interface CreateNodesRequest {
    */
   names?: Array<string>;
 
-  /**
-   * Database enum matching the node_type enum in the database
-   */
   node_type?: NodeType | null;
 
   /**
@@ -171,9 +183,6 @@ export namespace ListResponseNode {
 
     name: string;
 
-    /**
-     * Database enum matching the node_type enum in the database
-     */
     node_type: NodesAPI.NodeType;
 
     object: string;
@@ -259,9 +268,6 @@ export interface Node {
 
   name: string;
 
-  /**
-   * Database enum matching the node_type enum in the database
-   */
   node_type: NodeType;
 
   object: string;
@@ -339,10 +345,7 @@ export namespace Node {
   }
 }
 
-/**
- * Database enum matching the node_type enum in the database
- */
-export type NodeType = 'spot' | 'reserved';
+export type NodeType = 'autoreserved' | 'reserved';
 
 /**
  * Node Status
@@ -360,7 +363,7 @@ export type Status =
 /**
  * Choose from these zones when creating a node
  */
-export type Zone = 'hayesvalley';
+export type Zone = 'hayesvalley' | 'fishermanswharf';
 
 export interface NodeCreateParams {
   desired_count: number;
@@ -387,15 +390,26 @@ export interface NodeCreateParams {
    */
   names?: Array<string>;
 
-  /**
-   * Database enum matching the node_type enum in the database
-   */
   node_type?: NodeType | null;
 
   /**
    * Start time as Unix timestamp in seconds
    */
   start_at?: number;
+}
+
+export interface NodeListParams {
+  /**
+   * Filter nodes by node_id Use ?id=n_b1dc52505c6db142&id=n_b1dc52505c6db133 to
+   * specify multiple IDs. Cannot be used with name
+   */
+  id?: Array<string>;
+
+  /**
+   * Filter nodes by their names Use ?name=val1&name=val2 to specify multiple names.
+   * Cannot be used with id
+   */
+  name?: Array<string>;
 }
 
 export interface NodeExtendParams {
@@ -426,6 +440,7 @@ export declare namespace Nodes {
     type Status as Status,
     type Zone as Zone,
     type NodeCreateParams as NodeCreateParams,
+    type NodeListParams as NodeListParams,
     type NodeExtendParams as NodeExtendParams,
   };
 }
