@@ -154,7 +154,8 @@ export type ErrorType =
   | 'forbidden'
   | 'not_implemented'
   | 'upgrade_required'
-  | 'payment_required';
+  | 'payment_required'
+  | 'service_unavailable';
 
 export interface ExtendNodeRequest {
   /**
