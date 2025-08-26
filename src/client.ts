@@ -33,7 +33,6 @@ import {
   NodeType,
   Nodes,
   Status,
-  Zone,
 } from './resources/nodes';
 import { VmLogsParams, VmLogsResponse, VmSSHParams, VmSSHResponse, Vms } from './resources/vms/vms';
 import { type Fetch } from './internal/builtin-types';
@@ -754,7 +753,6 @@ export declare namespace SFCNodes {
     type Node as Node,
     type NodeType as NodeType,
     type Status as Status,
-    type Zone as Zone,
     type NodeCreateParams as NodeCreateParams,
     type NodeListParams as NodeListParams,
     type NodeExtendParams as NodeExtendParams,

@@ -13,7 +13,6 @@ export {
   type Node,
   type NodeType,
   type Status,
-  type Zone,
   type NodeCreateParams,
   type NodeListParams,
   type NodeExtendParams,

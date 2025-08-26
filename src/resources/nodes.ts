@@ -90,7 +90,7 @@ export interface CreateNodesRequest {
   max_price_per_node_hour: number;
 
   /**
-   * Zone to create the nodes in. See Zone enum for valid values.
+   * Zone to create the nodes in
    */
   zone: string;
 
@@ -229,10 +229,7 @@ export namespace ListResponseNode {
 
     vms?: Data.Vms | null;
 
-    /**
-     * Choose from these zones when creating a node
-     */
-    zone?: NodesAPI.Zone | null;
+    zone?: string | null;
   }
 
   export namespace Data {
@@ -314,10 +311,7 @@ export interface Node {
 
   vms?: Node.Vms | null;
 
-  /**
-   * Choose from these zones when creating a node
-   */
-  zone?: Zone | null;
+  zone?: string | null;
 }
 
 export namespace Node {
@@ -361,11 +355,6 @@ export type Status =
   | 'failed'
   | 'unknown';
 
-/**
- * Choose from these zones when creating a node
- */
-export type Zone = 'hayesvalley' | 'fishermanswharf';
-
 export interface NodeCreateParams {
   desired_count: number;
 
@@ -375,7 +364,7 @@ export interface NodeCreateParams {
   max_price_per_node_hour: number;
 
   /**
-   * Zone to create the nodes in. See Zone enum for valid values.
+   * Zone to create the nodes in
    */
   zone: string;
 
@@ -439,7 +428,6 @@ export declare namespace Nodes {
     type Node as Node,
     type NodeType as NodeType,
     type Status as Status,
-    type Zone as Zone,
     type NodeCreateParams as NodeCreateParams,
     type NodeListParams as NodeListParams,
     type NodeExtendParams as NodeExtendParams,
