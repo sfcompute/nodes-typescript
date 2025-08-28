@@ -66,8 +66,8 @@ export class Nodes extends APIResource {
   }
 
   /**
-   * Release an on-demand VM node from its procurement, reducing the procurement's
-   * desired quantity by 1
+   * Release an auto reserved VM node from its procurement, reducing the
+   * procurement's desired quantity by 1
    *
    * @example
    * ```ts
@@ -96,7 +96,7 @@ export interface CreateNodesRequest {
 
   /**
    * End time as Unix timestamp in seconds. If provided, end time must be aligned to
-   * the hour. If not provided, the node will be created as an on-demand node.
+   * the hour. If not provided, the node will be created as an autoreserved node.
    */
   end_at?: number | null;
 
@@ -370,7 +370,7 @@ export interface NodeCreateParams {
 
   /**
    * End time as Unix timestamp in seconds. If provided, end time must be aligned to
-   * the hour. If not provided, the node will be created as an on-demand node.
+   * the hour. If not provided, the node will be created as an autoreserved node.
    */
   end_at?: number | null;
 
