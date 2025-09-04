@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.1.0-alpha.11 (2025-09-04)
+
+Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
+
+### Features
+
+* **api:** api update ([6762d6b](https://github.com/sfcompute/nodes-typescript/commit/6762d6b0c161d52b3f46fbf4c7e1d0ff75c8850f))
+* **api:** api update ([6e6f1cf](https://github.com/sfcompute/nodes-typescript/commit/6e6f1cfd598ccd813d9fa4687ca71e7fef52cce1))
+* **api:** api update ([70bd754](https://github.com/sfcompute/nodes-typescript/commit/70bd75401f06c1621c4694e059c122599dbca0ac))
+* **api:** api update ([3159948](https://github.com/sfcompute/nodes-typescript/commit/31599483a46a8eb52dba7a7a78b6dc3d2a56c180))
+* **api:** api update ([6b4c5db](https://github.com/sfcompute/nodes-typescript/commit/6b4c5db1d8fd89e5c649a839864bd7e149096228))
+* **mcp:** add code execution tool ([a46d548](https://github.com/sfcompute/nodes-typescript/commit/a46d5487d4e64b363d65737013d136bf8ef3d972))
+
+
+### Chores
+
+* add package to package.json ([79d6147](https://github.com/sfcompute/nodes-typescript/commit/79d61470ffacc4bd65958aa019e80e08da0868ce))
+* **client:** qualify global Blob ([f33066f](https://github.com/sfcompute/nodes-typescript/commit/f33066f45f014f986b14aca44a4fc56e69b31400))
+* **deps:** update dependency @types/node to v20.17.58 ([2b0c1bd](https://github.com/sfcompute/nodes-typescript/commit/2b0c1bd7a30c8d14c22b51aa5a3aa638d4799c47))
+* **internal:** formatting change ([c69202c](https://github.com/sfcompute/nodes-typescript/commit/c69202c4e0a96c44f3ca0c2615ad6ca2f2a42b50))
+* **internal:** update global Error reference ([1f9488b](https://github.com/sfcompute/nodes-typescript/commit/1f9488b7eba69020bb0851895c2824f4729f2827))
+* update CI script ([90d98c5](https://github.com/sfcompute/nodes-typescript/commit/90d98c506c9878aaf8625ef6f2e87056cde21ba8))
+
 ## 0.1.0-alpha.10 (2025-08-15)
 
 Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
