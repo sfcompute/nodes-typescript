@@ -66,8 +66,8 @@ export class Nodes extends APIResource {
   }
 
   /**
-   * Release an on-demand VM node from its procurement, reducing the procurement's
-   * desired quantity by 1
+   * Release an auto reserved VM node from its procurement, reducing the
+   * procurement's desired quantity by 1
    *
    * @example
    * ```ts
@@ -90,13 +90,13 @@ export interface CreateNodesRequest {
   max_price_per_node_hour: number;
 
   /**
-   * Zone to create the nodes in. See Zone enum for valid values.
+   * Zone to create the nodes in
    */
   zone: string;
 
   /**
    * End time as Unix timestamp in seconds. If provided, end time must be aligned to
-   * the hour. If not provided, the node will be created as an on-demand node.
+   * the hour. If not provided, the node will be created as an autoreserved node.
    */
   end_at?: number | null;
 
@@ -154,7 +154,8 @@ export type ErrorType =
   | 'forbidden'
   | 'not_implemented'
   | 'upgrade_required'
-  | 'payment_required';
+  | 'payment_required'
+  | 'service_unavailable';
 
 export interface ExtendNodeRequest {
   /**
@@ -228,10 +229,7 @@ export namespace ListResponseNode {
 
     vms?: Data.Vms | null;
 
-    /**
-     * Choose from these zones when creating a node
-     */
-    zone?: NodesAPI.Zone | null;
+    zone?: string | null;
   }
 
   export namespace Data {
@@ -313,10 +311,7 @@ export interface Node {
 
   vms?: Node.Vms | null;
 
-  /**
-   * Choose from these zones when creating a node
-   */
-  zone?: Zone | null;
+  zone?: string | null;
 }
 
 export namespace Node {
@@ -360,11 +355,6 @@ export type Status =
   | 'failed'
   | 'unknown';
 
-/**
- * Choose from these zones when creating a node
- */
-export type Zone = 'hayesvalley' | 'fishermanswharf';
-
 export interface NodeCreateParams {
   desired_count: number;
 
@@ -374,13 +364,13 @@ export interface NodeCreateParams {
   max_price_per_node_hour: number;
 
   /**
-   * Zone to create the nodes in. See Zone enum for valid values.
+   * Zone to create the nodes in
    */
   zone: string;
 
   /**
    * End time as Unix timestamp in seconds. If provided, end time must be aligned to
-   * the hour. If not provided, the node will be created as an on-demand node.
+   * the hour. If not provided, the node will be created as an autoreserved node.
    */
   end_at?: number | null;
 
@@ -438,7 +428,6 @@ export declare namespace Nodes {
     type Node as Node,
     type NodeType as NodeType,
     type Status as Status,
-    type Zone as Zone,
     type NodeCreateParams as NodeCreateParams,
     type NodeListParams as NodeListParams,
     type NodeExtendParams as NodeExtendParams,

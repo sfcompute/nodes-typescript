@@ -33,7 +33,6 @@ import {
   NodeType,
   Nodes,
   Status,
-  Zone,
 } from './resources/nodes';
 import { VmLogsParams, VmLogsResponse, VmSSHParams, VmSSHResponse, Vms } from './resources/vms/vms';
 import { type Fetch } from './internal/builtin-types';
@@ -377,7 +376,7 @@ export class SFCNodes {
     const response = await this.fetchWithTimeout(url, req, timeout, controller).catch(castToError);
     const headersTime = Date.now();
 
-    if (response instanceof Error) {
+    if (response instanceof globalThis.Error) {
       const retryMessage = `retrying, ${retriesRemaining} attempts remaining`;
       if (options.signal?.aborted) {
         throw new Errors.APIUserAbortError();
@@ -684,7 +683,7 @@ export class SFCNodes {
         // Preserve legacy string encoding behavior for now
         headers.values.has('content-type')) ||
       // `Blob` is superset of `File`
-      body instanceof Blob ||
+      ((globalThis as any).Blob && body instanceof (globalThis as any).Blob) ||
       // `FormData` -> `multipart/form-data`
       body instanceof FormData ||
       // `URLSearchParams` -> `application/x-www-form-urlencoded`
@@ -726,8 +725,10 @@ export class SFCNodes {
   vms: API.Vms = new API.Vms(this);
   nodes: API.Nodes = new API.Nodes(this);
 }
+
 SFCNodes.Vms = Vms;
 SFCNodes.Nodes = Nodes;
+
 export declare namespace SFCNodes {
   export type RequestOptions = Opts.RequestOptions;
 
@@ -752,7 +753,6 @@ export declare namespace SFCNodes {
     type Node as Node,
     type NodeType as NodeType,
     type Status as Status,
-    type Zone as Zone,
     type NodeCreateParams as NodeCreateParams,
     type NodeListParams as NodeListParams,
     type NodeExtendParams as NodeExtendParams,
