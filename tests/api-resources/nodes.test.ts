@@ -30,6 +30,7 @@ describe('resource nodes', () => {
       desired_count: 1,
       max_price_per_node_hour: 1000,
       zone: 'hayesvalley',
+      cloud_init_user_data: [0],
       end_at: 0,
       names: ['cuda-crunch'],
       node_type: 'autoreserved',
