@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.0-alpha.12 (2025-09-05)
+
+Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
+
 ## 0.1.0-alpha.11 (2025-09-04)
 
 Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
