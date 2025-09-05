@@ -95,6 +95,11 @@ export interface CreateNodesRequest {
   zone: string;
 
   /**
+   * User script to be executed during the VM's boot process
+   */
+  cloud_init_user_data?: Array<number>;
+
+  /**
    * End time as Unix timestamp in seconds. If provided, end time must be aligned to
    * the hour. If not provided, the node will be created as an autoreserved node.
    */
@@ -367,6 +372,11 @@ export interface NodeCreateParams {
    * Zone to create the nodes in
    */
   zone: string;
+
+  /**
+   * User script to be executed during the VM's boot process
+   */
+  cloud_init_user_data?: Array<number>;
 
   /**
    * End time as Unix timestamp in seconds. If provided, end time must be aligned to
