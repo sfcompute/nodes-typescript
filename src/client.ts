@@ -34,7 +34,7 @@ import {
   Nodes,
   Status,
 } from './resources/nodes';
-import { VmLogsParams, VmLogsResponse, VmSSHParams, VmSSHResponse, Vms } from './resources/vms/vms';
+import { VMLogsParams, VMLogsResponse, VMSSHParams, VMSSHResponse, VMs } from './resources/vms/vms';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
@@ -722,22 +722,22 @@ export class SFCNodes {
 
   static toFile = Uploads.toFile;
 
-  vms: API.Vms = new API.Vms(this);
+  vms: API.VMs = new API.VMs(this);
   nodes: API.Nodes = new API.Nodes(this);
 }
 
-SFCNodes.Vms = Vms;
+SFCNodes.VMs = VMs;
 SFCNodes.Nodes = Nodes;
 
 export declare namespace SFCNodes {
   export type RequestOptions = Opts.RequestOptions;
 
   export {
-    Vms as Vms,
-    type VmLogsResponse as VmLogsResponse,
-    type VmSSHResponse as VmSSHResponse,
-    type VmLogsParams as VmLogsParams,
-    type VmSSHParams as VmSSHParams,
+    VMs as VMs,
+    type VMLogsResponse as VMLogsResponse,
+    type VMSSHResponse as VMSSHResponse,
+    type VMLogsParams as VMLogsParams,
+    type VMSSHParams as VMSSHParams,
   };
 
   export {

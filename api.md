@@ -1,14 +1,14 @@
-# Vms
+# VMs
 
 Types:
 
-- <code><a href="./src/resources/vms/vms.ts">VmLogsResponse</a></code>
-- <code><a href="./src/resources/vms/vms.ts">VmSSHResponse</a></code>
+- <code><a href="./src/resources/vms/vms.ts">VMLogsResponse</a></code>
+- <code><a href="./src/resources/vms/vms.ts">VMSSHResponse</a></code>
 
 Methods:
 
-- <code title="get /v0/vms/logs2">client.vms.<a href="./src/resources/vms/vms.ts">logs</a>({ ...params }) -> VmLogsResponse</code>
-- <code title="get /v0/vms/ssh">client.vms.<a href="./src/resources/vms/vms.ts">ssh</a>({ ...params }) -> VmSSHResponse</code>
+- <code title="get /v0/vms/logs2">client.vms.<a href="./src/resources/vms/vms.ts">logs</a>({ ...params }) -> VMLogsResponse</code>
+- <code title="get /v0/vms/ssh">client.vms.<a href="./src/resources/vms/vms.ts">ssh</a>({ ...params }) -> VMSSHResponse</code>
 
 ## Script
 
@@ -22,6 +22,22 @@ Methods:
 
 - <code title="post /v0/vms/script">client.vms.script.<a href="./src/resources/vms/script.ts">create</a>({ ...params }) -> ScriptCreateResponse</code>
 - <code title="get /v0/vms/script">client.vms.script.<a href="./src/resources/vms/script.ts">retrieve</a>() -> ScriptRetrieveResponse</code>
+
+## Images
+
+Types:
+
+- <code><a href="./src/resources/vms/images.ts">ImageCompleteUploadResponse</a></code>
+- <code><a href="./src/resources/vms/images.ts">ImageGetResponse</a></code>
+- <code><a href="./src/resources/vms/images.ts">ImageStartUploadResponse</a></code>
+- <code><a href="./src/resources/vms/images.ts">ImageUploadResponse</a></code>
+
+Methods:
+
+- <code title="patch /v1/vms/images/{image_id}/complete_upload">client.vms.images.<a href="./src/resources/vms/images.ts">completeUpload</a>(imageID) -> ImageCompleteUploadResponse</code>
+- <code title="get /v1/vms/images/{image_id}">client.vms.images.<a href="./src/resources/vms/images.ts">get</a>(imageID) -> ImageGetResponse</code>
+- <code title="post /v1/vms/images/start_upload">client.vms.images.<a href="./src/resources/vms/images.ts">startUpload</a>({ ...params }) -> ImageStartUploadResponse</code>
+- <code title="post /v1/vms/images/{image_id}/upload">client.vms.images.<a href="./src/resources/vms/images.ts">upload</a>(imageID, { ...params }) -> ImageUploadResponse</code>
 
 # Nodes
 
