@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.13 (2025-09-08)
+
+Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
+
+### Features
+
+* **api:** add vm images resources and update formatting ([ec522b7](https://github.com/sfcompute/nodes-typescript/commit/ec522b78c974e70ecd2c58f0bbe85ab4537112ab))
+* **api:** disable retries ([6188d02](https://github.com/sfcompute/nodes-typescript/commit/6188d028d12cefaa902e099988b7e9276627a0af))
+
+
+### Chores
+
+* ci build action ([cc7fec2](https://github.com/sfcompute/nodes-typescript/commit/cc7fec2a36cc3bc72373536ae733d1da4a44b18d))
+
 ## 0.1.0-alpha.12 (2025-09-05)
 
 Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)

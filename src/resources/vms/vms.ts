@@ -1,28 +1,39 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as ImagesAPI from './images';
+import {
+  ImageCompleteUploadResponse,
+  ImageGetResponse,
+  ImageStartUploadParams,
+  ImageStartUploadResponse,
+  ImageUploadParams,
+  ImageUploadResponse,
+  Images,
+} from './images';
 import * as ScriptAPI from './script';
 import { Script, ScriptCreateParams, ScriptCreateResponse, ScriptRetrieveResponse, UserData } from './script';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
 
-export class Vms extends APIResource {
+export class VMs extends APIResource {
   script: ScriptAPI.Script = new ScriptAPI.Script(this._client);
+  images: ImagesAPI.Images = new ImagesAPI.Images(this._client);
 
-  logs(query: VmLogsParams, options?: RequestOptions): APIPromise<VmLogsResponse> {
+  logs(query: VMLogsParams, options?: RequestOptions): APIPromise<VMLogsResponse> {
     return this._client.get('/v0/vms/logs2', { query, ...options });
   }
 
-  ssh(query: VmSSHParams, options?: RequestOptions): APIPromise<VmSSHResponse> {
+  ssh(query: VMSSHParams, options?: RequestOptions): APIPromise<VMSSHResponse> {
     return this._client.get('/v0/vms/ssh', { query, ...options });
   }
 }
 
-export interface VmLogsResponse {
-  data: Array<VmLogsResponse.Data>;
+export interface VMLogsResponse {
+  data: Array<VMLogsResponse.Data>;
 }
 
-export namespace VmLogsResponse {
+export namespace VMLogsResponse {
   export interface Data {
     data: Array<number>;
 
@@ -41,15 +52,15 @@ export namespace VmLogsResponse {
   }
 }
 
-export interface VmSSHResponse {
+export interface VMSSHResponse {
   ssh_hostname: string;
 
   ssh_port: number;
 
-  ssh_host_keys?: Array<VmSSHResponse.SSHHostKey> | null;
+  ssh_host_keys?: Array<VMSSHResponse.SSHHostKey> | null;
 }
 
-export namespace VmSSHResponse {
+export namespace VMSSHResponse {
   export interface SSHHostKey {
     base64_encoded_key: string;
 
@@ -57,7 +68,7 @@ export namespace VmSSHResponse {
   }
 }
 
-export interface VmLogsParams {
+export interface VMLogsParams {
   instance_id: string;
 
   order_by: 'seqnum_asc' | 'seqnum_desc';
@@ -73,18 +84,19 @@ export interface VmLogsParams {
   since_seqnum?: number;
 }
 
-export interface VmSSHParams {
+export interface VMSSHParams {
   vm_id: string;
 }
 
-Vms.Script = Script;
+VMs.Script = Script;
+VMs.Images = Images;
 
-export declare namespace Vms {
+export declare namespace VMs {
   export {
-    type VmLogsResponse as VmLogsResponse,
-    type VmSSHResponse as VmSSHResponse,
-    type VmLogsParams as VmLogsParams,
-    type VmSSHParams as VmSSHParams,
+    type VMLogsResponse as VMLogsResponse,
+    type VMSSHResponse as VMSSHResponse,
+    type VMLogsParams as VMLogsParams,
+    type VMSSHParams as VMSSHParams,
   };
 
   export {
@@ -93,5 +105,15 @@ export declare namespace Vms {
     type ScriptCreateResponse as ScriptCreateResponse,
     type ScriptRetrieveResponse as ScriptRetrieveResponse,
     type ScriptCreateParams as ScriptCreateParams,
+  };
+
+  export {
+    Images as Images,
+    type ImageCompleteUploadResponse as ImageCompleteUploadResponse,
+    type ImageGetResponse as ImageGetResponse,
+    type ImageStartUploadResponse as ImageStartUploadResponse,
+    type ImageUploadResponse as ImageUploadResponse,
+    type ImageStartUploadParams as ImageStartUploadParams,
+    type ImageUploadParams as ImageUploadParams,
   };
 }
