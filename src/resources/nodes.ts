@@ -232,19 +232,19 @@ export namespace ListResponseNode {
      */
     updated_at?: number | null;
 
-    vms?: Data.Vms | null;
+    vms?: Data.VMs | null;
 
     zone?: string | null;
   }
 
   export namespace Data {
-    export interface Vms {
-      data: Array<Vms.Data>;
+    export interface VMs {
+      data: Array<VMs.Data>;
 
       object: string;
     }
 
-    export namespace Vms {
+    export namespace VMs {
       export interface Data {
         id: string;
 
@@ -314,19 +314,19 @@ export interface Node {
    */
   updated_at?: number | null;
 
-  vms?: Node.Vms | null;
+  vms?: Node.VMs | null;
 
   zone?: string | null;
 }
 
 export namespace Node {
-  export interface Vms {
-    data: Array<Vms.Data>;
+  export interface VMs {
+    data: Array<VMs.Data>;
 
     object: string;
   }
 
-  export namespace Vms {
+  export namespace VMs {
     export interface Data {
       id: string;
 
