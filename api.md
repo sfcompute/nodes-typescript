@@ -27,17 +27,13 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/vms/images.ts">ImageCompleteUploadResponse</a></code>
+- <code><a href="./src/resources/vms/images.ts">ImageListResponse</a></code>
 - <code><a href="./src/resources/vms/images.ts">ImageGetResponse</a></code>
-- <code><a href="./src/resources/vms/images.ts">ImageStartUploadResponse</a></code>
-- <code><a href="./src/resources/vms/images.ts">ImageUploadResponse</a></code>
 
 Methods:
 
-- <code title="patch /v1/vms/images/{image_id}/complete_upload">client.vms.images.<a href="./src/resources/vms/images.ts">completeUpload</a>(imageID) -> ImageCompleteUploadResponse</code>
+- <code title="get /v1/vms/images">client.vms.images.<a href="./src/resources/vms/images.ts">list</a>() -> ImageListResponse</code>
 - <code title="get /v1/vms/images/{image_id}">client.vms.images.<a href="./src/resources/vms/images.ts">get</a>(imageID) -> ImageGetResponse</code>
-- <code title="post /v1/vms/images/start_upload">client.vms.images.<a href="./src/resources/vms/images.ts">startUpload</a>({ ...params }) -> ImageStartUploadResponse</code>
-- <code title="post /v1/vms/images/{image_id}/upload">client.vms.images.<a href="./src/resources/vms/images.ts">upload</a>(imageID, { ...params }) -> ImageUploadResponse</code>
 
 # Nodes
 
