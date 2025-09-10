@@ -2,15 +2,7 @@
 
 import { APIResource } from '../../core/resource';
 import * as ImagesAPI from './images';
-import {
-  ImageCompleteUploadResponse,
-  ImageGetResponse,
-  ImageStartUploadParams,
-  ImageStartUploadResponse,
-  ImageUploadParams,
-  ImageUploadResponse,
-  Images,
-} from './images';
+import { ImageGetResponse, ImageListResponse, Images } from './images';
 import * as ScriptAPI from './script';
 import { Script, ScriptCreateParams, ScriptCreateResponse, ScriptRetrieveResponse, UserData } from './script';
 import { APIPromise } from '../../core/api-promise';
@@ -109,11 +101,7 @@ export declare namespace VMs {
 
   export {
     Images as Images,
-    type ImageCompleteUploadResponse as ImageCompleteUploadResponse,
+    type ImageListResponse as ImageListResponse,
     type ImageGetResponse as ImageGetResponse,
-    type ImageStartUploadResponse as ImageStartUploadResponse,
-    type ImageUploadResponse as ImageUploadResponse,
-    type ImageStartUploadParams as ImageStartUploadParams,
-    type ImageUploadParams as ImageUploadParams,
   };
 }

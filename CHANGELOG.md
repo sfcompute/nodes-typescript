@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.14 (2025-09-10)
+
+Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)
+
+### Features
+
+* **api:** api update ([1e0d817](https://github.com/sfcompute/nodes-typescript/commit/1e0d817ff6fc5454337c3fe72df4f3fe8aa08685))
+
+
+### Bug Fixes
+
+* **api:** remove undocumented endpoints, add list endpoint ([b46f9f0](https://github.com/sfcompute/nodes-typescript/commit/b46f9f07eff4207f2a3b86c544208a1d7da6e5c9))
+* coerce nullable values to undefined ([6b8b463](https://github.com/sfcompute/nodes-typescript/commit/6b8b463fa90c647fba97d5ab608bb4d7f0e32291))
+
 ## 0.1.0-alpha.13 (2025-09-08)
 
 Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)

@@ -6,42 +6,59 @@ import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
 export class Images extends APIResource {
-  completeUpload(imageID: string, options?: RequestOptions): APIPromise<ImageCompleteUploadResponse> {
-    return this._client.patch(path`/v1/vms/images/${imageID}/complete_upload`, options);
+  /**
+   * List all VM Images for the authenticated account
+   */
+  list(options?: RequestOptions): APIPromise<ImageListResponse> {
+    return this._client.get('/v1/vms/images', options);
   }
 
+  /**
+   * Get the download URL for a VM image by ID
+   */
   get(imageID: string, options?: RequestOptions): APIPromise<ImageGetResponse> {
     return this._client.get(path`/v1/vms/images/${imageID}`, options);
-  }
-
-  startUpload(body: ImageStartUploadParams, options?: RequestOptions): APIPromise<ImageStartUploadResponse> {
-    return this._client.post('/v1/vms/images/start_upload', { body, ...options });
-  }
-
-  upload(
-    imageID: string,
-    body: ImageUploadParams,
-    options?: RequestOptions,
-  ): APIPromise<ImageUploadResponse> {
-    return this._client.post(path`/v1/vms/images/${imageID}/upload`, { body, ...options });
   }
 }
 
 /**
- * Response body for completing a multipart upload
+ * Response body for listing images
  */
-export interface ImageCompleteUploadResponse {
-  /**
-   * The image ID
-   */
-  image_id: string;
+export interface ImageListResponse {
+  data: Array<ImageListResponse.Data>;
 
-  object: 'image';
+  has_more: boolean;
 
+  object: 'list';
+}
+
+export namespace ImageListResponse {
   /**
-   * Status of the upload verification
+   * Response body for individual image info (used in lists)
    */
-  upload_status: string;
+  export interface Data {
+    /**
+     * Creation timestamp as Unix timestamp in seconds
+     */
+    created_at: number;
+
+    /**
+     * The image ID
+     */
+    image_id: string;
+
+    /**
+     * Client given name of the image
+     */
+    name: string;
+
+    object: 'image';
+
+    /**
+     * Upload status of the image
+     */
+    upload_status: string;
+  }
 }
 
 /**
@@ -53,8 +70,6 @@ export interface ImageGetResponse {
    */
   download_url: string;
 
-  etag: string;
-
   /**
    * Timestamp when the presigned URL expires (RFC 3339 format)
    */
@@ -65,57 +80,14 @@ export interface ImageGetResponse {
    */
   image_id: string;
 
-  object: 'image';
-}
-
-/**
- * Response body for starting a multipart upload
- */
-export interface ImageStartUploadResponse {
   /**
-   * The image ID for the created image
-   */
-  image_id: string;
-
-  object: 'image';
-}
-
-/**
- * Response body for image upload presigned URL generation
- */
-export interface ImageUploadResponse {
-  /**
-   * Timestamp when the presigned URL expires (RFC 3339 format)
-   */
-  expires_at: string;
-
-  /**
-   * The presigned URL that can be used to upload the image part
-   */
-  upload_url: string;
-}
-
-export interface ImageStartUploadParams {
-  /**
-   * Name of the image file
+   * Human readable name of the image
    */
   name: string;
-}
 
-export interface ImageUploadParams {
-  /**
-   * part idx (1-based)
-   */
-  part_id: number;
+  object: 'image';
 }
 
 export declare namespace Images {
-  export {
-    type ImageCompleteUploadResponse as ImageCompleteUploadResponse,
-    type ImageGetResponse as ImageGetResponse,
-    type ImageStartUploadResponse as ImageStartUploadResponse,
-    type ImageUploadResponse as ImageUploadResponse,
-    type ImageStartUploadParams as ImageStartUploadParams,
-    type ImageUploadParams as ImageUploadParams,
-  };
+  export { type ImageListResponse as ImageListResponse, type ImageGetResponse as ImageGetResponse };
 }

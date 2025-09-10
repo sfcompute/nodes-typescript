@@ -9,8 +9,8 @@ const client = new SFCNodes({
 
 describe('resource images', () => {
   // Prism tests are disabled
-  test.skip('completeUpload', async () => {
-    const responsePromise = client.vms.images.completeUpload('image_id');
+  test.skip('list', async () => {
+    const responsePromise = client.vms.images.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -30,39 +30,5 @@ describe('resource images', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // Prism tests are disabled
-  test.skip('startUpload: only required params', async () => {
-    const responsePromise = client.vms.images.startUpload({ name: 'name' });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // Prism tests are disabled
-  test.skip('startUpload: required and optional params', async () => {
-    const response = await client.vms.images.startUpload({ name: 'name' });
-  });
-
-  // Prism tests are disabled
-  test.skip('upload: only required params', async () => {
-    const responsePromise = client.vms.images.upload('image_id', { part_id: 0 });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // Prism tests are disabled
-  test.skip('upload: required and optional params', async () => {
-    const response = await client.vms.images.upload('image_id', { part_id: 0 });
   });
 });
