@@ -10,6 +10,9 @@ export class Images extends APIResource {
     return this._client.patch(path`/v1/vms/images/${imageID}/complete_upload`, options);
   }
 
+  /**
+   * Get the download URL for a VM image by ID
+   */
   get(imageID: string, options?: RequestOptions): APIPromise<ImageGetResponse> {
     return this._client.get(path`/v1/vms/images/${imageID}`, options);
   }
@@ -53,8 +56,6 @@ export interface ImageGetResponse {
    */
   download_url: string;
 
-  etag: string;
-
   /**
    * Timestamp when the presigned URL expires (RFC 3339 format)
    */
@@ -64,6 +65,11 @@ export interface ImageGetResponse {
    * The image ID
    */
   image_id: string;
+
+  /**
+   * Human readable name of the image
+   */
+  name: string;
 
   object: 'image';
 }
