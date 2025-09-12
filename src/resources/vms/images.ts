@@ -58,6 +58,11 @@ export namespace ImageListResponse {
      * Upload status of the image
      */
     upload_status: string;
+
+    /**
+     * SHA256 hash of the image file for integrity verification
+     */
+    sha256_hash?: string | null;
   }
 }
 
@@ -86,6 +91,11 @@ export interface ImageGetResponse {
   name: string;
 
   object: 'image';
+
+  /**
+   * SHA256 hash of the image file for integrity verification
+   */
+  sha256_hash: string;
 }
 
 export declare namespace Images {

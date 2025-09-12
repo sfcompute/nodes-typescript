@@ -32,6 +32,7 @@ describe('resource nodes', () => {
       zone: 'hayesvalley',
       cloud_init_user_data: [0],
       end_at: 0,
+      image_id: 'vmi_1234567890abcdef',
       names: ['cuda-crunch'],
       node_type: 'autoreserved',
       start_at: 1640995200,
