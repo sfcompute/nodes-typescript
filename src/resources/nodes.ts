@@ -106,6 +106,11 @@ export interface CreateNodesRequest {
   end_at?: number | null;
 
   /**
+   * Custom image ID to use for the VM instances
+   */
+  image_id?: string;
+
+  /**
    * Custom node names. Names cannot follow the vm\_{alpha_numeric_chars} as this is
    * reserved for system-generated IDs. Names cannot be numeric strings.
    */
@@ -383,6 +388,11 @@ export interface NodeCreateParams {
    * the hour. If not provided, the node will be created as an autoreserved node.
    */
   end_at?: number | null;
+
+  /**
+   * Custom image ID to use for the VM instances
+   */
+  image_id?: string;
 
   /**
    * Custom node names. Names cannot follow the vm\_{alpha_numeric_chars} as this is
