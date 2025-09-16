@@ -264,6 +264,8 @@ export namespace ListResponseNode {
         status: 'Pending' | 'Running' | 'Destroyed' | 'NodeFailure' | 'Unspecified';
 
         updated_at: number;
+
+        image_id?: string | null;
       }
     }
   }
@@ -346,6 +348,8 @@ export namespace Node {
       status: 'Pending' | 'Running' | 'Destroyed' | 'NodeFailure' | 'Unspecified';
 
       updated_at: number;
+
+      image_id?: string | null;
     }
   }
 }
