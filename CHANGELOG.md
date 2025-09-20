@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.17 (2025-09-20)
+
+Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.16...v0.1.0-alpha.17)
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([d6c29b1](https://github.com/sfcompute/nodes-typescript/commit/d6c29b133f030bef7bc50063270b788d12af5c66))
+
 ## 0.1.0-alpha.16 (2025-09-16)
 
 Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)
