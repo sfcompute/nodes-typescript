@@ -165,7 +165,8 @@ export type ErrorType =
   | 'not_implemented'
   | 'upgrade_required'
   | 'payment_required'
-  | 'service_unavailable';
+  | 'service_unavailable'
+  | 'unprocessable_entity';
 
 export interface ExtendNodeRequest {
   /**
