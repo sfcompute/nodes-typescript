@@ -100,8 +100,8 @@ export interface CreateNodesRequest {
   cloud_init_user_data?: Array<number>;
 
   /**
-   * End time as Unix timestamp in seconds. If provided, end time must be aligned to
-   * the hour. If not provided, the node will be created as an autoreserved node.
+   * End time as Unix timestamp in seconds If provided, end time must be aligned to
+   * the hour If not provided, the node will be created as an autoreserved node
    */
   end_at?: number | null;
 
@@ -111,15 +111,15 @@ export interface CreateNodesRequest {
   image_id?: string;
 
   /**
-   * Custom node names. Names cannot follow the vm\_{alpha_numeric_chars} as this is
-   * reserved for system-generated IDs. Names cannot be numeric strings.
+   * Custom node names Names cannot follow the vm\_{alpha_numeric_chars} as this is
+   * reserved for system-generated IDs Names cannot be numeric strings
    */
   names?: Array<string>;
 
   node_type?: NodeType | null;
 
   /**
-   * Start time as Unix timestamp in seconds
+   * Start time as Unix timestamp in seconds Required for reserved nodes
    */
   start_at?: number;
 }
@@ -389,8 +389,8 @@ export interface NodeCreateParams {
   cloud_init_user_data?: Array<number>;
 
   /**
-   * End time as Unix timestamp in seconds. If provided, end time must be aligned to
-   * the hour. If not provided, the node will be created as an autoreserved node.
+   * End time as Unix timestamp in seconds If provided, end time must be aligned to
+   * the hour If not provided, the node will be created as an autoreserved node
    */
   end_at?: number | null;
 
@@ -400,15 +400,15 @@ export interface NodeCreateParams {
   image_id?: string;
 
   /**
-   * Custom node names. Names cannot follow the vm\_{alpha_numeric_chars} as this is
-   * reserved for system-generated IDs. Names cannot be numeric strings.
+   * Custom node names Names cannot follow the vm\_{alpha_numeric_chars} as this is
+   * reserved for system-generated IDs Names cannot be numeric strings
    */
   names?: Array<string>;
 
   node_type?: NodeType | null;
 
   /**
-   * Start time as Unix timestamp in seconds
+   * Start time as Unix timestamp in seconds Required for reserved nodes
    */
   start_at?: number;
 }
