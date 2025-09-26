@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "@sfcompute/nodes-sdk-alpha/*": ["dist/src/*"],
-      "@sfcompute/nodes-sdk-alpha": ["dist/src/index.ts"]
+      "@sfcompute/nodes-sdk-alpha/*": ["./dist/src/*"],
+      "@sfcompute/nodes-sdk-alpha": ["./dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
