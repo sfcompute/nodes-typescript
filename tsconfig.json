@@ -7,10 +7,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "./",
     "paths": {
-      "@sfcompute/nodes-sdk-alpha/*": ["src/*"],
-      "@sfcompute/nodes-sdk-alpha": ["src/index.ts"]
+      "@sfcompute/nodes-sdk-alpha/*": ["./src/*"],
+      "@sfcompute/nodes-sdk-alpha": ["./src/index.ts"]
     },
     "noEmit": true,
 
