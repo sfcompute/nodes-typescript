@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.1.0-alpha.17 (2025-09-30)
+
+Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.16...v0.1.0-alpha.17)
+
+### Features
+
+* **api:** api update ([fd3f8ec](https://github.com/sfcompute/nodes-typescript/commit/fd3f8ec01fc54e25b2a03cc8cce359101d46ca18))
+* **api:** api update ([44078aa](https://github.com/sfcompute/nodes-typescript/commit/44078aa5e999ea92e0b8325e9409d8c1c703fdae))
+* **api:** api update ([0a42c37](https://github.com/sfcompute/nodes-typescript/commit/0a42c37687b1be94725ead903b5980efebd421b2))
+
+
+### Performance Improvements
+
+* faster formatting ([51a98eb](https://github.com/sfcompute/nodes-typescript/commit/51a98eba84e5435dfba06a60eccd1fcb8456a515))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([d6c29b1](https://github.com/sfcompute/nodes-typescript/commit/d6c29b133f030bef7bc50063270b788d12af5c66))
+* **internal:** codegen related update ([284b201](https://github.com/sfcompute/nodes-typescript/commit/284b2011f0c3a5cccc5d32332d100ad0b7306c8d))
+* **internal:** codegen related update ([8660c06](https://github.com/sfcompute/nodes-typescript/commit/8660c069659bad0a924f10d2add0f2c8d3adc880))
+* **internal:** fix incremental formatting in some cases ([09d1193](https://github.com/sfcompute/nodes-typescript/commit/09d1193230da0d52f06062f47dbabdec6fee8438))
+* **internal:** remove deprecated `compilerOptions.baseUrl` from tsconfig.json ([1f456b3](https://github.com/sfcompute/nodes-typescript/commit/1f456b35d7ad93d26f3bea55d6881983ccf120e5))
+
 ## 0.1.0-alpha.16 (2025-09-16)
 
 Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)
