@@ -211,6 +211,8 @@ export namespace ListResponseNode {
      */
     created_at?: number | null;
 
+    current_vm?: Data.CurrentVM | null;
+
     /**
      * Deletion time as Unix timestamp in seconds
      */
@@ -244,6 +246,24 @@ export namespace ListResponseNode {
   }
 
   export namespace Data {
+    export interface CurrentVM {
+      id: string;
+
+      created_at: number;
+
+      end_at: number | null;
+
+      object: string;
+
+      start_at: number | null;
+
+      status: 'Pending' | 'Running' | 'Destroyed' | 'NodeFailure' | 'Unspecified';
+
+      updated_at: number;
+
+      image_id?: string | null;
+    }
+
     export interface VMs {
       data: Array<VMs.Data>;
 
@@ -295,6 +315,8 @@ export interface Node {
    */
   created_at?: number | null;
 
+  current_vm?: Node.CurrentVM | null;
+
   /**
    * Deletion time as Unix timestamp in seconds
    */
@@ -328,6 +350,24 @@ export interface Node {
 }
 
 export namespace Node {
+  export interface CurrentVM {
+    id: string;
+
+    created_at: number;
+
+    end_at: number | null;
+
+    object: string;
+
+    start_at: number | null;
+
+    status: 'Pending' | 'Running' | 'Destroyed' | 'NodeFailure' | 'Unspecified';
+
+    updated_at: number;
+
+    image_id?: string | null;
+  }
+
   export interface VMs {
     data: Array<VMs.Data>;
 
