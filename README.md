@@ -48,6 +48,60 @@ const listResponseNode: SFCNodes.ListResponseNode = await client.nodes.list();
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
 
+## File uploads
+
+Request parameters that correspond to file uploads can be passed in many different forms:
+
+- `File` (or an object with the same structure)
+- a `fetch` `Response` (or an object with the same structure)
+- an `fs.ReadStream`
+- the return value of our `toFile` helper
+
+```ts
+import fs from 'fs';
+import SFCNodes, { toFile } from '@sfcompute/nodes-sdk-alpha';
+
+const client = new SFCNodes();
+
+// If you have access to Node `fs` we recommend using `fs.createReadStream()`:
+await client.nodes.create({
+  desired_count: 1,
+  max_price_per_node_hour: 1000,
+  zone: 'hayesvalley',
+  cloud_init_user_data: fs.createReadStream('/path/to/file'),
+});
+
+// Or if you have the web `File` API you can pass a `File` instance:
+await client.nodes.create({
+  desired_count: 1,
+  max_price_per_node_hour: 1000,
+  zone: 'hayesvalley',
+  cloud_init_user_data: new File(['my bytes'], 'file'),
+});
+
+// You can also pass a `fetch` `Response`:
+await client.nodes.create({
+  desired_count: 1,
+  max_price_per_node_hour: 1000,
+  zone: 'hayesvalley',
+  cloud_init_user_data: await fetch('https://somesite/file'),
+});
+
+// Finally, if none of the above are convenient, you can use our `toFile` helper:
+await client.nodes.create({
+  desired_count: 1,
+  max_price_per_node_hour: 1000,
+  zone: 'hayesvalley',
+  cloud_init_user_data: await toFile(Buffer.from('my bytes'), 'file'),
+});
+await client.nodes.create({
+  desired_count: 1,
+  max_price_per_node_hour: 1000,
+  zone: 'hayesvalley',
+  cloud_init_user_data: await toFile(new Uint8Array([0, 1, 2]), 'file'),
+});
+```
+
 ## Handling errors
 
 When the library is unable to connect to the API,
