@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.18 (2025-10-02)
+
+Full Changelog: [v0.1.0-alpha.17...v0.1.0-alpha.18](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.17...v0.1.0-alpha.18)
+
+### Features
+
+* **api:** add `redeploy` action ([88aa263](https://github.com/sfcompute/nodes-typescript/commit/88aa2634ab58e218a3578e40b4f56d802587a0c2))
+
+
+### Chores
+
+* **internal:** remove .eslintcache ([4d5362c](https://github.com/sfcompute/nodes-typescript/commit/4d5362c17dc9282efd70218f1a434d5fa594f7dc))
+
 ## 0.1.0-alpha.17 (2025-09-30)
 
 Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.16...v0.1.0-alpha.17)
