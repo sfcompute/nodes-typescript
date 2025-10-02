@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.20 (2025-10-02)
+
+Full Changelog: [v0.1.0-alpha.19...v0.1.0-alpha.20](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.19...v0.1.0-alpha.20)
+
+### Features
+
+* **api:** add support for `delete` action ([7190193](https://github.com/sfcompute/nodes-typescript/commit/7190193c56b4132d64d497450928d6b3a2073be1))
+
 ## 0.1.0-alpha.19 (2025-10-02)
 
 Full Changelog: [v0.1.0-alpha.18...v0.1.0-alpha.19](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.18...v0.1.0-alpha.19)
