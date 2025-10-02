@@ -3,7 +3,6 @@
 import { APIResource } from '../core/resource';
 import * as NodesAPI from './nodes';
 import { APIPromise } from '../core/api-promise';
-import { type Uploadable } from '../core/uploads';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
@@ -127,7 +126,7 @@ export interface CreateNodesRequest {
   /**
    * User script to be executed during the VM's boot process
    */
-  cloud_init_user_data?: Uploadable;
+  cloud_init_user_data?: string;
 
   /**
    * End time as Unix timestamp in seconds If provided, end time must be aligned to
@@ -456,7 +455,7 @@ export interface NodeCreateParams {
   /**
    * User script to be executed during the VM's boot process
    */
-  cloud_init_user_data?: Uploadable;
+  cloud_init_user_data?: string;
 
   /**
    * End time as Unix timestamp in seconds If provided, end time must be aligned to
@@ -515,7 +514,7 @@ export interface NodeRedeployParams {
    * Update the cloud init user data for VMs running on this node Data should be
    * base64 encoded
    */
-  cloud_init_user_data?: Uploadable;
+  cloud_init_user_data?: string;
 
   /**
    * Redeploy node with this VM image ID

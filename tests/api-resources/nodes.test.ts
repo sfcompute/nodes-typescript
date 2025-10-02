@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import SFCNodes, { toFile } from '@sfcompute/nodes-sdk-alpha';
+import SFCNodes from '@sfcompute/nodes-sdk-alpha';
 
 const client = new SFCNodes({
   bearerToken: 'My Bearer Token',
@@ -30,7 +30,7 @@ describe('resource nodes', () => {
       desired_count: 1,
       max_price_per_node_hour: 1000,
       zone: 'hayesvalley',
-      cloud_init_user_data: await toFile(Buffer.from('# my file contents'), 'README.md'),
+      cloud_init_user_data: 'aGVsbG8gd29ybGQ=',
       end_at: 0,
       image_id: 'vmi_1234567890abcdef',
       names: ['cuda-crunch'],
