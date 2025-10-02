@@ -66,6 +66,19 @@ export class Nodes extends APIResource {
   }
 
   /**
+   * Redeploy a node by replacing its current VM with a new one. Optionally update
+   * the VM image and cloud init user data.
+   *
+   * @example
+   * ```ts
+   * const node = await client.nodes.redeploy('id');
+   * ```
+   */
+  redeploy(id: string, body: NodeRedeployParams, options?: RequestOptions): APIPromise<Node> {
+    return this._client.put(path`/v1/nodes/${id}/redeploy`, { body, ...options });
+  }
+
+  /**
    * Release an auto reserved VM node from its procurement, reducing the
    * procurement's desired quantity by 1
    *
@@ -480,6 +493,28 @@ export interface NodeExtendParams {
   max_price_per_node_hour: number;
 }
 
+export interface NodeRedeployParams {
+  /**
+   * Update the cloud init user data for VMs running on this node
+   */
+  cloud_init_user_data?: Array<number>;
+
+  /**
+   * Redeploy node with this VM image ID
+   */
+  image_id?: string;
+
+  /**
+   * If false, then the new VM will inherit any configuration (like image_id,
+   * cloud_init_user_data) that is left empty in this request from the current VM.
+   *
+   * If true, then any configuration left empty will be set as empty in the new VM.
+   * E.g if cloud_init_user_data is left unset and override_empty is true, then the
+   * new VM will not have any cloud init user data. override_empty defaults to false.
+   */
+  override_empty?: boolean;
+}
+
 export declare namespace Nodes {
   export {
     type AcceleratorType as AcceleratorType,
@@ -496,5 +531,6 @@ export declare namespace Nodes {
     type NodeCreateParams as NodeCreateParams,
     type NodeListParams as NodeListParams,
     type NodeExtendParams as NodeExtendParams,
+    type NodeRedeployParams as NodeRedeployParams,
   };
 }
