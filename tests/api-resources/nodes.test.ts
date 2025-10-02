@@ -95,6 +95,18 @@ describe('resource nodes', () => {
   });
 
   // Prism tests are disabled
+  test.skip('redeploy', async () => {
+    const responsePromise = client.nodes.redeploy('id', {});
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // Prism tests are disabled
   test.skip('release', async () => {
     const responsePromise = client.nodes.release('id');
     const rawResponse = await responsePromise.asResponse();

@@ -30,6 +30,7 @@ import {
   NodeCreateParams,
   NodeExtendParams,
   NodeListParams,
+  NodeRedeployParams,
   NodeType,
   Nodes,
   Status,
@@ -756,5 +757,6 @@ export declare namespace SFCNodes {
     type NodeCreateParams as NodeCreateParams,
     type NodeListParams as NodeListParams,
     type NodeExtendParams as NodeExtendParams,
+    type NodeRedeployParams as NodeRedeployParams,
   };
 }
