@@ -4,6 +4,7 @@ import { APIResource } from '../core/resource';
 import * as NodesAPI from './nodes';
 import { APIPromise } from '../core/api-promise';
 import { type Uploadable } from '../core/uploads';
+import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
@@ -37,6 +38,21 @@ export class Nodes extends APIResource {
     options?: RequestOptions,
   ): APIPromise<ListResponseNode> {
     return this._client.get('/v1/nodes', { query, ...options });
+  }
+
+  /**
+   * Delete a node by id. The node cannot be deleted if it has active or pending VMs.
+   *
+   * @example
+   * ```ts
+   * await client.nodes.delete('id');
+   * ```
+   */
+  delete(id: string, options?: RequestOptions): APIPromise<void> {
+    return this._client.delete(path`/v1/nodes/${id}`, {
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+    });
   }
 
   /**
