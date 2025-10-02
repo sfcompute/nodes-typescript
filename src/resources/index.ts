@@ -16,5 +16,6 @@ export {
   type NodeCreateParams,
   type NodeListParams,
   type NodeExtendParams,
+  type NodeRedeployParams,
 } from './nodes';
 export { VMs, type VMLogsResponse, type VMSSHResponse, type VMLogsParams, type VMSSHParams } from './vms/vms';
