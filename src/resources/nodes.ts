@@ -100,8 +100,8 @@ export interface CreateNodesRequest {
   cloud_init_user_data?: Array<number>;
 
   /**
-   * End time as Unix timestamp in seconds. If provided, end time must be aligned to
-   * the hour. If not provided, the node will be created as an autoreserved node.
+   * End time as Unix timestamp in seconds If provided, end time must be aligned to
+   * the hour If not provided, the node will be created as an autoreserved node
    */
   end_at?: number | null;
 
@@ -111,15 +111,15 @@ export interface CreateNodesRequest {
   image_id?: string;
 
   /**
-   * Custom node names. Names cannot follow the vm\_{alpha_numeric_chars} as this is
-   * reserved for system-generated IDs. Names cannot be numeric strings.
+   * Custom node names Names cannot follow the vm\_{alpha_numeric_chars} as this is
+   * reserved for system-generated IDs Names cannot be numeric strings
    */
   names?: Array<string>;
 
   node_type?: NodeType | null;
 
   /**
-   * Start time as Unix timestamp in seconds
+   * Start time as Unix timestamp in seconds Required for reserved nodes
    */
   start_at?: number;
 }
@@ -165,7 +165,8 @@ export type ErrorType =
   | 'not_implemented'
   | 'upgrade_required'
   | 'payment_required'
-  | 'service_unavailable';
+  | 'service_unavailable'
+  | 'unprocessable_entity';
 
 export interface ExtendNodeRequest {
   /**
@@ -210,6 +211,8 @@ export namespace ListResponseNode {
      */
     created_at?: number | null;
 
+    current_vm?: Data.CurrentVM | null;
+
     /**
      * Deletion time as Unix timestamp in seconds
      */
@@ -243,6 +246,24 @@ export namespace ListResponseNode {
   }
 
   export namespace Data {
+    export interface CurrentVM {
+      id: string;
+
+      created_at: number;
+
+      end_at: number | null;
+
+      object: string;
+
+      start_at: number | null;
+
+      status: 'Pending' | 'Running' | 'Destroyed' | 'NodeFailure' | 'Unspecified';
+
+      updated_at: number;
+
+      image_id?: string | null;
+    }
+
     export interface VMs {
       data: Array<VMs.Data>;
 
@@ -294,6 +315,8 @@ export interface Node {
    */
   created_at?: number | null;
 
+  current_vm?: Node.CurrentVM | null;
+
   /**
    * Deletion time as Unix timestamp in seconds
    */
@@ -327,6 +350,24 @@ export interface Node {
 }
 
 export namespace Node {
+  export interface CurrentVM {
+    id: string;
+
+    created_at: number;
+
+    end_at: number | null;
+
+    object: string;
+
+    start_at: number | null;
+
+    status: 'Pending' | 'Running' | 'Destroyed' | 'NodeFailure' | 'Unspecified';
+
+    updated_at: number;
+
+    image_id?: string | null;
+  }
+
   export interface VMs {
     data: Array<VMs.Data>;
 
@@ -388,8 +429,8 @@ export interface NodeCreateParams {
   cloud_init_user_data?: Array<number>;
 
   /**
-   * End time as Unix timestamp in seconds. If provided, end time must be aligned to
-   * the hour. If not provided, the node will be created as an autoreserved node.
+   * End time as Unix timestamp in seconds If provided, end time must be aligned to
+   * the hour If not provided, the node will be created as an autoreserved node
    */
   end_at?: number | null;
 
@@ -399,15 +440,15 @@ export interface NodeCreateParams {
   image_id?: string;
 
   /**
-   * Custom node names. Names cannot follow the vm\_{alpha_numeric_chars} as this is
-   * reserved for system-generated IDs. Names cannot be numeric strings.
+   * Custom node names Names cannot follow the vm\_{alpha_numeric_chars} as this is
+   * reserved for system-generated IDs Names cannot be numeric strings
    */
   names?: Array<string>;
 
   node_type?: NodeType | null;
 
   /**
-   * Start time as Unix timestamp in seconds
+   * Start time as Unix timestamp in seconds Required for reserved nodes
    */
   start_at?: number;
 }
