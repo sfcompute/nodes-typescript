@@ -55,6 +55,7 @@ Methods:
 
 - <code title="post /v1/nodes">client.nodes.<a href="./src/resources/nodes.ts">create</a>({ ...params }) -> ListResponseNode</code>
 - <code title="get /v1/nodes">client.nodes.<a href="./src/resources/nodes.ts">list</a>({ ...params }) -> ListResponseNode</code>
+- <code title="delete /v1/nodes/{id}">client.nodes.<a href="./src/resources/nodes.ts">delete</a>(id) -> void</code>
 - <code title="patch /v1/nodes/{id}/extend">client.nodes.<a href="./src/resources/nodes.ts">extend</a>(id, { ...params }) -> Node</code>
 - <code title="get /v1/nodes/{id}">client.nodes.<a href="./src/resources/nodes.ts">get</a>(id) -> Node</code>
 - <code title="put /v1/nodes/{id}/redeploy">client.nodes.<a href="./src/resources/nodes.ts">redeploy</a>(id, { ...params }) -> Node</code>
