@@ -55,7 +55,10 @@ describe('resource nodes', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.nodes.list({ id: ['string'], name: ['string'] }, { path: '/_stainless_unknown_path' }),
+      client.nodes.list(
+        { id: ['string'], name: ['string'], type: 'autoreserved' },
+        { path: '/_stainless_unknown_path' },
+      ),
     ).rejects.toThrow(SFCNodes.NotFoundError);
   });
 

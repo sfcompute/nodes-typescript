@@ -25,7 +25,7 @@ export class Nodes extends APIResource {
   }
 
   /**
-   * List all VM nodes for the authenticated account
+   * List all nodes for the authenticated account
    *
    * @example
    * ```ts
@@ -485,15 +485,20 @@ export interface NodeCreateParams {
 export interface NodeListParams {
   /**
    * Filter nodes by node_id Use ?id=n_b1dc52505c6db142&id=n_b1dc52505c6db133 to
-   * specify multiple IDs. Cannot be used with name
+   * specify multiple IDs. Cannot combine with name or node_type
    */
   id?: Array<string>;
 
   /**
    * Filter nodes by their names Use ?name=val1&name=val2 to specify multiple names.
-   * Cannot be used with id
+   * Cannot combine with id or node_type
    */
   name?: Array<string>;
+
+  /**
+   * Filter nodes by their type Cannot combine with id or name
+   */
+  type?: NodeType;
 }
 
 export interface NodeExtendParams {
