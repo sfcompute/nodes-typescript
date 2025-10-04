@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.22 (2025-10-04)
+
+Full Changelog: [v0.1.0-alpha.21...v0.1.0-alpha.22](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.21...v0.1.0-alpha.22)
+
+### Features
+
+* **api:** api update ([3cecf63](https://github.com/sfcompute/nodes-typescript/commit/3cecf63f4323bcaa132273ac9bce32b265e45875))
+
+
+### Chores
+
+* **jsdoc:** fix [@link](https://github.com/link) annotations to refer only to parts of the package‘s public interface ([9566d5a](https://github.com/sfcompute/nodes-typescript/commit/9566d5a2b605e95e2169e70aeae2c53748b5c9fd))
+
 ## 0.1.0-alpha.21 (2025-10-02)
 
 Full Changelog: [v0.1.0-alpha.20...v0.1.0-alpha.21](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.20...v0.1.0-alpha.21)
