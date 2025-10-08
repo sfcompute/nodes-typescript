@@ -124,7 +124,8 @@ export interface CreateNodesRequest {
   zone: string;
 
   /**
-   * User script to be executed during the VM's boot process
+   * User script to be executed during the VM's boot process Data should be base64
+   * encoded
    */
   cloud_init_user_data?: string;
 
@@ -453,7 +454,8 @@ export interface NodeCreateParams {
   zone: string;
 
   /**
-   * User script to be executed during the VM's boot process
+   * User script to be executed during the VM's boot process Data should be base64
+   * encoded
    */
   cloud_init_user_data?: string;
 
