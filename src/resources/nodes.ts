@@ -25,7 +25,7 @@ export class Nodes extends APIResource {
   }
 
   /**
-   * List all VM nodes for the authenticated account
+   * List all nodes for the authenticated account
    *
    * @example
    * ```ts
@@ -124,7 +124,8 @@ export interface CreateNodesRequest {
   zone: string;
 
   /**
-   * User script to be executed during the VM's boot process
+   * User script to be executed during the VM's boot process Data should be base64
+   * encoded
    */
   cloud_init_user_data?: string;
 
@@ -140,15 +141,17 @@ export interface CreateNodesRequest {
   image_id?: string;
 
   /**
-   * Custom node names Names cannot follow the vm\_{alpha_numeric_chars} as this is
-   * reserved for system-generated IDs Names cannot be numeric strings
+   * Custom node names Names cannot begin with 'vm*' or 'n*' as this is reserved for
+   * system-generated IDs Names cannot be numeric strings Names cannot exceed 128
+   * characters
    */
   names?: Array<string>;
 
   node_type?: NodeType | null;
 
   /**
-   * Start time as Unix timestamp in seconds Required for reserved nodes
+   * Start time as Unix timestamp in seconds Optional for reserved nodes. If not
+   * provided, defaults to current time
    */
   start_at?: number;
 }
@@ -453,7 +456,8 @@ export interface NodeCreateParams {
   zone: string;
 
   /**
-   * User script to be executed during the VM's boot process
+   * User script to be executed during the VM's boot process Data should be base64
+   * encoded
    */
   cloud_init_user_data?: string;
 
@@ -469,15 +473,17 @@ export interface NodeCreateParams {
   image_id?: string;
 
   /**
-   * Custom node names Names cannot follow the vm\_{alpha_numeric_chars} as this is
-   * reserved for system-generated IDs Names cannot be numeric strings
+   * Custom node names Names cannot begin with 'vm*' or 'n*' as this is reserved for
+   * system-generated IDs Names cannot be numeric strings Names cannot exceed 128
+   * characters
    */
   names?: Array<string>;
 
   node_type?: NodeType | null;
 
   /**
-   * Start time as Unix timestamp in seconds Required for reserved nodes
+   * Start time as Unix timestamp in seconds Optional for reserved nodes. If not
+   * provided, defaults to current time
    */
   start_at?: number;
 }
@@ -485,15 +491,20 @@ export interface NodeCreateParams {
 export interface NodeListParams {
   /**
    * Filter nodes by node_id Use ?id=n_b1dc52505c6db142&id=n_b1dc52505c6db133 to
-   * specify multiple IDs. Cannot be used with name
+   * specify multiple IDs. Cannot combine with name or node_type
    */
   id?: Array<string>;
 
   /**
    * Filter nodes by their names Use ?name=val1&name=val2 to specify multiple names.
-   * Cannot be used with id
+   * Cannot combine with id or node_type
    */
   name?: Array<string>;
+
+  /**
+   * Filter nodes by their type Cannot combine with id or name
+   */
+  type?: NodeType;
 }
 
 export interface NodeExtendParams {
