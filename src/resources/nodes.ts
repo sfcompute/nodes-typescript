@@ -141,15 +141,17 @@ export interface CreateNodesRequest {
   image_id?: string;
 
   /**
-   * Custom node names Names cannot follow the vm\_{alpha_numeric_chars} as this is
-   * reserved for system-generated IDs Names cannot be numeric strings
+   * Custom node names Names cannot begin with 'vm*' or 'n*' as this is reserved for
+   * system-generated IDs Names cannot be numeric strings Names cannot exceed 128
+   * characters
    */
   names?: Array<string>;
 
   node_type?: NodeType | null;
 
   /**
-   * Start time as Unix timestamp in seconds Required for reserved nodes
+   * Start time as Unix timestamp in seconds Optional for reserved nodes. If not
+   * provided, defaults to current time
    */
   start_at?: number;
 }
@@ -471,15 +473,17 @@ export interface NodeCreateParams {
   image_id?: string;
 
   /**
-   * Custom node names Names cannot follow the vm\_{alpha_numeric_chars} as this is
-   * reserved for system-generated IDs Names cannot be numeric strings
+   * Custom node names Names cannot begin with 'vm*' or 'n*' as this is reserved for
+   * system-generated IDs Names cannot be numeric strings Names cannot exceed 128
+   * characters
    */
   names?: Array<string>;
 
   node_type?: NodeType | null;
 
   /**
-   * Start time as Unix timestamp in seconds Required for reserved nodes
+   * Start time as Unix timestamp in seconds Optional for reserved nodes. If not
+   * provided, defaults to current time
    */
   start_at?: number;
 }
