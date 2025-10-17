@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.22 (2025-10-17)
+
+Full Changelog: [v0.1.0-alpha.21...v0.1.0-alpha.22](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.21...v0.1.0-alpha.22)
+
+### Features
+
+* **api:** api update ([f930370](https://github.com/sfcompute/nodes-typescript/commit/f930370ca4c3d504de72631104b7cb953fa1c5a0))
+* **api:** api update ([d003594](https://github.com/sfcompute/nodes-typescript/commit/d003594ed31b0b93000db809a3a83eaa37ef08d0))
+* **api:** api update ([3cecf63](https://github.com/sfcompute/nodes-typescript/commit/3cecf63f4323bcaa132273ac9bce32b265e45875))
+
+
+### Chores
+
+* **internal:** use npm pack for build uploads ([f516a26](https://github.com/sfcompute/nodes-typescript/commit/f516a262b68fc4c62ba94ddff3efbb67589a59a3))
+* **jsdoc:** fix [@link](https://github.com/link) annotations to refer only to parts of the package‘s public interface ([9566d5a](https://github.com/sfcompute/nodes-typescript/commit/9566d5a2b605e95e2169e70aeae2c53748b5c9fd))
+
 ## 0.1.0-alpha.21 (2025-10-02)
 
 Full Changelog: [v0.1.0-alpha.20...v0.1.0-alpha.21](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.20...v0.1.0-alpha.21)
