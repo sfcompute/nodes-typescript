@@ -49,6 +49,16 @@ export interface VMSSHResponse {
 
   ssh_port: number;
 
+  /**
+   * Unix timestamp in seconds since epoch
+   */
+  last_attempted_key_update?: number | null;
+
+  /**
+   * Unix timestamp in seconds since epoch
+   */
+  last_successful_key_update?: number | null;
+
   ssh_host_keys?: Array<VMSSHResponse.SSHHostKey> | null;
 }
 
