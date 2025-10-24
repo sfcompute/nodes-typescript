@@ -151,7 +151,7 @@ export interface CreateNodesRequest {
 
   /**
    * Start time as Unix timestamp in seconds Optional for reserved nodes. If not
-   * provided, defaults to current time
+   * provided, defaults to now
    */
   start_at?: number;
 }
@@ -483,7 +483,7 @@ export interface NodeCreateParams {
 
   /**
    * Start time as Unix timestamp in seconds Optional for reserved nodes. If not
-   * provided, defaults to current time
+   * provided, defaults to now
    */
   start_at?: number;
 }
