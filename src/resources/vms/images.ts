@@ -93,6 +93,11 @@ export interface ImageGetResponse {
   object: 'image';
 
   /**
+   * Size of the image file in bytes
+   */
+  object_size: number;
+
+  /**
    * SHA256 hash of the image file for integrity verification
    */
   sha256_hash: string;
