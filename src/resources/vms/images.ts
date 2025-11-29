@@ -48,7 +48,7 @@ export namespace ImageListResponse {
     image_id: string;
 
     /**
-     * Client given name of the image
+     * Client given name of the image. Must be unique per account.
      */
     name: string;
 
@@ -86,7 +86,7 @@ export interface ImageGetResponse {
   image_id: string;
 
   /**
-   * Human readable name of the image
+   * Human readable name of the image. Must be unique per account.
    */
   name: string;
 
