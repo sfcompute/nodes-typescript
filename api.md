@@ -60,3 +60,15 @@ Methods:
 - <code title="get /v1/nodes/{id}">client.nodes.<a href="./src/resources/nodes.ts">get</a>(id) -> Node</code>
 - <code title="put /v1/nodes/{id}/redeploy">client.nodes.<a href="./src/resources/nodes.ts">redeploy</a>(id, { ...params }) -> Node</code>
 - <code title="patch /v1/nodes/{id}/release">client.nodes.<a href="./src/resources/nodes.ts">release</a>(id) -> Node</code>
+
+# Zones
+
+Types:
+
+- <code><a href="./src/resources/zones.ts">ZoneListResponse</a></code>
+- <code><a href="./src/resources/zones.ts">ZoneGetResponse</a></code>
+
+Methods:
+
+- <code title="get /v0/zones">client.zones.<a href="./src/resources/zones.ts">list</a>() -> ZoneListResponse</code>
+- <code title="get /v0/zones/{id}">client.zones.<a href="./src/resources/zones.ts">get</a>(id) -> ZoneGetResponse</code>
