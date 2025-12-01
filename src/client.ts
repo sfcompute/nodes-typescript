@@ -35,6 +35,7 @@ import {
   Nodes,
   Status,
 } from './resources/nodes';
+import { ZoneGetResponse, ZoneListResponse, Zones } from './resources/zones';
 import { VMLogsParams, VMLogsResponse, VMSSHParams, VMSSHResponse, VMs } from './resources/vms/vms';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
@@ -725,10 +726,12 @@ export class SFCNodes {
 
   vms: API.VMs = new API.VMs(this);
   nodes: API.Nodes = new API.Nodes(this);
+  zones: API.Zones = new API.Zones(this);
 }
 
 SFCNodes.VMs = VMs;
 SFCNodes.Nodes = Nodes;
+SFCNodes.Zones = Zones;
 
 export declare namespace SFCNodes {
   export type RequestOptions = Opts.RequestOptions;
@@ -758,5 +761,11 @@ export declare namespace SFCNodes {
     type NodeListParams as NodeListParams,
     type NodeExtendParams as NodeExtendParams,
     type NodeRedeployParams as NodeRedeployParams,
+  };
+
+  export {
+    Zones as Zones,
+    type ZoneListResponse as ZoneListResponse,
+    type ZoneGetResponse as ZoneGetResponse,
   };
 }
