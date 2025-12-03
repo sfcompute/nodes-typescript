@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.26 (2025-12-03)
+
+Full Changelog: [v0.1.0-alpha.25...v0.1.0-alpha.26](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.25...v0.1.0-alpha.26)
+
+### Chores
+
+* **client:** fix logger property type ([567d649](https://github.com/sfcompute/nodes-typescript/commit/567d649122f1bca9fc2ea8a229498a12fc370c72))
+* **internal:** upgrade eslint ([8c190ba](https://github.com/sfcompute/nodes-typescript/commit/8c190ba503a6f0acb56ce33fb8657c62b631265e))
+
 ## 0.1.0-alpha.25 (2025-12-01)
 
 Full Changelog: [v0.1.0-alpha.24...v0.1.0-alpha.25](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.24...v0.1.0-alpha.25)
