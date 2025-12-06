@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.28 (2025-12-06)
+
+Full Changelog: [v0.1.0-alpha.27...v0.1.0-alpha.28](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.27...v0.1.0-alpha.28)
+
+### Bug Fixes
+
+* **mcp:** correct code tool API endpoint ([e1d8df1](https://github.com/sfcompute/nodes-typescript/commit/e1d8df157f5bd1c9922ff4689a6ff69288ea31c0))
+* **mcp:** return correct lines on typescript errors ([9e23e52](https://github.com/sfcompute/nodes-typescript/commit/9e23e52f4e9e18876ea7454bf2dc1f3e393ba9b4))
+
+
+### Chores
+
+* **internal:** codegen related update ([efcc324](https://github.com/sfcompute/nodes-typescript/commit/efcc3241aab120b1e10d771c14f0fa97763c38c5))
+* **internal:** codegen related update ([43c1b91](https://github.com/sfcompute/nodes-typescript/commit/43c1b91d4522c19e7000542db9b26d0ba5b96b32))
+
 ## 0.1.0-alpha.27 (2025-12-06)
 
 Full Changelog: [v0.1.0-alpha.26...v0.1.0-alpha.27](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.26...v0.1.0-alpha.27)
