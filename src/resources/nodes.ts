@@ -16,7 +16,6 @@ export class Nodes extends APIResource {
    * const listResponseNode = await client.nodes.create({
    *   desired_count: 1,
    *   max_price_per_node_hour: 1000,
-   *   zone: 'hayesvalley',
    * });
    * ```
    */
@@ -119,9 +118,9 @@ export interface CreateNodesRequest {
   max_price_per_node_hour: number;
 
   /**
-   * Zone to create the nodes in
+   * Allow auto reserved nodes to be created in any zone that meets the requirements
    */
-  zone: string;
+  any_zone?: boolean;
 
   /**
    * User script to be executed during the VM's boot process Data should be base64
@@ -154,6 +153,12 @@ export interface CreateNodesRequest {
    * provided, defaults to now
    */
   start_at?: number;
+
+  /**
+   * Zone to create the nodes in. Required for auto reserved nodes if any_zone is
+   * false.
+   */
+  zone?: string;
 }
 
 export interface ErrorContent {
@@ -293,6 +298,8 @@ export namespace ListResponseNode {
 
       updated_at: number;
 
+      zone: string;
+
       image_id?: string | null;
     }
 
@@ -317,6 +324,8 @@ export namespace ListResponseNode {
         status: 'Pending' | 'Running' | 'Destroyed' | 'NodeFailure' | 'Unspecified';
 
         updated_at: number;
+
+        zone: string;
 
         image_id?: string | null;
       }
@@ -397,6 +406,8 @@ export namespace Node {
 
     updated_at: number;
 
+    zone: string;
+
     image_id?: string | null;
   }
 
@@ -421,6 +432,8 @@ export namespace Node {
       status: 'Pending' | 'Running' | 'Destroyed' | 'NodeFailure' | 'Unspecified';
 
       updated_at: number;
+
+      zone: string;
 
       image_id?: string | null;
     }
@@ -451,9 +464,9 @@ export interface NodeCreateParams {
   max_price_per_node_hour: number;
 
   /**
-   * Zone to create the nodes in
+   * Allow auto reserved nodes to be created in any zone that meets the requirements
    */
-  zone: string;
+  any_zone?: boolean;
 
   /**
    * User script to be executed during the VM's boot process Data should be base64
@@ -486,6 +499,12 @@ export interface NodeCreateParams {
    * provided, defaults to now
    */
   start_at?: number;
+
+  /**
+   * Zone to create the nodes in. Required for auto reserved nodes if any_zone is
+   * false.
+   */
+  zone?: string;
 }
 
 export interface NodeListParams {
