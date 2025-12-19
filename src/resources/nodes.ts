@@ -203,8 +203,7 @@ export type ErrorType =
   | 'upgrade_required'
   | 'payment_required'
   | 'service_unavailable'
-  | 'unprocessable_entity'
-  | 'resource_unavailable';
+  | 'unprocessable_entity';
 
 export interface ExtendNodeRequest {
   /**
