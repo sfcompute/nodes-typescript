@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.1.0-alpha.28 (2026-01-08)
+
+Full Changelog: [v0.1.0-alpha.27...v0.1.0-alpha.28](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.27...v0.1.0-alpha.28)
+
+### Features
+
+* **api:** api update ([bbebe4a](https://github.com/sfcompute/nodes-typescript/commit/bbebe4afcdcae6e389e7f25a15ed924d7dbd25b3))
+* **api:** api update ([fe83e26](https://github.com/sfcompute/nodes-typescript/commit/fe83e263cf3bef0a4d231172b231b126d4bc81da))
+
+
+### Bug Fixes
+
+* **mcp:** correct code tool API endpoint ([e1d8df1](https://github.com/sfcompute/nodes-typescript/commit/e1d8df157f5bd1c9922ff4689a6ff69288ea31c0))
+* **mcp:** return correct lines on typescript errors ([9e23e52](https://github.com/sfcompute/nodes-typescript/commit/9e23e52f4e9e18876ea7454bf2dc1f3e393ba9b4))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([2a92dd1](https://github.com/sfcompute/nodes-typescript/commit/2a92dd1fadce15736de21aef47c6a09053fcfdbe))
+* **internal:** codegen related update ([e7ffd0c](https://github.com/sfcompute/nodes-typescript/commit/e7ffd0c274c456917d2ef7dcd7b78d2b12370bd9))
+* **internal:** codegen related update ([efcc324](https://github.com/sfcompute/nodes-typescript/commit/efcc3241aab120b1e10d771c14f0fa97763c38c5))
+* **internal:** codegen related update ([43c1b91](https://github.com/sfcompute/nodes-typescript/commit/43c1b91d4522c19e7000542db9b26d0ba5b96b32))
+
 ## 0.1.0-alpha.27 (2025-12-06)
 
 Full Changelog: [v0.1.0-alpha.26...v0.1.0-alpha.27](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.26...v0.1.0-alpha.27)
