@@ -47,6 +47,11 @@ export namespace ZoneListResponse {
     object: string;
 
     region: 'NorthAmerica' | 'AsiaPacific' | 'EuropeMiddleEastAfrica';
+
+    /**
+     * User-facing zone name (e.g., "Hayes Valley", "Land's End")
+     */
+    display_name?: string | null;
   }
 
   export namespace Data {
@@ -87,6 +92,11 @@ export interface ZoneGetResponse {
   object: string;
 
   region: 'NorthAmerica' | 'AsiaPacific' | 'EuropeMiddleEastAfrica';
+
+  /**
+   * User-facing zone name (e.g., "Hayes Valley", "Land's End")
+   */
+  display_name?: string | null;
 }
 
 export namespace ZoneGetResponse {
