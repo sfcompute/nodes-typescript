@@ -28,6 +28,7 @@ describe('resource nodes', () => {
       any_zone: false,
       cloud_init_user_data: 'aGVsbG8gd29ybGQ=',
       end_at: 0,
+      forward_443: false,
       image_id: 'vmi_1234567890abcdef',
       names: ['cuda-crunch'],
       node_type: 'autoreserved',

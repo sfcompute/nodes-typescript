@@ -135,6 +135,11 @@ export interface CreateNodesRequest {
   end_at?: number | null;
 
   /**
+   * (Optional) If set, enables forwarding to the VM on port 443.
+   */
+  forward_443?: boolean;
+
+  /**
    * Custom image ID to use for the VM instances
    */
   image_id?: string;
@@ -479,6 +484,11 @@ export interface NodeCreateParams {
    * the hour If not provided, the node will be created as an autoreserved node
    */
   end_at?: number | null;
+
+  /**
+   * (Optional) If set, enables forwarding to the VM on port 443.
+   */
+  forward_443?: boolean;
 
   /**
    * Custom image ID to use for the VM instances
