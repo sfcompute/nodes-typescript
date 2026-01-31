@@ -15,7 +15,7 @@ export class Nodes extends APIResource {
    * ```ts
    * const listResponseNode = await client.nodes.create({
    *   desired_count: 1,
-   *   max_price_per_node_hour: 1000,
+   *   max_price_per_node_hour: 1600,
    * });
    * ```
    */
