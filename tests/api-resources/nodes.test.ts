@@ -10,7 +10,7 @@ const client = new SFCNodes({
 describe('resource nodes', () => {
   // Prism tests are disabled
   test.skip('create: only required params', async () => {
-    const responsePromise = client.nodes.create({ desired_count: 1, max_price_per_node_hour: 1000 });
+    const responsePromise = client.nodes.create({ desired_count: 1, max_price_per_node_hour: 1600 });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -24,7 +24,7 @@ describe('resource nodes', () => {
   test.skip('create: required and optional params', async () => {
     const response = await client.nodes.create({
       desired_count: 1,
-      max_price_per_node_hour: 1000,
+      max_price_per_node_hour: 1600,
       any_zone: false,
       cloud_init_user_data: 'aGVsbG8gd29ybGQ=',
       end_at: 0,
