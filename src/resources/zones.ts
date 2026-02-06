@@ -49,7 +49,7 @@ export namespace ZoneListResponse {
     region: 'NorthAmerica' | 'AsiaPacific' | 'EuropeMiddleEastAfrica';
 
     /**
-     * User-facing zone name (e.g., "Hayes Valley", "Lands End")
+     * User-facing zone name (e.g., "Hayes Valley", "Land's End")
      */
     display_name?: string | null;
   }
@@ -94,7 +94,7 @@ export interface ZoneGetResponse {
   region: 'NorthAmerica' | 'AsiaPacific' | 'EuropeMiddleEastAfrica';
 
   /**
-   * User-facing zone name (e.g., "Hayes Valley", "Lands End")
+   * User-facing zone name (e.g., "Hayes Valley", "Land's End")
    */
   display_name?: string | null;
 }
