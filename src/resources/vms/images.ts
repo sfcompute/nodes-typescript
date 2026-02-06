@@ -21,47 +21,27 @@ export class Images extends APIResource {
   }
 }
 
-/**
- * Response body for listing images
- */
 export interface ImageListResponse {
   data: Array<ImageListResponse.Data>;
-
-  has_more: boolean;
 
   object: 'list';
 }
 
 export namespace ImageListResponse {
-  /**
-   * Response body for individual image info (used in lists)
-   */
   export interface Data {
+    id: string;
+
     /**
-     * Creation timestamp as Unix timestamp in seconds
+     * Unix timestamp in seconds since epoch
      */
     created_at: number;
 
-    /**
-     * The image ID
-     */
-    image_id: string;
-
-    /**
-     * Client given name of the image. Must be unique per account.
-     */
     name: string;
 
-    object: 'image';
-
-    /**
-     * Upload status of the image
-     */
     upload_status: string;
 
-    /**
-     * SHA256 hash of the image file for integrity verification
-     */
+    object?: 'image';
+
     sha256_hash?: string | null;
   }
 }
