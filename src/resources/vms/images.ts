@@ -24,11 +24,22 @@ export class Images extends APIResource {
 export interface ImageListResponse {
   data: Array<ImageListResponse.Data>;
 
+  has_more: boolean;
+
   object: 'list';
+
+  /**
+   * Opaque cursor for pagination. Pass as `starting_after` to get the next page.
+   */
+  cursor?: string | null;
 }
 
 export namespace ImageListResponse {
   export interface Data {
+    /**
+     * Generated ID with format 'image\_[0-9a-zA-Z]+' used for referencing a ImageId
+     * resource.
+     */
     id: string;
 
     /**
@@ -36,9 +47,13 @@ export namespace ImageListResponse {
      */
     created_at: number;
 
+    /**
+     * A validated resource name. Must start with alphanumeric, followed by
+     * alphanumeric, '.', '\_', or '-'. Max 255 characters.
+     */
     name: string;
 
-    upload_status: string;
+    upload_status: 'started' | 'uploading' | 'completed' | 'failed';
 
     object?: 'image';
 
@@ -46,40 +61,16 @@ export namespace ImageListResponse {
   }
 }
 
-/**
- * Response body for image download presigned URL generation
- */
 export interface ImageGetResponse {
-  /**
-   * The presigned URL that can be used to download the image
-   */
   download_url: string;
 
   /**
-   * Timestamp when the presigned URL expires (RFC 3339 format)
+   * Unix timestamp in seconds since epoch
    */
-  expires_at: string;
+  expires_at: number;
 
-  /**
-   * The image ID
-   */
-  image_id: string;
-
-  /**
-   * Human readable name of the image. Must be unique per account.
-   */
-  name: string;
-
-  object: 'image';
-
-  /**
-   * Size of the image file in bytes
-   */
   object_size: number;
 
-  /**
-   * SHA256 hash of the image file for integrity verification
-   */
   sha256_hash: string;
 }
 
