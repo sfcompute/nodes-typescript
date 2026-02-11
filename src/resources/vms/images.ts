@@ -37,8 +37,7 @@ export interface ImageListResponse {
 export namespace ImageListResponse {
   export interface Data {
     /**
-     * Generated ID with format 'image\_[0-9a-zA-Z]+' used for referencing a ImageId
-     * resource.
+     * Unique identifier with prefix 'image\_'.
      */
     id: string;
 

@@ -181,7 +181,7 @@ export interface ErrorDetail {
   code: string;
 
   /**
-   * Detailed error message
+   * Human-readable error message
    */
   message: string;
 
