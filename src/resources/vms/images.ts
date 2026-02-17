@@ -21,55 +21,85 @@ export class Images extends APIResource {
   }
 }
 
+/**
+ * Response body for listing images
+ */
 export interface ImageListResponse {
   data: Array<ImageListResponse.Data>;
 
   has_more: boolean;
 
   object: 'list';
-
-  /**
-   * Opaque cursor for pagination. Pass as `starting_after` to get the next page.
-   */
-  cursor?: string | null;
 }
 
 export namespace ImageListResponse {
+  /**
+   * Response body for individual image info (used in lists)
+   */
   export interface Data {
     /**
-     * Unique identifier with prefix 'image\_'.
-     */
-    id: string;
-
-    /**
-     * Unix timestamp in seconds since epoch
+     * Creation timestamp as Unix timestamp in seconds
      */
     created_at: number;
 
     /**
-     * A validated resource name. Must start with alphanumeric, followed by
-     * alphanumeric, '.', '\_', or '-'. Max 255 characters.
+     * The image ID
+     */
+    image_id: string;
+
+    /**
+     * Client given name of the image. Must be unique per account.
      */
     name: string;
 
-    upload_status: 'started' | 'uploading' | 'completed' | 'failed';
+    object: 'image';
 
-    object?: 'image';
+    /**
+     * Upload status of the image
+     */
+    upload_status: string;
 
+    /**
+     * SHA256 hash of the image file for integrity verification
+     */
     sha256_hash?: string | null;
   }
 }
 
+/**
+ * Response body for image download presigned URL generation
+ */
 export interface ImageGetResponse {
+  /**
+   * The presigned URL that can be used to download the image
+   */
   download_url: string;
 
   /**
-   * Unix timestamp in seconds since epoch
+   * Timestamp when the presigned URL expires (RFC 3339 format)
    */
-  expires_at: number;
+  expires_at: string;
 
+  /**
+   * The image ID
+   */
+  image_id: string;
+
+  /**
+   * Human readable name of the image. Must be unique per account.
+   */
+  name: string;
+
+  object: 'image';
+
+  /**
+   * Size of the image file in bytes
+   */
   object_size: number;
 
+  /**
+   * SHA256 hash of the image file for integrity verification
+   */
   sha256_hash: string;
 }
 
