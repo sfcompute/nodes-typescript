@@ -57,7 +57,7 @@ export namespace ZoneListResponse {
   export namespace Data {
     export interface AvailableCapacity {
       /**
-       * Unix timestamp in seconds since epoch
+       * Unix timestamp.
        */
       end_timestamp: number;
 
@@ -67,7 +67,7 @@ export namespace ZoneListResponse {
       quantity: number;
 
       /**
-       * Unix timestamp in seconds since epoch
+       * Unix timestamp.
        */
       start_timestamp: number;
     }
@@ -102,7 +102,7 @@ export interface ZoneGetResponse {
 export namespace ZoneGetResponse {
   export interface AvailableCapacity {
     /**
-     * Unix timestamp in seconds since epoch
+     * Unix timestamp.
      */
     end_timestamp: number;
 
@@ -112,7 +112,7 @@ export namespace ZoneGetResponse {
     quantity: number;
 
     /**
-     * Unix timestamp in seconds since epoch
+     * Unix timestamp.
      */
     start_timestamp: number;
   }
