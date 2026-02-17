@@ -50,12 +50,12 @@ export interface VMSSHResponse {
   ssh_port: number;
 
   /**
-   * Unix timestamp in seconds since epoch
+   * Unix timestamp.
    */
   last_attempted_key_update?: number | null;
 
   /**
-   * Unix timestamp in seconds since epoch
+   * Unix timestamp.
    */
   last_successful_key_update?: number | null;
 
