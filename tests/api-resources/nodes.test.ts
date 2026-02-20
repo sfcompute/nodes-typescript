@@ -8,7 +8,7 @@ const client = new SFCNodes({
 });
 
 describe('resource nodes', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.nodes.create({ desired_count: 1, max_price_per_node_hour: 1600 });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource nodes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.nodes.create({
       desired_count: 1,
@@ -37,7 +37,7 @@ describe('resource nodes', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.nodes.list();
     const rawResponse = await responsePromise.asResponse();
@@ -49,7 +49,7 @@ describe('resource nodes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -64,7 +64,7 @@ describe('resource nodes', () => {
     ).rejects.toThrow(SFCNodes.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.nodes.delete('id');
     const rawResponse = await responsePromise.asResponse();
@@ -76,7 +76,7 @@ describe('resource nodes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('extend: only required params', async () => {
     const responsePromise = client.nodes.extend('id', {
       duration_seconds: 7200,
@@ -91,7 +91,7 @@ describe('resource nodes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('extend: required and optional params', async () => {
     const response = await client.nodes.extend('id', {
       duration_seconds: 7200,
@@ -99,7 +99,7 @@ describe('resource nodes', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('get', async () => {
     const responsePromise = client.nodes.get('id');
     const rawResponse = await responsePromise.asResponse();
@@ -111,7 +111,7 @@ describe('resource nodes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('redeploy', async () => {
     const responsePromise = client.nodes.redeploy('id', {});
     const rawResponse = await responsePromise.asResponse();
@@ -123,7 +123,7 @@ describe('resource nodes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('release', async () => {
     const responsePromise = client.nodes.release('id');
     const rawResponse = await responsePromise.asResponse();
