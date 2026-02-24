@@ -60,7 +60,7 @@ $ yarn link @sfcompute/nodes-sdk-alpha
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global @sfcompute/nodes-sdk-alpha
+$ pnpm link --global @sfcompute/nodes-sdk-alpha
 ```
 
 ## Running tests
