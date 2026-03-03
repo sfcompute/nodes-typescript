@@ -739,8 +739,19 @@ export class SFCNodes {
 
   static toFile = Uploads.toFile;
 
+  /**
+   * Manage your Virtual Machines.
+   */
   vms: API.VMs = new API.VMs(this);
+  /**
+   * Manage compute nodes. Create, list, extend, and release nodes for your workloads.
+   */
   nodes: API.Nodes = new API.Nodes(this);
+  /**
+   * Zones represent physically colocated datacenters.
+   *         Use these endpoints to discover available zones and their capacity,
+   *         hardware specifications, and regional information.
+   */
   zones: API.Zones = new API.Zones(this);
 }
 
