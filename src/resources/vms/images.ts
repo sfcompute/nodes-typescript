@@ -5,6 +5,9 @@ import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
+/**
+ * Manage your Virtual Machines.
+ */
 export class Images extends APIResource {
   /**
    * List all VM Images for the authenticated account

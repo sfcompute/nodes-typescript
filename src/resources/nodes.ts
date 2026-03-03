@@ -7,6 +7,9 @@ import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
+/**
+ * Manage compute nodes. Create, list, extend, and release nodes for your workloads.
+ */
 export class Nodes extends APIResource {
   /**
    * Create VM nodes

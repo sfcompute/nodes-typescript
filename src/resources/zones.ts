@@ -6,6 +6,11 @@ import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
+/**
+ * Zones represent physically colocated datacenters.
+ *         Use these endpoints to discover available zones and their capacity,
+ *         hardware specifications, and regional information.
+ */
 export class Zones extends APIResource {
   /**
    * List all available zones
