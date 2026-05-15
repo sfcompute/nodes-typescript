@@ -132,6 +132,12 @@ export interface CreateNodesRequest {
   cloud_init_user_data?: string;
 
   /**
+   * **Experimental — subject to change or removal without notice.** Enables
+   * InfiniBand. Requires hardware in the chosen zone that supports InfiniBand.
+   */
+  enable_infiniband?: boolean;
+
+  /**
    * End time as Unix timestamp in seconds If provided, end time must be aligned to
    * the hour If not provided, the node will be created as an autoreserved node
    */
@@ -149,7 +155,7 @@ export interface CreateNodesRequest {
 
   /**
    * Custom node names Names cannot begin with 'vm*' or 'n*' as this is reserved for
-   * system-generated IDs Names cannot be numeric strings Names cannot exceed 128
+   * system-generated IDs Names cannot be numeric strings Names cannot exceed 256
    * characters
    */
   names?: Array<string>;
@@ -194,10 +200,6 @@ export interface ErrorDetail {
   field?: string | null;
 }
 
-export interface ErrorObject {
-  error: ErrorContent;
-}
-
 export type ErrorType =
   | 'api_error'
   | 'invalid_request_error'
@@ -211,7 +213,8 @@ export type ErrorType =
   | 'upgrade_required'
   | 'payment_required'
   | 'service_unavailable'
-  | 'unprocessable_entity';
+  | 'unprocessable_entity'
+  | 'gone';
 
 export interface ExtendNodeRequest {
   /**
@@ -483,6 +486,12 @@ export interface NodeCreateParams {
   cloud_init_user_data?: string;
 
   /**
+   * **Experimental — subject to change or removal without notice.** Enables
+   * InfiniBand. Requires hardware in the chosen zone that supports InfiniBand.
+   */
+  enable_infiniband?: boolean;
+
+  /**
    * End time as Unix timestamp in seconds If provided, end time must be aligned to
    * the hour If not provided, the node will be created as an autoreserved node
    */
@@ -500,7 +509,7 @@ export interface NodeCreateParams {
 
   /**
    * Custom node names Names cannot begin with 'vm*' or 'n*' as this is reserved for
-   * system-generated IDs Names cannot be numeric strings Names cannot exceed 128
+   * system-generated IDs Names cannot be numeric strings Names cannot exceed 256
    * characters
    */
   names?: Array<string>;
@@ -581,7 +590,6 @@ export declare namespace Nodes {
     type CreateNodesRequest as CreateNodesRequest,
     type ErrorContent as ErrorContent,
     type ErrorDetail as ErrorDetail,
-    type ErrorObject as ErrorObject,
     type ErrorType as ErrorType,
     type ExtendNodeRequest as ExtendNodeRequest,
     type ListResponseNode as ListResponseNode,
