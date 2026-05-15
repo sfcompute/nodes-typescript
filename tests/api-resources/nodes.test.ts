@@ -25,9 +25,9 @@ describe('resource nodes', () => {
     const response = await client.nodes.create({
       desired_count: 1,
       max_price_per_node_hour: 1600,
+      _preview_enable_infiniband: false,
       any_zone: false,
       cloud_init_user_data: 'aGVsbG8gd29ybGQ=',
-      enable_infiniband: false,
       end_at: 0,
       forward_443: false,
       image_id: 'image_1234567890abcdef',

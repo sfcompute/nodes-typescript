@@ -121,6 +121,12 @@ export interface CreateNodesRequest {
   max_price_per_node_hour: number;
 
   /**
+   * **Experimental — subject to change or removal without notice.** Enables
+   * InfiniBand. Requires hardware in the chosen zone that supports InfiniBand.
+   */
+  _preview_enable_infiniband?: boolean;
+
+  /**
    * Allow auto reserved nodes to be created in any zone that meets the requirements
    */
   any_zone?: boolean;
@@ -130,12 +136,6 @@ export interface CreateNodesRequest {
    * encoded
    */
   cloud_init_user_data?: string;
-
-  /**
-   * **Experimental — subject to change or removal without notice.** Enables
-   * InfiniBand. Requires hardware in the chosen zone that supports InfiniBand.
-   */
-  enable_infiniband?: boolean;
 
   /**
    * End time as Unix timestamp in seconds If provided, end time must be aligned to
@@ -475,6 +475,12 @@ export interface NodeCreateParams {
   max_price_per_node_hour: number;
 
   /**
+   * **Experimental — subject to change or removal without notice.** Enables
+   * InfiniBand. Requires hardware in the chosen zone that supports InfiniBand.
+   */
+  _preview_enable_infiniband?: boolean;
+
+  /**
    * Allow auto reserved nodes to be created in any zone that meets the requirements
    */
   any_zone?: boolean;
@@ -484,12 +490,6 @@ export interface NodeCreateParams {
    * encoded
    */
   cloud_init_user_data?: string;
-
-  /**
-   * **Experimental — subject to change or removal without notice.** Enables
-   * InfiniBand. Requires hardware in the chosen zone that supports InfiniBand.
-   */
-  enable_infiniband?: boolean;
 
   /**
    * End time as Unix timestamp in seconds If provided, end time must be aligned to
