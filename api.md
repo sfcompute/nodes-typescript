@@ -25,16 +25,6 @@ Methods:
 
 ## Images
 
-Types:
-
-- <code><a href="./src/resources/vms/images.ts">ImageListResponse</a></code>
-- <code><a href="./src/resources/vms/images.ts">ImageGetResponse</a></code>
-
-Methods:
-
-- <code title="get /v1/vms/images">client.vms.images.<a href="./src/resources/vms/images.ts">list</a>() -> ImageListResponse</code>
-- <code title="get /v1/vms/images/{image_id}">client.vms.images.<a href="./src/resources/vms/images.ts">get</a>(imageID) -> ImageGetResponse</code>
-
 # Nodes
 
 Types:
@@ -43,7 +33,6 @@ Types:
 - <code><a href="./src/resources/nodes.ts">CreateNodesRequest</a></code>
 - <code><a href="./src/resources/nodes.ts">ErrorContent</a></code>
 - <code><a href="./src/resources/nodes.ts">ErrorDetail</a></code>
-- <code><a href="./src/resources/nodes.ts">ErrorObject</a></code>
 - <code><a href="./src/resources/nodes.ts">ErrorType</a></code>
 - <code><a href="./src/resources/nodes.ts">ExtendNodeRequest</a></code>
 - <code><a href="./src/resources/nodes.ts">ListResponseNode</a></code>
