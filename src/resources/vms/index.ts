@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { Images, type ImageListResponse, type ImageGetResponse } from './images';
+export { Images } from './images';
 export {
   Script,
   type UserData,

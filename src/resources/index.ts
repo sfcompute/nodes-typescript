@@ -6,7 +6,6 @@ export {
   type CreateNodesRequest,
   type ErrorContent,
   type ErrorDetail,
-  type ErrorObject,
   type ErrorType,
   type ExtendNodeRequest,
   type ListResponseNode,
