@@ -1,5 +1,69 @@
 # Changelog
 
+## 0.1.0-alpha.28 (2026-05-17)
+
+Full Changelog: [v0.1.0-alpha.27...v0.1.0-alpha.28](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.27...v0.1.0-alpha.28)
+
+### Features
+
+* **api:** api update ([73e25e6](https://github.com/sfcompute/nodes-typescript/commit/73e25e641761662a2ad462cc785572daaa20872c))
+* **api:** api update ([91cda6d](https://github.com/sfcompute/nodes-typescript/commit/91cda6d88594118446249d4a8b3792932cbf2a35))
+* **api:** api update ([bbe3dc6](https://github.com/sfcompute/nodes-typescript/commit/bbe3dc66127afe52d873191fc7c73af1e9d4bd10))
+* **api:** api update ([8d42413](https://github.com/sfcompute/nodes-typescript/commit/8d42413dbed30ce854bb64631954b878b98c127f))
+* **api:** api update ([19a65d7](https://github.com/sfcompute/nodes-typescript/commit/19a65d74432438206bd3c8606af656ed28b9496a))
+* **api:** api update ([f01343c](https://github.com/sfcompute/nodes-typescript/commit/f01343c9704771e3852d0c6a0c75dc239021967a))
+* **api:** api update ([d77a39f](https://github.com/sfcompute/nodes-typescript/commit/d77a39f76881955d9e3231aef26d63fe3309b6dd))
+* **api:** api update ([4df6efb](https://github.com/sfcompute/nodes-typescript/commit/4df6efb7e1e4d00a8a7eaf41c67363771adcc56f))
+* **api:** api update ([58aa0a6](https://github.com/sfcompute/nodes-typescript/commit/58aa0a6527b383deb0612308a6d6639af8488aaa))
+* **api:** api update ([01abc61](https://github.com/sfcompute/nodes-typescript/commit/01abc6189822a16326fddfe3c772fc5747024699))
+* **api:** api update ([d8ddd0a](https://github.com/sfcompute/nodes-typescript/commit/d8ddd0a62ea2c7cc12de16b2c3198e84e62c867d))
+* **api:** api update ([a93a07c](https://github.com/sfcompute/nodes-typescript/commit/a93a07c6ac7774864fc54059a3ce6c02002f298e))
+* **api:** api update ([bbebe4a](https://github.com/sfcompute/nodes-typescript/commit/bbebe4afcdcae6e389e7f25a15ed924d7dbd25b3))
+* **api:** api update ([fe83e26](https://github.com/sfcompute/nodes-typescript/commit/fe83e263cf3bef0a4d231172b231b126d4bc81da))
+* support setting headers via env ([de64330](https://github.com/sfcompute/nodes-typescript/commit/de643305d6c5feb709b6c9ff4cb372d874061999))
+
+
+### Bug Fixes
+
+* **client:** avoid memory leak with abort signals ([a1c5d0e](https://github.com/sfcompute/nodes-typescript/commit/a1c5d0e09b6c77eb7b982a82ef87f5d0e3150268))
+* **client:** avoid removing abort listener too early ([7088589](https://github.com/sfcompute/nodes-typescript/commit/7088589b8f94f2f5d1200ccbf44f21856789fdea))
+* **client:** preserve URL params already embedded in path ([09b226d](https://github.com/sfcompute/nodes-typescript/commit/09b226d6abb3f8cac3d710f86f95051abe19392b))
+* **docs/contributing:** correct pnpm link command ([5eb6efd](https://github.com/sfcompute/nodes-typescript/commit/5eb6efd6fc49531f1e49b6d47cd01dea1264f22d))
+* **mcp:** correct code tool API endpoint ([e1d8df1](https://github.com/sfcompute/nodes-typescript/commit/e1d8df157f5bd1c9922ff4689a6ff69288ea31c0))
+* **mcp:** return correct lines on typescript errors ([9e23e52](https://github.com/sfcompute/nodes-typescript/commit/9e23e52f4e9e18876ea7454bf2dc1f3e393ba9b4))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([2a92dd1](https://github.com/sfcompute/nodes-typescript/commit/2a92dd1fadce15736de21aef47c6a09053fcfdbe))
+* **ci:** skip lint on metadata-only changes ([fd03774](https://github.com/sfcompute/nodes-typescript/commit/fd037745f0e362ed452a117c52497bae84dc82c7))
+* **ci:** skip uploading artifacts on stainless-internal branches ([a625c49](https://github.com/sfcompute/nodes-typescript/commit/a625c49dddab4d1a0cf283ae95cf7806f5fa2347))
+* **ci:** upgrade `actions/github-script` ([16bd5ac](https://github.com/sfcompute/nodes-typescript/commit/16bd5ac8c6a4ca5370c03e4105abd1b5f9f3bcf1))
+* **client:** do not parse responses with empty content-length ([b9f61a8](https://github.com/sfcompute/nodes-typescript/commit/b9f61a83ea06509354396c66604bc811f90d18b5))
+* **client:** restructure abort controller binding ([9acb0f7](https://github.com/sfcompute/nodes-typescript/commit/9acb0f7b00ca428a1e0681214c41fa59146d41fc))
+* **format:** run eslint and prettier separately ([1c6ad47](https://github.com/sfcompute/nodes-typescript/commit/1c6ad47c92f5e477b9bdcf76158c71bb6b5b5fe8))
+* **internal/client:** fix form-urlencoded requests ([8b100f7](https://github.com/sfcompute/nodes-typescript/commit/8b100f79af31c3bf7c5e3b27f1efe7acbaaf5a3d))
+* **internal:** avoid type checking errors with ts-reset ([ef3a2a6](https://github.com/sfcompute/nodes-typescript/commit/ef3a2a6dd52aad23d937e5a81ff759e8e4c60937))
+* **internal:** codegen related update ([e47248a](https://github.com/sfcompute/nodes-typescript/commit/e47248acce665677ee7f7085a7bb3ec92e624def))
+* **internal:** codegen related update ([3612bfe](https://github.com/sfcompute/nodes-typescript/commit/3612bfe965ca145223772940fb053e1edbd1f9db))
+* **internal:** codegen related update ([dd4c53a](https://github.com/sfcompute/nodes-typescript/commit/dd4c53a2fd4b5976388e6f90b3331f3a86afcdcd))
+* **internal:** codegen related update ([6bd6cf5](https://github.com/sfcompute/nodes-typescript/commit/6bd6cf524eca9aa45f1b6d0b27fcfc5a105c7367))
+* **internal:** codegen related update ([e7ed04e](https://github.com/sfcompute/nodes-typescript/commit/e7ed04e0b5d9f40119b6ee7a22c42cdb37c0f776))
+* **internal:** codegen related update ([310d3ea](https://github.com/sfcompute/nodes-typescript/commit/310d3ea1ec882b97d2fb5ef9438df2ba565669df))
+* **internal:** codegen related update ([e7ffd0c](https://github.com/sfcompute/nodes-typescript/commit/e7ffd0c274c456917d2ef7dcd7b78d2b12370bd9))
+* **internal:** codegen related update ([efcc324](https://github.com/sfcompute/nodes-typescript/commit/efcc3241aab120b1e10d771c14f0fa97763c38c5))
+* **internal:** codegen related update ([43c1b91](https://github.com/sfcompute/nodes-typescript/commit/43c1b91d4522c19e7000542db9b26d0ba5b96b32))
+* **internal:** more robust bootstrap script ([ef26967](https://github.com/sfcompute/nodes-typescript/commit/ef269678ac5cb436a2e25c7ddedf550bc1f081a6))
+* **internal:** move stringifyQuery implementation to internal function ([39c2313](https://github.com/sfcompute/nodes-typescript/commit/39c2313d785cd4769e5da7c084204eee3815cfaa))
+* **internal:** remove mock server code ([94dbc6d](https://github.com/sfcompute/nodes-typescript/commit/94dbc6de3d7b9fe23be9f0ea99cc0a77422c6afb))
+* **internal:** tweak CI branches ([381ddca](https://github.com/sfcompute/nodes-typescript/commit/381ddcae15825a3c73d8a2655e533f199af45c87))
+* **internal:** update `actions/checkout` version ([0a620ee](https://github.com/sfcompute/nodes-typescript/commit/0a620ee1a5685cf84a5a05d471c12bbc3713aab6))
+* **internal:** update dependencies to address dependabot vulnerabilities ([5e4e80a](https://github.com/sfcompute/nodes-typescript/commit/5e4e80a249e5be81859ebbdf2e50f44cd37fa208))
+* **internal:** update gitignore ([0445e9c](https://github.com/sfcompute/nodes-typescript/commit/0445e9c9c9b860fdd66ba509a2ecc8c788c61409))
+* **internal:** upgrade babel, qs, js-yaml ([fe821a3](https://github.com/sfcompute/nodes-typescript/commit/fe821a3fa77954f51049813e63d58342795f65e3))
+* redact api-key headers in debug logs ([0e0c227](https://github.com/sfcompute/nodes-typescript/commit/0e0c227ea5bb99dff4bc946e7eb57059a69beea7))
+* update mock server docs ([214b3fb](https://github.com/sfcompute/nodes-typescript/commit/214b3fb0d450acb4a33f1fdd8854ba9ed40c8b2b))
+
 ## 0.1.0-alpha.27 (2025-12-06)
 
 Full Changelog: [v0.1.0-alpha.26...v0.1.0-alpha.27](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.26...v0.1.0-alpha.27)
