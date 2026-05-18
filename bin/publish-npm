@@ -58,4 +58,10 @@ else
 fi
 
 # Publish with the appropriate tag
-yarn publish --tag "$TAG"
+#
+# Explicit --registry is required because yarn 1.x defaults to
+# https://registry.yarnpkg.com — a read-only npm mirror — and the auth
+# token above is configured for registry.npmjs.org, so the publish PUT
+# fails with "Not found". Recent runs (v0.1.0-alpha.28, v0.1.0-alpha.29)
+# failed for this reason.
+yarn publish --tag "$TAG" --registry https://registry.npmjs.org
