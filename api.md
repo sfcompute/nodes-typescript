@@ -40,27 +40,15 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/nodes.ts">AcceleratorType</a></code>
-- <code><a href="./src/resources/nodes.ts">BadRequestError</a></code>
-- <code><a href="./src/resources/nodes.ts">ConflictError</a></code>
 - <code><a href="./src/resources/nodes.ts">CreateNodesRequest</a></code>
 - <code><a href="./src/resources/nodes.ts">ErrorContent</a></code>
 - <code><a href="./src/resources/nodes.ts">ErrorDetail</a></code>
 - <code><a href="./src/resources/nodes.ts">ErrorType</a></code>
 - <code><a href="./src/resources/nodes.ts">ExtendNodeRequest</a></code>
-- <code><a href="./src/resources/nodes.ts">ForbiddenError</a></code>
-- <code><a href="./src/resources/nodes.ts">InternalServerError</a></code>
 - <code><a href="./src/resources/nodes.ts">ListResponseNode</a></code>
 - <code><a href="./src/resources/nodes.ts">Node</a></code>
 - <code><a href="./src/resources/nodes.ts">NodeType</a></code>
-- <code><a href="./src/resources/nodes.ts">NotFoundError</a></code>
-- <code><a href="./src/resources/nodes.ts">NotImplementedError</a></code>
-- <code><a href="./src/resources/nodes.ts">PaymentRequiredError</a></code>
-- <code><a href="./src/resources/nodes.ts">RequestTimedOutError</a></code>
-- <code><a href="./src/resources/nodes.ts">ServiceUnavailableError</a></code>
 - <code><a href="./src/resources/nodes.ts">Status</a></code>
-- <code><a href="./src/resources/nodes.ts">UnauthorizedError</a></code>
-- <code><a href="./src/resources/nodes.ts">UnprocessableEntityError</a></code>
-- <code><a href="./src/resources/nodes.ts">UpgradeRequiredError</a></code>
 
 Methods:
 
