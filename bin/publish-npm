@@ -59,9 +59,11 @@ fi
 
 # Publish with the appropriate tag
 #
-# Explicit --registry is required because yarn 1.x defaults to
-# https://registry.yarnpkg.com — a read-only npm mirror — and the auth
-# token above is configured for registry.npmjs.org, so the publish PUT
-# fails with "Not found". Recent runs (v0.1.0-alpha.28, v0.1.0-alpha.29)
-# failed for this reason.
-yarn publish --tag "$TAG" --registry https://registry.npmjs.org
+# We use `npm publish` rather than `yarn publish` so the script picks up
+# the `_authToken` written via `npm config set` above. yarn 1.x publish
+# silently ignores that auth entry (it issues PUT requests without the
+# bearer token, which npm replies to with 404), so the previous attempts
+# at v0.1.0-alpha.28 and v0.1.0-alpha.29 failed even after pinning the
+# registry. publishConfig.access is set to "public" in package.json, so
+# no --access flag is required.
+npm publish --tag "$TAG"
