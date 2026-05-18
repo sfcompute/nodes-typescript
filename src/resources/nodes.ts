@@ -112,34 +112,6 @@ export class Nodes extends APIResource {
 
 export type AcceleratorType = 'H100' | 'H200';
 
-export interface BadRequestError {
-  error: BadRequestError.Error;
-}
-
-export namespace BadRequestError {
-  export interface Error {
-    message: string;
-
-    type: 'invalid_request_error';
-
-    details?: Array<NodesAPI.ErrorDetail>;
-  }
-}
-
-export interface ConflictError {
-  error: ConflictError.Error;
-}
-
-export namespace ConflictError {
-  export interface Error {
-    message: string;
-
-    type: 'conflict';
-
-    details?: Array<NodesAPI.ErrorDetail>;
-  }
-}
-
 export interface CreateNodesRequest {
   desired_count: number;
 
@@ -255,30 +227,6 @@ export interface ExtendNodeRequest {
    * Max price per hour for the extension in cents
    */
   max_price_per_node_hour: number;
-}
-
-export interface ForbiddenError {
-  error: ForbiddenError.Error;
-}
-
-export namespace ForbiddenError {
-  export interface Error {
-    message: string;
-
-    type: 'forbidden';
-  }
-}
-
-export interface InternalServerError {
-  error: InternalServerError.Error;
-}
-
-export namespace InternalServerError {
-  export interface Error {
-    message: string;
-
-    type: 'api_error';
-  }
 }
 
 export interface ListResponseNode {
@@ -505,66 +453,6 @@ export namespace Node {
 
 export type NodeType = 'autoreserved' | 'reserved';
 
-export interface NotFoundError {
-  error: NotFoundError.Error;
-}
-
-export namespace NotFoundError {
-  export interface Error {
-    message: string;
-
-    type: 'not_found';
-  }
-}
-
-export interface NotImplementedError {
-  error: NotImplementedError.Error;
-}
-
-export namespace NotImplementedError {
-  export interface Error {
-    message: string;
-
-    type: 'not_implemented';
-  }
-}
-
-export interface PaymentRequiredError {
-  error: PaymentRequiredError.Error;
-}
-
-export namespace PaymentRequiredError {
-  export interface Error {
-    message: string;
-
-    type: 'payment_required';
-  }
-}
-
-export interface RequestTimedOutError {
-  error: RequestTimedOutError.Error;
-}
-
-export namespace RequestTimedOutError {
-  export interface Error {
-    message: string;
-
-    type: 'request_timed_out';
-  }
-}
-
-export interface ServiceUnavailableError {
-  error: ServiceUnavailableError.Error;
-}
-
-export namespace ServiceUnavailableError {
-  export interface Error {
-    message: string;
-
-    type: 'service_unavailable';
-  }
-}
-
 /**
  * Node Status
  */
@@ -577,44 +465,6 @@ export type Status =
   | 'deleted'
   | 'failed'
   | 'unknown';
-
-export interface UnauthorizedError {
-  error: UnauthorizedError.Error;
-}
-
-export namespace UnauthorizedError {
-  export interface Error {
-    message: string;
-
-    type: 'authentication_error';
-  }
-}
-
-export interface UnprocessableEntityError {
-  error: UnprocessableEntityError.Error;
-}
-
-export namespace UnprocessableEntityError {
-  export interface Error {
-    message: string;
-
-    type: 'unprocessable_entity';
-
-    details?: Array<NodesAPI.ErrorDetail>;
-  }
-}
-
-export interface UpgradeRequiredError {
-  error: UpgradeRequiredError.Error;
-}
-
-export namespace UpgradeRequiredError {
-  export interface Error {
-    message: string;
-
-    type: 'upgrade_required';
-  }
-}
 
 export interface NodeCreateParams {
   desired_count: number;
@@ -737,27 +587,15 @@ export interface NodeRedeployParams {
 export declare namespace Nodes {
   export {
     type AcceleratorType as AcceleratorType,
-    type BadRequestError as BadRequestError,
-    type ConflictError as ConflictError,
     type CreateNodesRequest as CreateNodesRequest,
     type ErrorContent as ErrorContent,
     type ErrorDetail as ErrorDetail,
     type ErrorType as ErrorType,
     type ExtendNodeRequest as ExtendNodeRequest,
-    type ForbiddenError as ForbiddenError,
-    type InternalServerError as InternalServerError,
     type ListResponseNode as ListResponseNode,
     type Node as Node,
     type NodeType as NodeType,
-    type NotFoundError as NotFoundError,
-    type NotImplementedError as NotImplementedError,
-    type PaymentRequiredError as PaymentRequiredError,
-    type RequestTimedOutError as RequestTimedOutError,
-    type ServiceUnavailableError as ServiceUnavailableError,
     type Status as Status,
-    type UnauthorizedError as UnauthorizedError,
-    type UnprocessableEntityError as UnprocessableEntityError,
-    type UpgradeRequiredError as UpgradeRequiredError,
     type NodeCreateParams as NodeCreateParams,
     type NodeListParams as NodeListParams,
     type NodeExtendParams as NodeExtendParams,
