@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.30 (2026-05-18)
+
+Full Changelog: [v0.1.0-alpha.29...v0.1.0-alpha.30](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.29...v0.1.0-alpha.30)
+
+### Bug Fixes
+
+* **publish:** pin yarn publish to registry.npmjs.org ([#41](https://github.com/sfcompute/nodes-typescript/issues/41)) ([36e044e](https://github.com/sfcompute/nodes-typescript/commit/36e044e8c8b9a5cc1a13a7825ff3a5090838085d))
+* use `npm publish` so the auth token actually gets used ([#43](https://github.com/sfcompute/nodes-typescript/issues/43)) ([1495892](https://github.com/sfcompute/nodes-typescript/commit/14958928dc85f03f2773823ce8f9ca04b1ad6a52))
+
 ## 0.1.0-alpha.29 (2026-05-18)
 
 Full Changelog: [v0.1.0-alpha.28...v0.1.0-alpha.29](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.28...v0.1.0-alpha.29)
