@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.29 (2026-05-18)
+
+Full Changelog: [v0.1.0-alpha.28...v0.1.0-alpha.29](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.28...v0.1.0-alpha.29)
+
+### Features
+
+* **api:** update config to account for breaking changes ([ec04a35](https://github.com/sfcompute/nodes-typescript/commit/ec04a35aaf436deec09b0ddade7f24007dc62ffe))
+
+
+### Bug Fixes
+
+* **sdk:** remove unused Error types causing circular imports ([48ffa1b](https://github.com/sfcompute/nodes-typescript/commit/48ffa1b53b1942798ac686fc4c87be0e06013daa))
+
 ## 0.1.0-alpha.28 (2026-05-17)
 
 Full Changelog: [v0.1.0-alpha.27...v0.1.0-alpha.28](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.27...v0.1.0-alpha.28)
