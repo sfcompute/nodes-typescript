@@ -1,7 +1,6 @@
 import fs from 'fs';
 import type { ResponseLike } from '@sfcompute/nodes-sdk-alpha/internal/to-file';
 import { toFile } from '@sfcompute/nodes-sdk-alpha/core/uploads';
-import { File } from 'node:buffer';
 
 class MyClass {
   name: string = 'foo';
