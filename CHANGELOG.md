@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-alpha.31 (2026-05-19)
+
+Full Changelog: [v0.1.0-alpha.30...v0.1.0-alpha.31](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.30...v0.1.0-alpha.31)
+
+### Features
+
+* **api:** api update ([6864155](https://github.com/sfcompute/nodes-typescript/commit/6864155eac287f3432224a71e546674e5c828dad))
+
+
+### Bug Fixes
+
+* **typescript:** upgrade tsc-multi so that it works with Node 26 ([59cf66e](https://github.com/sfcompute/nodes-typescript/commit/59cf66ec59802e16afe01a8b59d356e1bfb86aed))
+
+
+### Chores
+
+* **tests:** remove redundant File import ([10d3ed9](https://github.com/sfcompute/nodes-typescript/commit/10d3ed9a84248e4a8b7e281abffca316792079f7))
+
 ## 0.1.0-alpha.30 (2026-05-18)
 
 Full Changelog: [v0.1.0-alpha.29...v0.1.0-alpha.30](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.29...v0.1.0-alpha.30)
