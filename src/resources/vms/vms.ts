@@ -8,9 +8,6 @@ import { Script, ScriptCreateParams, ScriptCreateResponse, ScriptRetrieveRespons
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
 
-/**
- * Manage your Virtual Machines.
- */
 export class VMs extends APIResource {
   script: ScriptAPI.Script = new ScriptAPI.Script(this._client);
   images: ImagesAPI.Images = new ImagesAPI.Images(this._client);

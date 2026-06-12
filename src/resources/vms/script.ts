@@ -4,9 +4,6 @@ import { APIResource } from '../../core/resource';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
 
-/**
- * Manage your Virtual Machines.
- */
 export class Script extends APIResource {
   create(body: ScriptCreateParams, options?: RequestOptions): APIPromise<ScriptCreateResponse> {
     return this._client.post('/v0/vms/script', { body, ...options });

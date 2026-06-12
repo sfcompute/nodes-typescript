@@ -751,9 +751,6 @@ export class SFCNodes {
 
   static toFile = Uploads.toFile;
 
-  /**
-   * Manage your Virtual Machines.
-   */
   vms: API.VMs = new API.VMs(this);
   /**
    * Manage compute nodes. Create, list, extend, and release nodes for your workloads.
