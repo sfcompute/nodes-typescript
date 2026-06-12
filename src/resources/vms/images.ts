@@ -16,11 +16,7 @@ export class Images extends APIResource {
    * the workspace to list sfc-provided public images instead.
    */
   list(query: ImageListParams, options?: RequestOptions): APIPromise<ImageListResponse> {
-    return this._client.get('/preview/v2/images', {
-      query,
-      defaultBaseURL: 'https://api.sfcompute.com',
-      ...options,
-    });
+    return this._client.get('/preview/v2/images', { query, ...options });
   }
 
   /**
@@ -29,10 +25,7 @@ export class Images extends APIResource {
    * Retrieve an image by ID. Returns both user-owned and public images.
    */
   get(id: string, options?: RequestOptions): APIPromise<ImageGetResponse> {
-    return this._client.get(path`/preview/v2/images/${id}`, {
-      defaultBaseURL: 'https://api.sfcompute.com',
-      ...options,
-    });
+    return this._client.get(path`/preview/v2/images/${id}`, options);
   }
 }
 
@@ -48,12 +41,21 @@ export interface ImageListResponse {
 
 export namespace ImageListResponse {
   export interface Data {
+    /**
+     * Accepts the canonical prefix below; additional legacy prefixes are aliased for
+     * read compatibility. Writes always emit the canonical form.
+     */
     id: string;
 
     /**
      * Unix timestamp.
      */
     created_at: number;
+
+    /**
+     * Whether this is an sfc-provided public image.
+     */
+    is_public: boolean;
 
     name: string;
 
@@ -71,6 +73,11 @@ export namespace ImageListResponse {
 
     workspace: string;
 
+    /**
+     * The workspace that owns this image.
+     */
+    workspace_id: string;
+
     provider?: string | null;
 
     sha256?: string | null;
@@ -78,12 +85,21 @@ export namespace ImageListResponse {
 }
 
 export interface ImageGetResponse {
+  /**
+   * Accepts the canonical prefix below; additional legacy prefixes are aliased for
+   * read compatibility. Writes always emit the canonical form.
+   */
   id: string;
 
   /**
    * Unix timestamp.
    */
   created_at: number;
+
+  /**
+   * Whether this is an sfc-provided public image.
+   */
+  is_public: boolean;
 
   name: string;
 
@@ -100,6 +116,11 @@ export interface ImageGetResponse {
   upload_status: 'started' | 'uploading' | 'completed' | 'failed' | 'revoked';
 
   workspace: string;
+
+  /**
+   * The workspace that owns this image.
+   */
+  workspace_id: string;
 
   provider?: string | null;
 
