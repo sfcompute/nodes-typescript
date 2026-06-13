@@ -127,7 +127,8 @@ export interface CreateNodesRequest {
   _preview_enable_infiniband?: boolean;
 
   /**
-   * Allow auto reserved nodes to be created in any zone that meets the requirements
+   * @deprecated Deprecated: no longer supported. Requests with `any_zone: true` are
+   * rejected; specify a zone instead.
    */
   any_zone?: boolean;
 
@@ -169,8 +170,7 @@ export interface CreateNodesRequest {
   start_at?: number;
 
   /**
-   * Zone to create the nodes in. Required for auto reserved nodes if any_zone is
-   * false.
+   * Zone to create the nodes in. Required for reserved and auto reserved nodes.
    */
   zone?: string;
 }
@@ -481,7 +481,8 @@ export interface NodeCreateParams {
   _preview_enable_infiniband?: boolean;
 
   /**
-   * Allow auto reserved nodes to be created in any zone that meets the requirements
+   * @deprecated Deprecated: no longer supported. Requests with `any_zone: true` are
+   * rejected; specify a zone instead.
    */
   any_zone?: boolean;
 
@@ -523,8 +524,7 @@ export interface NodeCreateParams {
   start_at?: number;
 
   /**
-   * Zone to create the nodes in. Required for auto reserved nodes if any_zone is
-   * false.
+   * Zone to create the nodes in. Required for reserved and auto reserved nodes.
    */
   zone?: string;
 }
