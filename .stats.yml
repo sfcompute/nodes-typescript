@@ -1,4 +1,4 @@
 configured_endpoints: 15
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/the-san-francisco-compute-company/sfc-nodes-33c332a36b54c90ca149aaa6fe6a06463549fa877018b54c32f23f9080ab637f.yml
-openapi_spec_hash: 58a1116d12b886dca5b0a0a8fc743dc1
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/the-san-francisco-compute-company/sfc-nodes-ea787090694809db45a4d95b9047f9ed67d2776f79dbb54d511c1f292f65a616.yml
+openapi_spec_hash: 742daedeea815027f28e3b179c8858f6
 config_hash: 8457a42ab599fb499cdacdb3ff40cfe9
