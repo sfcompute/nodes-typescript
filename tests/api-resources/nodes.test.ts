@@ -9,8 +9,8 @@ const client = new SFCNodes({
 
 describe('resource nodes', () => {
   // Mock server tests are disabled
-  test.skip('create: only required params', async () => {
-    const responsePromise = client.nodes.create({ desired_count: 1, max_price_per_node_hour: 1600 });
+  test.skip('create', async () => {
+    const responsePromise = client.nodes.create();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -18,24 +18,6 @@ describe('resource nodes', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // Mock server tests are disabled
-  test.skip('create: required and optional params', async () => {
-    const response = await client.nodes.create({
-      desired_count: 1,
-      max_price_per_node_hour: 1600,
-      _preview_enable_infiniband: false,
-      any_zone: false,
-      cloud_init_user_data: 'aGVsbG8gd29ybGQ=',
-      end_at: 0,
-      forward_443: false,
-      image_id: 'image_1234567890abcdef',
-      names: ['cuda-crunch'],
-      node_type: 'autoreserved',
-      start_at: 1640995200,
-      zone: 'hayesvalley',
-    });
   });
 
   // Mock server tests are disabled

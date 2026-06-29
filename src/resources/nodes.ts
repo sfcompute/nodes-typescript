@@ -12,18 +12,20 @@ import { path } from '../internal/utils/path';
  */
 export class Nodes extends APIResource {
   /**
-   * Create VM nodes
+   * Nodes are deprecated. See https://docs.sfcompute.com for the latest version of
+   * our product. You can migrate existing nodes using `sf nodes migrate` in the new
+   * CLI. This endpoint always returns `410 Gone`.
    *
    * @example
    * ```ts
-   * const listResponseNode = await client.nodes.create({
-   *   desired_count: 1,
-   *   max_price_per_node_hour: 1600,
-   * });
+   * await client.nodes.create();
    * ```
    */
-  create(body: NodeCreateParams, options?: RequestOptions): APIPromise<ListResponseNode> {
-    return this._client.post('/v1/nodes', { body, ...options });
+  create(options?: RequestOptions): APIPromise<void> {
+    return this._client.post('/v1/nodes', {
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+    });
   }
 
   /**
@@ -111,69 +113,6 @@ export class Nodes extends APIResource {
 }
 
 export type AcceleratorType = 'H100' | 'H200';
-
-export interface CreateNodesRequest {
-  desired_count: number;
-
-  /**
-   * Max price per hour for a node in cents
-   */
-  max_price_per_node_hour: number;
-
-  /**
-   * **Experimental — subject to change or removal without notice.** Enables
-   * InfiniBand. Requires hardware in the chosen zone that supports InfiniBand.
-   */
-  _preview_enable_infiniband?: boolean;
-
-  /**
-   * @deprecated Deprecated: no longer supported. Requests with `any_zone: true` are
-   * rejected; specify a zone instead.
-   */
-  any_zone?: boolean;
-
-  /**
-   * User script to be executed during the VM's boot process Data should be base64
-   * encoded
-   */
-  cloud_init_user_data?: string;
-
-  /**
-   * End time as Unix timestamp in seconds If provided, end time must be aligned to
-   * the hour If not provided, the node will be created as an autoreserved node
-   */
-  end_at?: number | null;
-
-  /**
-   * (Optional) If set, enables forwarding to the VM on port 443.
-   */
-  forward_443?: boolean;
-
-  /**
-   * Custom image ID to use for the VM instances
-   */
-  image_id?: string;
-
-  /**
-   * Custom node names Names cannot begin with 'vm*' or 'n*' as this is reserved for
-   * system-generated IDs Names cannot be numeric strings Names cannot exceed 256
-   * characters
-   */
-  names?: Array<string>;
-
-  node_type?: NodeType | null;
-
-  /**
-   * Start time as Unix timestamp in seconds Optional for reserved nodes. If not
-   * provided, defaults to now
-   */
-  start_at?: number;
-
-  /**
-   * Zone to create the nodes in. Required for reserved and auto reserved nodes.
-   */
-  zone?: string;
-}
 
 export interface ErrorContent {
   message: string;
@@ -466,69 +405,6 @@ export type Status =
   | 'failed'
   | 'unknown';
 
-export interface NodeCreateParams {
-  desired_count: number;
-
-  /**
-   * Max price per hour for a node in cents
-   */
-  max_price_per_node_hour: number;
-
-  /**
-   * **Experimental — subject to change or removal without notice.** Enables
-   * InfiniBand. Requires hardware in the chosen zone that supports InfiniBand.
-   */
-  _preview_enable_infiniband?: boolean;
-
-  /**
-   * @deprecated Deprecated: no longer supported. Requests with `any_zone: true` are
-   * rejected; specify a zone instead.
-   */
-  any_zone?: boolean;
-
-  /**
-   * User script to be executed during the VM's boot process Data should be base64
-   * encoded
-   */
-  cloud_init_user_data?: string;
-
-  /**
-   * End time as Unix timestamp in seconds If provided, end time must be aligned to
-   * the hour If not provided, the node will be created as an autoreserved node
-   */
-  end_at?: number | null;
-
-  /**
-   * (Optional) If set, enables forwarding to the VM on port 443.
-   */
-  forward_443?: boolean;
-
-  /**
-   * Custom image ID to use for the VM instances
-   */
-  image_id?: string;
-
-  /**
-   * Custom node names Names cannot begin with 'vm*' or 'n*' as this is reserved for
-   * system-generated IDs Names cannot be numeric strings Names cannot exceed 256
-   * characters
-   */
-  names?: Array<string>;
-
-  node_type?: NodeType | null;
-
-  /**
-   * Start time as Unix timestamp in seconds Optional for reserved nodes. If not
-   * provided, defaults to now
-   */
-  start_at?: number;
-
-  /**
-   * Zone to create the nodes in. Required for reserved and auto reserved nodes.
-   */
-  zone?: string;
-}
-
 export interface NodeListParams {
   /**
    * Filter nodes by node_id Use ?id=n_b1dc52505c6db142&id=n_b1dc52505c6db133 to
@@ -587,7 +463,6 @@ export interface NodeRedeployParams {
 export declare namespace Nodes {
   export {
     type AcceleratorType as AcceleratorType,
-    type CreateNodesRequest as CreateNodesRequest,
     type ErrorContent as ErrorContent,
     type ErrorDetail as ErrorDetail,
     type ErrorType as ErrorType,
@@ -596,7 +471,6 @@ export declare namespace Nodes {
     type Node as Node,
     type NodeType as NodeType,
     type Status as Status,
-    type NodeCreateParams as NodeCreateParams,
     type NodeListParams as NodeListParams,
     type NodeExtendParams as NodeExtendParams,
     type NodeRedeployParams as NodeRedeployParams,

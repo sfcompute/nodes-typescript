@@ -19,14 +19,12 @@ import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
 import {
   AcceleratorType,
-  CreateNodesRequest,
   ErrorContent,
   ErrorDetail,
   ErrorType,
   ExtendNodeRequest,
   ListResponseNode,
   Node,
-  NodeCreateParams,
   NodeExtendParams,
   NodeListParams,
   NodeRedeployParams,
@@ -790,7 +788,6 @@ export declare namespace SFCNodes {
   export {
     Nodes as Nodes,
     type AcceleratorType as AcceleratorType,
-    type CreateNodesRequest as CreateNodesRequest,
     type ErrorContent as ErrorContent,
     type ErrorDetail as ErrorDetail,
     type ErrorType as ErrorType,
@@ -799,7 +796,6 @@ export declare namespace SFCNodes {
     type Node as Node,
     type NodeType as NodeType,
     type Status as Status,
-    type NodeCreateParams as NodeCreateParams,
     type NodeListParams as NodeListParams,
     type NodeExtendParams as NodeExtendParams,
     type NodeRedeployParams as NodeRedeployParams,
