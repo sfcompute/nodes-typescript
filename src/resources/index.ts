@@ -3,7 +3,6 @@
 export {
   Nodes,
   type AcceleratorType,
-  type CreateNodesRequest,
   type ErrorContent,
   type ErrorDetail,
   type ErrorType,
@@ -12,7 +11,6 @@ export {
   type Node,
   type NodeType,
   type Status,
-  type NodeCreateParams,
   type NodeListParams,
   type NodeExtendParams,
   type NodeRedeployParams,

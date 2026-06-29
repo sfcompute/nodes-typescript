@@ -40,7 +40,6 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/nodes.ts">AcceleratorType</a></code>
-- <code><a href="./src/resources/nodes.ts">CreateNodesRequest</a></code>
 - <code><a href="./src/resources/nodes.ts">ErrorContent</a></code>
 - <code><a href="./src/resources/nodes.ts">ErrorDetail</a></code>
 - <code><a href="./src/resources/nodes.ts">ErrorType</a></code>
@@ -52,7 +51,7 @@ Types:
 
 Methods:
 
-- <code title="post /v1/nodes">client.nodes.<a href="./src/resources/nodes.ts">create</a>({ ...params }) -> ListResponseNode</code>
+- <code title="post /v1/nodes">client.nodes.<a href="./src/resources/nodes.ts">create</a>() -> void</code>
 - <code title="get /v1/nodes">client.nodes.<a href="./src/resources/nodes.ts">list</a>({ ...params }) -> ListResponseNode</code>
 - <code title="delete /v1/nodes/{id}">client.nodes.<a href="./src/resources/nodes.ts">delete</a>(id) -> void</code>
 - <code title="patch /v1/nodes/{id}/extend">client.nodes.<a href="./src/resources/nodes.ts">extend</a>(id, { ...params }) -> Node</code>
