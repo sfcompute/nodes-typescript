@@ -1,19 +1,5 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export {
-  Nodes,
-  type AcceleratorType,
-  type ErrorContent,
-  type ErrorDetail,
-  type ErrorType,
-  type ExtendNodeRequest,
-  type ListResponseNode,
-  type Node,
-  type NodeType,
-  type Status,
-  type NodeListParams,
-  type NodeExtendParams,
-  type NodeRedeployParams,
-} from './nodes';
-export { VMs, type VMLogsResponse, type VMSSHResponse, type VMLogsParams, type VMSSHParams } from './vms/vms';
-export { Zones, type ZoneListResponse, type ZoneGetResponse } from './zones';
+export { Nodes } from './nodes';
+export { VMs } from './vms/vms';
+export { Zones } from './zones';
