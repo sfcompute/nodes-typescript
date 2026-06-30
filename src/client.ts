@@ -17,23 +17,9 @@ import * as Errors from './core/error';
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
-import {
-  AcceleratorType,
-  ErrorContent,
-  ErrorDetail,
-  ErrorType,
-  ExtendNodeRequest,
-  ListResponseNode,
-  Node,
-  NodeExtendParams,
-  NodeListParams,
-  NodeRedeployParams,
-  NodeType,
-  Nodes,
-  Status,
-} from './resources/nodes';
-import { ZoneGetResponse, ZoneListResponse, Zones } from './resources/zones';
-import { VMLogsParams, VMLogsResponse, VMSSHParams, VMSSHResponse, VMs } from './resources/vms/vms';
+import { Nodes } from './resources/nodes';
+import { Zones } from './resources/zones';
+import { VMs } from './resources/vms/vms';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
@@ -758,15 +744,7 @@ export class SFCNodes {
   static toFile = Uploads.toFile;
 
   vms: API.VMs = new API.VMs(this);
-  /**
-   * Manage compute nodes. Create, list, extend, and release nodes for your workloads.
-   */
   nodes: API.Nodes = new API.Nodes(this);
-  /**
-   * Zones represent physically colocated datacenters.
-   *         Use these endpoints to discover available zones and their capacity,
-   *         hardware specifications, and regional information.
-   */
   zones: API.Zones = new API.Zones(this);
 }
 
@@ -777,33 +755,9 @@ SFCNodes.Zones = Zones;
 export declare namespace SFCNodes {
   export type RequestOptions = Opts.RequestOptions;
 
-  export {
-    VMs as VMs,
-    type VMLogsResponse as VMLogsResponse,
-    type VMSSHResponse as VMSSHResponse,
-    type VMLogsParams as VMLogsParams,
-    type VMSSHParams as VMSSHParams,
-  };
+  export { VMs as VMs };
 
-  export {
-    Nodes as Nodes,
-    type AcceleratorType as AcceleratorType,
-    type ErrorContent as ErrorContent,
-    type ErrorDetail as ErrorDetail,
-    type ErrorType as ErrorType,
-    type ExtendNodeRequest as ExtendNodeRequest,
-    type ListResponseNode as ListResponseNode,
-    type Node as Node,
-    type NodeType as NodeType,
-    type Status as Status,
-    type NodeListParams as NodeListParams,
-    type NodeExtendParams as NodeExtendParams,
-    type NodeRedeployParams as NodeRedeployParams,
-  };
+  export { Nodes as Nodes };
 
-  export {
-    Zones as Zones,
-    type ZoneListResponse as ZoneListResponse,
-    type ZoneGetResponse as ZoneGetResponse,
-  };
+  export { Zones as Zones };
 }

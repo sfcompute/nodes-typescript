@@ -26,9 +26,9 @@ const client = new SFCNodes({
   bearerToken: process.env['SFC_NODES_BEARER_TOKEN'], // This is the default and can be omitted
 });
 
-const listResponseNode = await client.nodes.list();
+const images = await client.vms.images.list({ workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F' });
 
-console.log(listResponseNode.data);
+console.log(images.data);
 ```
 
 ### Request & Response types
@@ -43,7 +43,8 @@ const client = new SFCNodes({
   bearerToken: process.env['SFC_NODES_BEARER_TOKEN'], // This is the default and can be omitted
 });
 
-const listResponseNode: SFCNodes.ListResponseNode = await client.nodes.list();
+const params: SFCNodes.VMs.ImageListParams = { workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F' };
+const images: SFCNodes.VMs.ImageListResponse = await client.vms.images.list(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -56,15 +57,17 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const listResponseNode = await client.nodes.list().catch(async (err) => {
-  if (err instanceof SFCNodes.APIError) {
-    console.log(err.status); // 400
-    console.log(err.name); // BadRequestError
-    console.log(err.headers); // {server: 'nginx', ...}
-  } else {
-    throw err;
-  }
-});
+const images = await client.vms.images
+  .list({ workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F' })
+  .catch(async (err) => {
+    if (err instanceof SFCNodes.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 ```
 
 Error codes are as follows:
@@ -96,7 +99,7 @@ const client = new SFCNodes({
 });
 
 // Or, configure per-request:
-await client.nodes.list({
+await client.vms.images.list({ workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F' }, {
   maxRetries: 5,
 });
 ```
@@ -113,7 +116,7 @@ const client = new SFCNodes({
 });
 
 // Override per-request:
-await client.nodes.list({
+await client.vms.images.list({ workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -136,13 +139,17 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new SFCNodes();
 
-const response = await client.nodes.list().asResponse();
+const response = await client.vms.images
+  .list({ workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F' })
+  .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: listResponseNode, response: raw } = await client.nodes.list().withResponse();
+const { data: images, response: raw } = await client.vms.images
+  .list({ workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F' })
+  .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(listResponseNode.data);
+console.log(images.data);
 ```
 
 ### Logging
@@ -222,7 +229,7 @@ parameter. This library doesn't validate at runtime that the request matches the
 send will be sent as-is.
 
 ```ts
-client.nodes.list({
+client.vms.images.list({
   // ...
   // @ts-expect-error baz is not yet public
   baz: 'undocumented option',
