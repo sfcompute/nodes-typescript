@@ -9,8 +9,8 @@ const client = new SFCNodes({
 
 describe('resource images', () => {
   // Mock server tests are disabled
-  test.skip('list: only required params', async () => {
-    const responsePromise = client.vms.images.list({ workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F' });
+  test.skip('list', async () => {
+    const responsePromise = client.vms.images.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,14 +21,20 @@ describe('resource images', () => {
   });
 
   // Mock server tests are disabled
-  test.skip('list: required and optional params', async () => {
-    const response = await client.vms.images.list({
-      workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F',
-      id: ['image_k3R-nX9vLm7Qp2Yw5Jd8F'],
-      ending_before: 'imagec_gqXR7s0Kj5mHvE2wNpLc4Q',
-      limit: 1,
-      starting_after: 'imagec_gqXR7s0Kj5mHvE2wNpLc4Q',
-    });
+  test.skip('list: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.vms.images.list(
+        {
+          id: ['image_k3R-nX9vLm7Qp2Yw5Jd8F'],
+          ending_before: 'imagec_gqXR7s0Kj5mHvE2wNpLc4Q',
+          limit: 1,
+          starting_after: 'imagec_gqXR7s0Kj5mHvE2wNpLc4Q',
+          workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F',
+        },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(SFCNodes.NotFoundError);
   });
 
   // Mock server tests are disabled
