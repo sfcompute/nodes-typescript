@@ -26,7 +26,7 @@ const client = new SFCNodes({
   bearerToken: process.env['SFC_NODES_BEARER_TOKEN'], // This is the default and can be omitted
 });
 
-const images = await client.vms.images.list({ workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F' });
+const images = await client.vms.images.list();
 
 console.log(images.data);
 ```
@@ -43,8 +43,7 @@ const client = new SFCNodes({
   bearerToken: process.env['SFC_NODES_BEARER_TOKEN'], // This is the default and can be omitted
 });
 
-const params: SFCNodes.VMs.ImageListParams = { workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F' };
-const images: SFCNodes.VMs.ImageListResponse = await client.vms.images.list(params);
+const images: SFCNodes.VMs.ImageListResponse = await client.vms.images.list();
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -57,17 +56,15 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const images = await client.vms.images
-  .list({ workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F' })
-  .catch(async (err) => {
-    if (err instanceof SFCNodes.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
+const images = await client.vms.images.list().catch(async (err) => {
+  if (err instanceof SFCNodes.APIError) {
+    console.log(err.status); // 400
+    console.log(err.name); // BadRequestError
+    console.log(err.headers); // {server: 'nginx', ...}
+  } else {
+    throw err;
+  }
+});
 ```
 
 Error codes are as follows:
@@ -99,7 +96,7 @@ const client = new SFCNodes({
 });
 
 // Or, configure per-request:
-await client.vms.images.list({ workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F' }, {
+await client.vms.images.list({
   maxRetries: 5,
 });
 ```
@@ -116,7 +113,7 @@ const client = new SFCNodes({
 });
 
 // Override per-request:
-await client.vms.images.list({ workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F' }, {
+await client.vms.images.list({
   timeout: 5 * 1000,
 });
 ```
@@ -139,15 +136,11 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new SFCNodes();
 
-const response = await client.vms.images
-  .list({ workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F' })
-  .asResponse();
+const response = await client.vms.images.list().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: images, response: raw } = await client.vms.images
-  .list({ workspace: 'wksp_k3R-nX9vLm7Qp2Yw5Jd8F' })
-  .withResponse();
+const { data: images, response: raw } = await client.vms.images.list().withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(images.data);
 ```

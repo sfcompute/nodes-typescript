@@ -15,7 +15,10 @@ export class Images extends APIResource {
    * List images in the specified workspace. Pass `sfc:workspace:sfcompute:public` as
    * the workspace to list sfc-provided public images instead.
    */
-  list(query: ImageListParams, options?: RequestOptions): APIPromise<ImageListResponse> {
+  list(
+    query: ImageListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<ImageListResponse> {
     return this._client.get('/preview/v2/images', { query, ...options });
   }
 
@@ -129,12 +132,6 @@ export interface ImageGetResponse {
 
 export interface ImageListParams {
   /**
-   * Filter by workspace. Pass `sfc:workspace:sfcompute:public` to list sfc-provided
-   * public images.
-   */
-  workspace: string;
-
-  /**
    * Filter by image ID (repeatable).
    */
   id?: Array<string>;
@@ -153,6 +150,14 @@ export interface ImageListParams {
    * Cursor for forward pagination (from a previous response's `cursor` field).
    */
   starting_after?: string;
+
+  /**
+   * Scope the returned list to a single workspace (ID, resource path, or name). Pass
+   * `sfc:workspace:sfcompute:public` to list sfc-provided public images. Without it,
+   * the returned list spans every workspace the caller has requisite permissions on
+   * (public images are not included — request them via the public workspace).
+   */
+  workspace?: string;
 }
 
 export declare namespace Images {
