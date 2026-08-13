@@ -10,7 +10,7 @@ import { path } from '../../internal/utils/path';
  */
 export class Images extends APIResource {
   /**
-   * > ⚠️ This endpoint is in [public preview](/preview/roadmap).
+   * > ⚠️ This endpoint is in [public preview](/preview/roadmap#feature-states).
    *
    * List images in the specified workspace. Pass `sfc:workspace:sfcompute:public` as
    * the workspace to list sfc-provided public images instead.
@@ -23,7 +23,7 @@ export class Images extends APIResource {
   }
 
   /**
-   * > ⚠️ This endpoint is in [public preview](/preview/roadmap).
+   * > ⚠️ This endpoint is in [public preview](/preview/roadmap#feature-states).
    *
    * Retrieve an image by ID. Returns both user-owned and public images.
    */
