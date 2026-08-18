@@ -81,9 +81,22 @@ export namespace ImageListResponse {
      */
     workspace_id: string;
 
+    /**
+     * Set when this version is deprecated: it no longer resolves by name and is hidden
+     * from default listings, but can still be launched by id.
+     */
+    deprecated_at?: number | null;
+
     provider?: string | null;
 
     sha256?: string | null;
+
+    /**
+     * Version of this image within its name. Uploading an existing name creates the
+     * next version; each version is immutable. (`default` tolerates servers that
+     * predate the field: 0 = unreported.)
+     */
+    version?: number;
   }
 }
 
@@ -125,9 +138,22 @@ export interface ImageGetResponse {
    */
   workspace_id: string;
 
+  /**
+   * Set when this version is deprecated: it no longer resolves by name and is hidden
+   * from default listings, but can still be launched by id.
+   */
+  deprecated_at?: number | null;
+
   provider?: string | null;
 
   sha256?: string | null;
+
+  /**
+   * Version of this image within its name. Uploading an existing name creates the
+   * next version; each version is immutable. (`default` tolerates servers that
+   * predate the field: 0 = unreported.)
+   */
+  version?: number;
 }
 
 export interface ImageListParams {
