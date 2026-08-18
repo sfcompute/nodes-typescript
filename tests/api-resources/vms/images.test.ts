@@ -27,6 +27,7 @@ describe('resource images', () => {
       client.vms.images.list(
         {
           id: ['image_k3R-nX9vLm7Qp2Yw5Jd8F'],
+          all_versions: true,
           ending_before: 'imagec_gqXR7s0Kj5mHvE2wNpLc4Q',
           limit: 1,
           starting_after: 'imagec_gqXR7s0Kj5mHvE2wNpLc4Q',

@@ -165,6 +165,14 @@ export interface ImageListParams {
   id?: Array<string>;
 
   /**
+   * Return every version of every image name. By default the list collapses to one
+   * entry per name — the highest active (completed, non-deprecated) version, falling
+   * back to the name's latest version when no active one exists. Public listings
+   * hide names whose every version is deprecated unless this is set.
+   */
+  all_versions?: boolean;
+
+  /**
    * Cursor for backward pagination.
    */
   ending_before?: string;
