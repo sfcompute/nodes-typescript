@@ -39,7 +39,7 @@ describe('resource images', () => {
 
   // Mock server tests are disabled
   test.skip('get', async () => {
-    const responsePromise = client.vms.images.get('image_k3R-nX9vLm7Qp2Yw5Jd8F');
+    const responsePromise = client.vms.images.get('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
