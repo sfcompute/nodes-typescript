@@ -25,7 +25,9 @@ export class Images extends APIResource {
   /**
    * > ⚠️ This endpoint is in [public preview](/preview/roadmap#feature-states).
    *
-   * Retrieve an image by ID. Returns both user-owned and public images.
+   * Retrieve an image by ID. Returns both user-owned and public images. Resource
+   * paths follow the latest active version of the name; append `@<version>` to
+   * address one exact version (e.g. `sfc:image:sfcompute:public:ubuntu-22.04@2`).
    */
   get(id: string, options?: RequestOptions): APIPromise<ImageGetResponse> {
     return this._client.get(path`/preview/v2/images/${id}`, options);
