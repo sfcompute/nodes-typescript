@@ -10,29 +10,27 @@ import { path } from '../../internal/utils/path';
  */
 export class Images extends APIResource {
   /**
-   * > ⚠️ This endpoint is in [public preview](/preview/roadmap).
+   * > ⚠️ This endpoint is in [public preview](/preview/roadmap#feature-states).
    *
    * List images in the specified workspace. Pass `sfc:workspace:sfcompute:public` as
    * the workspace to list sfc-provided public images instead.
    */
-  list(query: ImageListParams, options?: RequestOptions): APIPromise<ImageListResponse> {
-    return this._client.get('/preview/v2/images', {
-      query,
-      defaultBaseURL: 'https://api.sfcompute.com',
-      ...options,
-    });
+  list(
+    query: ImageListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<ImageListResponse> {
+    return this._client.get('/preview/v2/images', { query, ...options });
   }
 
   /**
-   * > ⚠️ This endpoint is in [public preview](/preview/roadmap).
+   * > ⚠️ This endpoint is in [public preview](/preview/roadmap#feature-states).
    *
-   * Retrieve an image by ID. Returns both user-owned and public images.
+   * Retrieve an image by ID. Returns both user-owned and public images. Resource
+   * paths follow the latest active version of the name; append `@<version>` to
+   * address one exact version (e.g. `sfc:image:sfcompute:public:ubuntu-22.04@2`).
    */
   get(id: string, options?: RequestOptions): APIPromise<ImageGetResponse> {
-    return this._client.get(path`/preview/v2/images/${id}`, {
-      defaultBaseURL: 'https://api.sfcompute.com',
-      ...options,
-    });
+    return this._client.get(path`/preview/v2/images/${id}`, options);
   }
 }
 
@@ -48,12 +46,21 @@ export interface ImageListResponse {
 
 export namespace ImageListResponse {
   export interface Data {
+    /**
+     * Accepts the canonical prefix below; additional legacy prefixes are aliased for
+     * read compatibility. Writes always emit the canonical form.
+     */
     id: string;
 
     /**
      * Unix timestamp.
      */
     created_at: number;
+
+    /**
+     * Whether this is an sfc-provided public image.
+     */
+    is_public: boolean;
 
     name: string;
 
@@ -71,19 +78,46 @@ export namespace ImageListResponse {
 
     workspace: string;
 
+    /**
+     * The workspace that owns this image.
+     */
+    workspace_id: string;
+
+    /**
+     * Set when this version is deprecated: it no longer resolves by name and is hidden
+     * from default listings, but can still be launched by id.
+     */
+    deprecated_at?: number | null;
+
     provider?: string | null;
 
     sha256?: string | null;
+
+    /**
+     * Version of this image within its name. Uploading an existing name creates the
+     * next version; each version is immutable. (`default` tolerates servers that
+     * predate the field: 0 = unreported.)
+     */
+    version?: number;
   }
 }
 
 export interface ImageGetResponse {
+  /**
+   * Accepts the canonical prefix below; additional legacy prefixes are aliased for
+   * read compatibility. Writes always emit the canonical form.
+   */
   id: string;
 
   /**
    * Unix timestamp.
    */
   created_at: number;
+
+  /**
+   * Whether this is an sfc-provided public image.
+   */
+  is_public: boolean;
 
   name: string;
 
@@ -101,22 +135,42 @@ export interface ImageGetResponse {
 
   workspace: string;
 
+  /**
+   * The workspace that owns this image.
+   */
+  workspace_id: string;
+
+  /**
+   * Set when this version is deprecated: it no longer resolves by name and is hidden
+   * from default listings, but can still be launched by id.
+   */
+  deprecated_at?: number | null;
+
   provider?: string | null;
 
   sha256?: string | null;
+
+  /**
+   * Version of this image within its name. Uploading an existing name creates the
+   * next version; each version is immutable. (`default` tolerates servers that
+   * predate the field: 0 = unreported.)
+   */
+  version?: number;
 }
 
 export interface ImageListParams {
   /**
-   * Filter by workspace. Pass `sfc:workspace:sfcompute:public` to list sfc-provided
-   * public images.
-   */
-  workspace: string;
-
-  /**
    * Filter by image ID (repeatable).
    */
   id?: Array<string>;
+
+  /**
+   * Return every version of every image name. By default the list collapses to one
+   * entry per name — the highest active (completed, non-deprecated) version, falling
+   * back to the name's latest version when no active one exists. Public listings
+   * hide names whose every version is deprecated unless this is set.
+   */
+  all_versions?: boolean;
 
   /**
    * Cursor for backward pagination.
@@ -132,6 +186,15 @@ export interface ImageListParams {
    * Cursor for forward pagination (from a previous response's `cursor` field).
    */
   starting_after?: string;
+
+  /**
+   * Scope the returned list to a single workspace (ID, resource path, or name).
+   * Without it, the returned list spans every workspace where the caller has
+   * `Image:List` and `Image:Read` (granted at either the workspace or organization
+   * level). Public images are not included by default - request them by specifying
+   * `sfc:workspace:sfcompute:public` for the `workspace` query parameter.
+   */
+  workspace?: string;
 }
 
 export declare namespace Images {

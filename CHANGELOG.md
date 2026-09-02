@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.1.0-alpha.32 (2026-09-02)
+
+Full Changelog: [v0.1.0-alpha.31...v0.1.0-alpha.32](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.31...v0.1.0-alpha.32)
+
+### Features
+
+* **api:** api update ([aa97746](https://github.com/sfcompute/nodes-typescript/commit/aa97746601dc2cf1f1a4678400e8739a7920cd5d))
+* **api:** api update ([80e0326](https://github.com/sfcompute/nodes-typescript/commit/80e03262a5a5aa1d233fde791a073a1bf456f434))
+* **api:** api update ([a7f7cb9](https://github.com/sfcompute/nodes-typescript/commit/a7f7cb9ebfb479a82d2f04a893537c1635c8df27))
+* **api:** api update ([220cf5f](https://github.com/sfcompute/nodes-typescript/commit/220cf5f08ecee7b8297126dced9a9cc59016a00b))
+* **api:** api update ([8f79eb2](https://github.com/sfcompute/nodes-typescript/commit/8f79eb226f867ab45c2699ea7b6085f9c9924179))
+* **api:** api update ([c39f4ff](https://github.com/sfcompute/nodes-typescript/commit/c39f4ff4b5dfdb3ea8f8c82cbbf18308060f4d23))
+* **api:** api update ([4aa7210](https://github.com/sfcompute/nodes-typescript/commit/4aa721040cbe2e926af4c9e42e5222a2491b7974))
+* **api:** api update ([5e5179e](https://github.com/sfcompute/nodes-typescript/commit/5e5179e1706895ba15ab49a5cd6ab6e3bf7aff2d))
+* **api:** api update ([9af0bc4](https://github.com/sfcompute/nodes-typescript/commit/9af0bc4c3845a3666b132927c36b564f276ef5d4))
+* **api:** api update ([41d0397](https://github.com/sfcompute/nodes-typescript/commit/41d039709d0b6a83adaf223ff3ec8f08619b3bd8))
+* **api:** api update ([35f91a2](https://github.com/sfcompute/nodes-typescript/commit/35f91a27ce035bbf213c19243ce481312855641d))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([9e3b1de](https://github.com/sfcompute/nodes-typescript/commit/9e3b1de5ccf06eb0c869013fdf6abab062d94399))
+
+
+### Bug Fixes
+
+* **ci:** bump @arethetypeswrong/cli to ^0.18.0 and run CI workflows on Node 24 ([d6eb154](https://github.com/sfcompute/nodes-typescript/commit/d6eb1547f3a6b38583dd04a9716f3ad6d8098396))
+* **client:** send content-type header for requests with an omitted optional body ([7246bb9](https://github.com/sfcompute/nodes-typescript/commit/7246bb916cb644bca7fd48e6bd9ba1f66f64ad53))
+* **stlc:** stop hand-edited CI workflows from blocking seals and builds ([ca4a45f](https://github.com/sfcompute/nodes-typescript/commit/ca4a45f220e1098ca611fd738c704a5ffa334ece))
+
+
+### Chores
+
+* **internal:** codegen related update ([5205ced](https://github.com/sfcompute/nodes-typescript/commit/5205ced483de66afd7e03538f57e492a0d4ab63c))
+* **internal:** codegen related update ([f6cf9d5](https://github.com/sfcompute/nodes-typescript/commit/f6cf9d5c39d45df96bee9673184fb5f955c69dd3))
+
 ## 0.1.0-alpha.31 (2026-05-19)
 
 Full Changelog: [v0.1.0-alpha.30...v0.1.0-alpha.31](https://github.com/sfcompute/nodes-typescript/compare/v0.1.0-alpha.30...v0.1.0-alpha.31)
